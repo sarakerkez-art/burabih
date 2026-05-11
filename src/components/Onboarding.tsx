@@ -2,9 +2,9 @@ import { useState } from "react";
 import { WindMark } from "./WindMark";
 import { cities, type Children, type Heating, type Lang, type Profile, t } from "@/lib/i18n";
 
-type Props = { lang: Lang; onDone: (p: Profile) => void };
+type Props = { lang: Lang; onDone: (p: Profile) => void; onHome?: () => void };
 
-export function Onboarding({ lang, onDone }: Props) {
+export function Onboarding({ lang, onDone, onHome }: Props) {
   const tr = t(lang);
   const [step, setStep] = useState(0);
   const [city, setCity] = useState<string>("");
@@ -25,8 +25,14 @@ export function Onboarding({ lang, onDone }: Props) {
   return (
     <div className="min-h-screen bg-background">
       <header className="px-6 py-6 flex items-center gap-2">
-        <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
-        <WindMark size={20} color="var(--forest)" />
+        <button
+          onClick={onHome}
+          className="flex items-center gap-2 hover:opacity-75 transition"
+          aria-label="Bura — home"
+        >
+          <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
+          <WindMark size={20} color="var(--forest)" />
+        </button>
       </header>
 
       <main className="px-6 max-w-xl mx-auto pt-6 pb-24">
