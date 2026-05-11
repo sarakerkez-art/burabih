@@ -17,7 +17,7 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-export function MainPage({ profile, lang, setLang, onEditProfile }: Props) {
+export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
 
