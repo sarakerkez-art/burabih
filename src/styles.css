@@ -131,6 +131,13 @@
 .buri-un    { animation: buri-un 5.5s ease-in-out infinite; transform-origin: center; }
 .buri-haz   { animation: buri-haz 7s ease-in-out infinite; transform-origin: center; }
 
+/* Cloud breathing — like the Lovable logo */
+@keyframes buri-breathe {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50%      { transform: scale(1.06) translateY(-2px); }
+}
+.buri-breathe { animation: buri-breathe 3.6s ease-in-out infinite; transform-origin: center; }
+
 @keyframes buri-wake {
   0%   { transform: scale(0.4); opacity: 0; }
   60%  { transform: scale(1.08); opacity: 1; }
