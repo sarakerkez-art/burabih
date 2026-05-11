@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Onboarding } from "@/components/Onboarding";
 import { MainPage } from "@/components/MainPage";
+import { Landing } from "@/components/Landing";
 import type { Lang, Profile } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
@@ -25,16 +26,23 @@ export const Route = createFileRoute("/")({
 
 const KEY = "bura.profile.v1";
 const LKEY = "bura.lang.v1";
+const SKEY = "bura.started.v1";
 
 function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [lang, setLang] = useState<Lang>("bs");
+  const [started, setStarted] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(KEY);
-      if (raw) setProfile(JSON.parse(raw));
+      if (raw) {
+        setProfile(JSON.parse(raw));
+        setStarted(true);
+      } else if (sessionStorage.getItem(SKEY) === "1") {
+        setStarted(true);
+      }
       const l = localStorage.getItem(LKEY) as Lang | null;
       if (l === "bs" || l === "en") setLang(l);
     } catch { /* ignore */ }
@@ -48,7 +56,13 @@ function Home() {
     try { localStorage.setItem(KEY, JSON.stringify(p)); } catch { /* ignore */ }
   };
 
+  const handleOpen = () => {
+    setStarted(true);
+    try { sessionStorage.setItem(SKEY, "1"); } catch { /* ignore */ }
+  };
+
   if (!hydrated) return <div className="min-h-screen bg-background" />;
+  if (!started) return <Landing lang={lang} setLang={setLang} onOpen={handleOpen} />;
   if (!profile) return <Onboarding lang={lang} onDone={handleDone} />;
 
   return (
