@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { Buri } from "@/components/Buri";
-import { fetchAir, type AirSnapshot, WHO_LIMIT } from "@/lib/air";
+import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void };
