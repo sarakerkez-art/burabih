@@ -58,10 +58,14 @@ export function Landing({ lang, setLang, onOpen }: Props) {
   return (
     <div className="min-h-screen bg-background">
       <header className="px-6 py-6 flex items-center justify-between max-w-6xl mx-auto">
-        <div className="flex items-center gap-2">
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="flex items-center gap-2 hover:opacity-75 transition"
+          aria-label="Bura — home"
+        >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
-        </div>
+        </button>
         <button
           onClick={() => setLang(lang === "bs" ? "en" : "bs")}
           className="text-xs tracking-wide text-muted-foreground hover:text-foreground transition"

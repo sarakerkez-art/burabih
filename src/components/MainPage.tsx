@@ -9,7 +9,7 @@ import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 
-type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void };
+type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
 const IconBox = ({ children }: { children: React.ReactNode }) => (
   <div className="shrink-0 w-12 h-12 rounded-xl bg-sage flex items-center justify-center text-[color:var(--forest)]">
@@ -17,7 +17,7 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
   </div>
 );
 
-export function MainPage({ profile, lang, setLang, onEditProfile }: Props) {
+export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
 
@@ -53,10 +53,14 @@ export function MainPage({ profile, lang, setLang, onEditProfile }: Props) {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="px-5 sm:px-8 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <button
+          onClick={onHome}
+          className="flex items-center gap-2 hover:opacity-75 transition"
+          aria-label="Bura — home"
+        >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
-        </div>
+        </button>
         <div className="flex items-center gap-4 text-sm">
           <span className="text-muted-foreground">{profile.city}</span>
           <button
