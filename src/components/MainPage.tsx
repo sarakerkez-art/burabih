@@ -9,7 +9,7 @@ import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 
-type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void };
+type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
 const IconBox = ({ children }: { children: React.ReactNode }) => (
   <div className="shrink-0 w-12 h-12 rounded-xl bg-sage flex items-center justify-center text-[color:var(--forest)]">
