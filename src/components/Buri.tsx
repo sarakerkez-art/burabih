@@ -78,21 +78,19 @@ export function Buri({ pm25, lang = "bs" }: Props) {
 
   useEffect(() => () => { if (bubbleTimer.current) window.clearTimeout(bubbleTimer.current); }, []);
 
-  const bodyAnim =
-    state === "clean" ? "buri-clean" :
-    state === "moderate" ? "buri-mod" :
-    state === "unhealthy" ? "buri-un" : "buri-haz";
+  // All states share the same gentle breathing animation (Lovable-logo-like).
+  const bodyAnim = "buri-breathe";
 
   // Eyes
   const eyesOpen = state !== "hazardous";
-  const eyeY = state === "clean" ? 60 : state === "moderate" ? 61 : state === "unhealthy" ? 63 : 62;
+  const eyeY = state === "clean" ? 72 : state === "moderate" ? 73 : state === "unhealthy" ? 75 : 74;
 
-  // Mouth
+  // Mouth — face expressions like before
   const mouth =
-    state === "clean"     ? "M44 76 Q60 88 76 76" :
-    state === "moderate"  ? "M46 78 Q60 84 74 78" :
-    state === "unhealthy" ? "M46 80 Q60 76 74 80" :
-                            "M48 82 Q60 78 72 82";
+    state === "clean"     ? "M48 88 Q60 100 72 88" :   // grin
+    state === "moderate"  ? "M50 90 Q60 94 70 90" :    // small smile
+    state === "unhealthy" ? "M50 92 Q60 88 70 92" :    // frown
+                            "M52 94 Q60 90 68 94";     // sad
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
@@ -129,67 +127,49 @@ export function Buri({ pm25, lang = "bs" }: Props) {
               transition: "filter 1s ease-in-out",
             }}
           >
-            {/* Soft outer glow / transparent edge */}
             <defs>
-              <radialGradient id="buriBody" cx="50%" cy="55%" r="55%">
+              <radialGradient id="buriBody" cx="50%" cy="55%" r="60%">
                 <stop offset="0%" stopColor="#FAFAF8" stopOpacity="1" />
-                <stop offset="75%" stopColor="#FAFAF8" stopOpacity="0.95" />
-                <stop offset="100%" stopColor="#FAFAF8" stopOpacity="0.45" />
+                <stop offset="80%" stopColor="#FAFAF8" stopOpacity="0.96" />
+                <stop offset="100%" stopColor="#FAFAF8" stopOpacity="0.55" />
               </radialGradient>
             </defs>
 
-            {/* Hair / wind tufts on top */}
+            {/* Tiny wisp on top — waves on first visit */}
             <g
-              className={wave ? "buri-wave" : "buri-hair"}
+              className={wave ? "buri-wave" : ""}
               stroke="#FAFAF8"
               strokeWidth="2.2"
               strokeLinecap="round"
-              strokeOpacity="0.85"
+              strokeOpacity="0.7"
               fill="none"
             >
-              {state === "clean" || state === "moderate" ? (
-                <>
-                  <path d="M48 26 Q52 14 60 18" />
-                  <path d="M60 22 Q62 8 70 14" />
-                  <path d="M70 26 Q78 16 82 24" />
-                </>
-              ) : state === "unhealthy" ? (
-                <>
-                  <path d="M48 28 Q50 22 58 26" />
-                  <path d="M60 26 Q62 20 70 26" />
-                  <path d="M70 28 Q76 24 80 30" />
-                </>
-              ) : (
-                <>
-                  <path d="M50 30 Q54 36 58 32" />
-                  <path d="M60 30 Q64 38 68 32" />
-                  <path d="M70 30 Q76 38 80 32" />
-                </>
-              )}
+              <path d="M40 32 Q46 26 54 30" />
+              <path d="M66 30 Q74 24 82 30" />
             </g>
 
-            {/* Body — teardrop pointing up */}
+            {/* Cloud body — bumpy, like Lovable logo, breathes */}
             <path
-              d="M60 28 C 32 50 28 92 60 110 C 92 92 88 50 60 28 Z"
+              d="M30 86 C 18 86 14 70 26 64 C 22 50 38 42 48 50 C 52 38 70 38 76 50 C 90 46 100 60 92 70 C 102 78 96 92 84 90 C 80 100 64 100 58 92 C 50 100 34 98 30 86 Z"
               fill="url(#buriBody)"
             />
 
             {/* Cheeks */}
-            <circle cx="42" cy="74" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
-            <circle cx="78" cy="74" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="42" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="78" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
 
             {/* Eyes */}
             {eyesOpen ? (
               <g>
-                <circle cx="48" cy={eyeY} r="4.2" fill="#FAFAF8" />
-                <circle cx="72" cy={eyeY} r="4.2" fill="#FAFAF8" />
-                <circle cx={48 + eye.x} cy={eyeY + eye.y} r="1.8" fill="#1A2E1A" />
-                <circle cx={72 + eye.x} cy={eyeY + eye.y} r="1.8" fill="#1A2E1A" />
+                <circle cx="50" cy={eyeY} r="4.2" fill="#1A2E1A" opacity="0.08" />
+                <circle cx="70" cy={eyeY} r="4.2" fill="#1A2E1A" opacity="0.08" />
+                <circle cx={50 + eye.x} cy={eyeY + eye.y} r="2.6" fill="#1A2E1A" />
+                <circle cx={70 + eye.x} cy={eyeY + eye.y} r="2.6" fill="#1A2E1A" />
               </g>
             ) : (
-              <g stroke="#1A2E1A" strokeWidth="1.8" strokeLinecap="round">
-                <path d="M44 62 Q48 65 52 62" />
-                <path d="M68 62 Q72 65 76 62" />
+              <g stroke="#1A2E1A" strokeWidth="1.8" strokeLinecap="round" fill="none">
+                <path d="M46 74 Q50 77 54 74" />
+                <path d="M66 74 Q70 77 74 74" />
               </g>
             )}
 
@@ -201,18 +181,6 @@ export function Buri({ pm25, lang = "bs" }: Props) {
               strokeLinecap="round"
               fill="none"
             />
-
-            {/* Hand covering mouth (unhealthy state) */}
-            {state === "unhealthy" && (
-              <ellipse
-                cx="60"
-                cy="84"
-                rx="9"
-                ry="4.5"
-                fill="#FAFAF8"
-                opacity="0.9"
-              />
-            )}
           </svg>
         </div>
       </div>
