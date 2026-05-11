@@ -53,10 +53,14 @@ export function MainPage({ profile, lang, setLang, onEditProfile }: Props) {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
       <header className="px-5 sm:px-8 py-5 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <button
+          onClick={onHome}
+          className="flex items-center gap-2 hover:opacity-75 transition"
+          aria-label="Bura — home"
+        >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
-        </div>
+        </button>
         <div className="flex items-center gap-4 text-sm">
           <span className="text-muted-foreground">{profile.city}</span>
           <button
