@@ -108,6 +108,49 @@
 .buri-slow { animation: buri-droop 5s ease-in-out infinite; transform-origin: center; }
 .buri-tired { animation: buri-sad 6s ease-in-out infinite; transform-origin: center; }
 
+/* New Buri character states */
+@keyframes buri-clean {
+  0%   { transform: rotate(0deg) translateY(0); }
+  50%  { transform: rotate(180deg) translateY(-4px); }
+  100% { transform: rotate(360deg) translateY(0); }
+}
+@keyframes buri-mod {
+  0%, 100% { transform: translateX(-4px) rotate(-2deg); }
+  50%      { transform: translateX(4px) rotate(2deg); }
+}
+@keyframes buri-un {
+  0%, 100% { transform: translateY(2px) rotate(-1deg); }
+  50%      { transform: translateY(6px) rotate(1deg); }
+}
+@keyframes buri-haz {
+  0%, 100% { transform: translateY(6px); opacity: 0.9; }
+  50%      { transform: translateY(8px); opacity: 1; }
+}
+.buri-clean { animation: buri-clean 6s ease-in-out infinite; transform-origin: center; }
+.buri-mod   { animation: buri-mod 4.5s ease-in-out infinite; transform-origin: center; }
+.buri-un    { animation: buri-un 5.5s ease-in-out infinite; transform-origin: center; }
+.buri-haz   { animation: buri-haz 7s ease-in-out infinite; transform-origin: center; }
+
+@keyframes buri-wake {
+  0%   { transform: scale(0.4); opacity: 0; }
+  60%  { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.buri-wake { animation: buri-wake 0.9s cubic-bezier(.34,1.56,.64,1) both; }
+
+@keyframes buri-hair-flow {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-1.5px); }
+}
+.buri-hair { animation: buri-hair-flow 2.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+
+@keyframes buri-wave {
+  0%, 100% { transform: rotate(0deg); }
+  25%      { transform: rotate(-12deg); }
+  75%      { transform: rotate(12deg); }
+}
+.buri-wave { animation: buri-wave 0.5s ease-in-out 3; transform-origin: 60px 26px; transform-box: fill-box; }
+
 @keyframes wind-drift {
   0% { transform: translateX(-2px); }
   50% { transform: translateX(2px); }

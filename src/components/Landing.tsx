@@ -102,7 +102,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             className="rounded-3xl p-10 flex items-center justify-center aspect-square sm:aspect-auto sm:h-80"
             style={{ background: "var(--forest)" }}
           >
-            <Buri pm25={20} />
+            <Buri pm25={8} lang={lang} />
           </div>
         </div>
       </section>
