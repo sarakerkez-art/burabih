@@ -61,9 +61,15 @@ function Home() {
     try { sessionStorage.setItem(SKEY, "1"); } catch { /* ignore */ }
   };
 
+  const handleHome = () => {
+    setStarted(false);
+    try { sessionStorage.removeItem(SKEY); } catch { /* ignore */ }
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   if (!hydrated) return <div className="min-h-screen bg-background" />;
   if (!started) return <Landing lang={lang} setLang={setLang} onOpen={handleOpen} />;
-  if (!profile) return <Onboarding lang={lang} onDone={handleDone} />;
+  if (!profile) return <Onboarding lang={lang} onDone={handleDone} onHome={handleHome} />;
 
   return (
     <MainPage
@@ -71,6 +77,7 @@ function Home() {
       lang={lang}
       setLang={setLang}
       onEditProfile={() => setProfile(null)}
+      onHome={handleHome}
     />
   );
 }
