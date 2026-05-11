@@ -78,21 +78,19 @@ export function Buri({ pm25, lang = "bs" }: Props) {
 
   useEffect(() => () => { if (bubbleTimer.current) window.clearTimeout(bubbleTimer.current); }, []);
 
-  const bodyAnim =
-    state === "clean" ? "buri-clean" :
-    state === "moderate" ? "buri-mod" :
-    state === "unhealthy" ? "buri-un" : "buri-haz";
+  // All states share the same gentle breathing animation (Lovable-logo-like).
+  const bodyAnim = "buri-breathe";
 
   // Eyes
   const eyesOpen = state !== "hazardous";
-  const eyeY = state === "clean" ? 60 : state === "moderate" ? 61 : state === "unhealthy" ? 63 : 62;
+  const eyeY = state === "clean" ? 72 : state === "moderate" ? 73 : state === "unhealthy" ? 75 : 74;
 
-  // Mouth
+  // Mouth — face expressions like before
   const mouth =
-    state === "clean"     ? "M44 76 Q60 88 76 76" :
-    state === "moderate"  ? "M46 78 Q60 84 74 78" :
-    state === "unhealthy" ? "M46 80 Q60 76 74 80" :
-                            "M48 82 Q60 78 72 82";
+    state === "clean"     ? "M48 88 Q60 100 72 88" :   // grin
+    state === "moderate"  ? "M50 90 Q60 94 70 90" :    // small smile
+    state === "unhealthy" ? "M50 92 Q60 88 70 92" :    // frown
+                            "M52 94 Q60 90 68 94";     // sad
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
