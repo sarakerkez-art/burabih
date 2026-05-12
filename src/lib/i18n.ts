@@ -52,8 +52,8 @@ const bs = {
   heat_coal: "ugalj/drvo", heat_gas: "plin", heat_district: "daljinsko", heat_unsure: "nepoznato grijanje",
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperatura",
-  live_source: (m: string) => `OpenAQ · ažurirano prije ${m} min`,
-  live_stale: "Podaci trenutno nisu dostupni: prikazujemo posljednje poznate vrijednosti.",
+  live_source: (m: string) => `aqicn.org · Federalni Hidrometeorološki Zavod · ažurirano prije ${m} min`,
+  live_stale: "Podaci se osvježavaju... Prikazujemo posljednje poznate vrijednosti.",
 
   why_title: "Zašto je danas ovako?",
   why_text: (t: string) =>
