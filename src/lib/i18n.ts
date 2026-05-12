@@ -21,7 +21,7 @@ const bs = {
   langToggle: "BHS | EN",
   // Onboarding
   ob_title: "Recite nam nešto o sebi.",
-  ob_sub: "Bura će vam svaki dan reći šta vaša djeca udišu — i šta možete učiniti.",
+  ob_sub: "Bura će vam svaki dan reći šta vaša djeca udišu, i šta možete učiniti.",
   ob_q1: "Gdje živite?",
   ob_q2: "Imate li djecu?",
   ob_q3: "Čime grijete dom?",
@@ -33,7 +33,7 @@ const bs = {
   next: "Dalje",
   back: "Nazad",
 
-  alert_banner: (city: string, pm: string, x: string) => `${city} danas: PM2.5 ${pm} — ${x}× iznad WHO granice`,
+  alert_banner: (city: string, pm: string, x: string) => `${city} danas: PM2.5 ${pm}, ${x}× iznad WHO granice`,
 
   greet_morning: "Dobro jutro.",
   greet_kids_coal: (city: string, x: string) =>
@@ -53,7 +53,7 @@ const bs = {
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperatura",
   live_source: (m: string) => `OpenAQ · ažurirano prije ${m} min`,
-  live_stale: "Podaci trenutno nisu dostupni — prikazujemo posljednje poznate vrijednosti.",
+  live_stale: "Podaci trenutno nisu dostupni: prikazujemo posljednje poznate vrijednosti.",
 
   why_title: "Zašto je danas ovako?",
   why_text: (t: string) =>
@@ -63,26 +63,26 @@ const bs = {
   ebm_title: "Svaki dah je važan.",
   ebm_sub: "Posebno za najmanja pluća.",
   ebm_p: (city: string, x: string) =>
-    `Upravo sada u ${city}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli — što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, 1 od 5 djece u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
+    `Upravo sada u ${city}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, 1 od 5 djece u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
   ebm_source: "Izvor: UNICEF BiH, WHO",
 
   work_title: "Šta već funkcioniše",
   work_sub: "BiH napreduje. Evo gdje se dešavaju promjene.",
   work_eu: "EU STANDARD",
   work_eu_city: "Živinice",
-  work_eu_text: "Prvi EU-usklađen centar za otpad u Tuzlanskom kantonu — služi 95.000 ljudi.",
+  work_eu_text: "Prvi EU-usklađen centar za otpad u Tuzlanskom kantonu, služi 95.000 ljudi.",
   work_rec: "RECIKLAŽA AKTIVNA",
   work_rec_city: "Sarajevo",
   work_rec_text: "Ekopak mreža kontejnera aktivna. Preko 1.440 domaćinstava razvrstava otpad.",
   work_air: "NAJČISTIJI ZRAK",
   work_air_city: "Mostar",
-  work_air_text: "Najniži PM2.5 u BiH ovog mjeseca — 18.2 µg/m³.",
+  work_air_text: "Najniži PM2.5 u BiH ovog mjeseca: 18.2 µg/m³.",
   ranking: "Rang gradova ovaj mjesec",
 
   rep_title: "Vaše oči pomažu zaštititi djecu u blizini.",
   rep_sub: "Dim iz dimnjaka koji ne bi trebao gorjeti. Hrpa bačena pored škole. Miris kojeg juče nije bilo. Podijelite šta vidite.",
   rep_b1: "Unakrsno provjereno sa satelitskim podacima",
-  rep_b2: "Dijeli se s partnerima — NGO, novinari, općine",
+  rep_b2: "Dijeli se s partnerima: NGO, novinari, općine",
   rep_b3: "Korisno za porodice u blizini",
   rep_loc: "LOKACIJA", rep_desc: "OPIS", rep_photo: "Dodaj fotografiju",
   rep_cta: "Zaštitite moj kvart",
@@ -126,7 +126,7 @@ const en: typeof bs = {
   brand: "Bura",
   langToggle: "BHS | EN",
   ob_title: "Tell us a little about yourself.",
-  ob_sub: "Every morning, Bura tells you what your children breathe — and what you can do.",
+  ob_sub: "Every morning, Bura tells you what your children breathe, and what you can do.",
   ob_q1: "Where do you live?",
   ob_q2: "Do you have children?",
   ob_q3: "How do you heat your home?",
@@ -137,7 +137,7 @@ const en: typeof bs = {
   ob_note: "You can change these answers anytime.",
   next: "Next", back: "Back",
 
-  alert_banner: (city, pm, x) => `${city} today: PM2.5 ${pm} — ${x}× above the WHO limit`,
+  alert_banner: (city, pm, x) => `${city} today: PM2.5 ${pm}, ${x}× above the WHO limit`,
   greet_morning: "Good morning.",
   greet_kids_coal: (city, x) =>
     `Today in ${city}, your children are breathing air ${x}× worse than the WHO recommendation. Here's what you can do today.`,
@@ -151,7 +151,7 @@ const en: typeof bs = {
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperature",
   live_source: (m) => `OpenAQ · updated ${m} min ago`,
-  live_stale: "Live data is currently unavailable — showing last known values.",
+  live_stale: "Live data is currently unavailable: showing last known values.",
 
   why_title: "Why is the air bad today?",
   why_text: (tp) =>
@@ -161,23 +161,23 @@ const en: typeof bs = {
   ebm_title: "Every breath matters.",
   ebm_sub: "Especially for the smallest lungs.",
   ebm_p: (city, x) =>
-    `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults — making polluted air twice as dangerous for them. According to UNICEF, 1 in 5 children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
+    `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults, making polluted air twice as dangerous for them. According to UNICEF, 1 in 5 children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
   ebm_source: "Source: UNICEF BiH, WHO",
 
   work_title: "What's already working",
   work_sub: "BiH is making progress. Here's where change is happening.",
   work_eu: "EU STANDARD", work_eu_city: "Živinice",
-  work_eu_text: "First EU-compliant waste center in Tuzla canton — serves 95,000 people.",
+  work_eu_text: "First EU-compliant waste center in Tuzla canton: serves 95,000 people.",
   work_rec: "RECYCLING ACTIVE", work_rec_city: "Sarajevo",
   work_rec_text: "Ekopak container network active. Over 1,440 households sort waste.",
   work_air: "CLEANEST AIR", work_air_city: "Mostar",
-  work_air_text: "Lowest PM2.5 in BiH this month — 18.2 µg/m³.",
+  work_air_text: "Lowest PM2.5 in BiH this month: 18.2 µg/m³.",
   ranking: "City ranking this month",
 
   rep_title: "Your eyes help protect children nearby.",
   rep_sub: "Smoke from a chimney that shouldn't be burning. A pile dumped near a school. A smell that wasn't there yesterday. Share what you see.",
   rep_b1: "Cross-checked with satellite data",
-  rep_b2: "Shared with partners — NGOs, journalists, municipalities",
+  rep_b2: "Shared with partners: NGOs, journalists, municipalities",
   rep_b3: "Useful for families nearby",
   rep_loc: "LOCATION", rep_desc: "DESCRIPTION", rep_photo: "Add photo",
   rep_cta: "Protect my neighbourhood",
