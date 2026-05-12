@@ -94,7 +94,7 @@ export function Buri({ pm25, lang = "bs" }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
-      <div className="relative" style={{ width: 160, height: 180 }}>
+      <div className="relative" style={{ width: 220, height: 240 }}>
         {/* Speech bubble */}
         <div
           className={`absolute left-1/2 -translate-x-1/2 -top-2 transition-all duration-300 ${
@@ -118,8 +118,8 @@ export function Buri({ pm25, lang = "bs" }: Props) {
           style={{ transition: "filter 1s ease-in-out" }}
         >
           <svg
-            width="120"
-            height="140"
+            width="190"
+            height="210"
             viewBox="0 0 120 140"
             fill="none"
             style={{

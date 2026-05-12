@@ -133,10 +133,13 @@
 
 /* Cloud breathing — like the Lovable logo */
 @keyframes buri-breathe {
-  0%, 100% { transform: scale(1) translateY(0); }
-  50%      { transform: scale(1.06) translateY(-2px); }
+  0%, 100% { transform: scale(1); }
+  20%      { transform: scale(1.12); }
+  40%      { transform: scale(1.02); }
+  60%      { transform: scale(1.08); }
+  100%     { transform: scale(1); }
 }
-.buri-breathe { animation: buri-breathe 3.6s ease-in-out infinite; transform-origin: center; }
+.buri-breathe { animation: buri-breathe 1.6s ease-in-out infinite; transform-origin: center; }
 
 @keyframes buri-wake {
   0%   { transform: scale(0.4); opacity: 0; }
