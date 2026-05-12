@@ -178,9 +178,9 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
                 <circle cx={70 + eye.x} cy={eyeY + eye.y} r="2.6" fill="#1A2E1A" />
               </g>
             ) : (
-              <g stroke="#1A2E1A" strokeWidth="1.8" strokeLinecap="round" fill="none">
-                <path d="M46 74 Q50 77 54 74" />
-                <path d="M66 74 Q70 77 74 74" />
+              <g stroke="#1A2E1A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85">
+                <path d="M45 74 Q50 70 55 74" />
+                <path d="M65 74 Q70 70 75 74" />
               </g>
             )}
 
@@ -196,7 +196,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
         </div>
       </div>
 
-      <p className="mt-3 text-xs sm:text-sm text-center text-[color:var(--offwhite)]/80 max-w-[14rem]">
+      <p className="-mt-1 text-xs sm:text-sm text-center text-[color:var(--offwhite)]/80 max-w-[15rem]">
         {copy.caption}
       </p>
     </div>
