@@ -4,7 +4,7 @@
 
 import { fetchAqicn } from "./air.functions";
 
-const WHO_PM25 = 15; // WHO 24h guideline (µg/m³)
+const WHO_PM25 = 5; // WHO annual guideline (µg/m³)
 
 export type AirSnapshot = {
   pm25: number | null;
