@@ -98,20 +98,27 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
-      <div className="relative" style={{ width: 220, height: 240 }}>
+      <div className="relative" style={{ width: 240, height: 220 }}>
         {/* Speech bubble */}
         <div
-          className={`absolute left-1/2 -translate-x-1/2 -top-2 transition-all duration-300 ${
+          className={`absolute left-1/2 -translate-x-1/2 -top-4 transition-all duration-300 ${
             bubble ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
           }`}
           style={{ transformOrigin: "50% 100%" }}
         >
-          <div className="relative bg-white text-[color:var(--forest)] text-xs font-medium px-3 py-2 rounded-2xl shadow-lg whitespace-nowrap max-w-[220px]">
+          <div className="relative bg-white text-[color:var(--forest)] text-xs font-medium leading-snug px-4 py-2.5 rounded-2xl shadow-lg text-center w-[240px]">
             {copy.bubble}
-            <span
-              className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45"
-              style={{ background: "var(--amber-brand)" }}
-            />
+            {/* Soft, rounded tail flowing into Buri */}
+            <svg
+              className="absolute left-1/2 -translate-x-1/2 -bottom-[10px]"
+              width="22"
+              height="14"
+              viewBox="0 0 22 14"
+              fill="white"
+              aria-hidden="true"
+            >
+              <path d="M0 0 C 6 0, 8 12, 11 13 C 14 12, 16 0, 22 0 Z" />
+            </svg>
           </div>
         </div>
 
