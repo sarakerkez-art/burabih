@@ -106,7 +106,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             className="rounded-3xl p-10 flex items-center justify-center aspect-square sm:aspect-auto sm:h-80"
             style={{ background: "var(--forest)" }}
           >
-            <Buri pm25={8} lang={lang} />
+            <Buri
+              pm25={8}
+              lang={lang}
+              bubbleText={lang === "bs" ? "Ćao! Ja sam Buri. Tvoj mali čuvar zraka." : "Hi! I'm Buri. Your little air guardian."}
+              captionText={lang === "bs" ? "Hajde da vidimo kakav je danas zrak u tvom gradu." : "Let's see what the air is like in your city today."}
+            />
           </div>
         </div>
       </section>
