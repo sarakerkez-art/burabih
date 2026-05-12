@@ -52,8 +52,8 @@ const bs = {
   heat_coal: "ugalj/drvo", heat_gas: "plin", heat_district: "daljinsko", heat_unsure: "nepoznato grijanje",
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperatura",
-  live_source: (m: string) => `OpenAQ · ažurirano prije ${m} min`,
-  live_stale: "Podaci trenutno nisu dostupni: prikazujemo posljednje poznate vrijednosti.",
+  live_source: (m: string) => `aqicn.org · Federalni Hidrometeorološki Zavod · ažurirano prije ${m} min`,
+  live_stale: "Podaci se osvježavaju... Prikazujemo posljednje poznate vrijednosti.",
 
   why_title: "Zašto je danas ovako?",
   why_text: (t: string) =>
@@ -115,7 +115,7 @@ const bs = {
   road_active: "aktivno",
 
   foot_tag: "Znaj šta dišeš.",
-  foot_data: "Otvoreni podaci · EU Copernicus · OpenAQ · UNICEF BiH",
+  foot_data: "Otvoreni podaci · EU Copernicus · aqicn.org · UNICEF BiH",
   foot_mission: "Bura ne optužuje. Bura čini nevidljivo vidljivim.",
   foot_founder: "Osnivač: Andi Andinger, Beč",
   foot_bottom: "Svaki dah je važan.",
@@ -150,8 +150,8 @@ const en: typeof bs = {
   heat_coal: "coal/wood", heat_gas: "gas", heat_district: "district", heat_unsure: "unknown heating",
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperature",
-  live_source: (m) => `OpenAQ · updated ${m} min ago`,
-  live_stale: "Live data is currently unavailable: showing last known values.",
+  live_source: (m) => `aqicn.org · Federalni Hidrometeorološki Zavod · updated ${m} min ago`,
+  live_stale: "Refreshing data... Showing last known values.",
 
   why_title: "Why is the air bad today?",
   why_text: (tp) =>
@@ -206,7 +206,7 @@ const en: typeof bs = {
   road_active: "active",
 
   foot_tag: "Know what you breathe.",
-  foot_data: "Open data · EU Copernicus · OpenAQ · UNICEF BiH",
+  foot_data: "Open data · EU Copernicus · aqicn.org · UNICEF BiH",
   foot_mission: "Bura doesn't accuse. Bura makes the invisible visible.",
   foot_founder: "Founder: Andi Andinger, Vienna",
   foot_bottom: "Every breath matters.",

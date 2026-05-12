@@ -1,102 +1,85 @@
-// Lightweight client-side data layer for OpenAQ + Open-Meteo.
-// Falls back gracefully so UI always renders.
+// Air quality data layer backed by aqicn.org (waqi.info).
+// Calls a server function to keep AQICN_TOKEN private. Caches the last known
+// value per city in localStorage so we can show it when the API is unreachable.
+
+import { fetchAqicn } from "./air.functions";
 
 const WHO_PM25 = 15; // WHO 24h guideline (µg/m³)
-
-const CITY_COORDS: Record<string, { lat: number; lon: number }> = {
-  Sarajevo: { lat: 43.8563, lon: 18.4131 },
-  Zenica: { lat: 44.2039, lon: 17.9078 },
-  Tuzla: { lat: 44.5380, lon: 18.6739 },
-  Mostar: { lat: 43.3438, lon: 17.8078 },
-  "Banja Luka": { lat: 44.7722, lon: 17.1910 },
-  Živinice: { lat: 44.4500, lon: 18.6500 },
-  Kakanj: { lat: 44.1333, lon: 18.1167 },
-  Lukavac: { lat: 44.5417, lon: 18.5283 },
-  Prijedor: { lat: 44.9800, lon: 16.7100 },
-  Goražde: { lat: 43.6667, lon: 18.9833 },
-  Drugo: { lat: 43.8563, lon: 18.4131 },
-};
 
 export type AirSnapshot = {
   pm25: number | null;
   aqi: number | null;
   temp: number | null;
   updatedMinutesAgo: number | null;
+  updatedString: string | null;
   stale: boolean;
   whoMultiplier: number;
+  station: string | null;
 };
 
-const pmToAqi = (pm: number): number => {
-  // Simplified US EPA breakpoints
-  const bps: [number, number, number, number][] = [
-    [0, 12, 0, 50],
-    [12.1, 35.4, 51, 100],
-    [35.5, 55.4, 101, 150],
-    [55.5, 150.4, 151, 200],
-    [150.5, 250.4, 201, 300],
-    [250.5, 500.4, 301, 500],
-  ];
-  for (const [cl, ch, il, ih] of bps) {
-    if (pm >= cl && pm <= ch) {
-      return Math.round(((ih - il) / (ch - cl)) * (pm - cl) + il);
-    }
+export const SOURCE_LABEL = "aqicn.org · Federalni Hidrometeorološki Zavod";
+export const REFRESHING_MESSAGE = "Podaci se osvježavaju...";
+
+const cacheKey = (city: string) => `bura.air.${city}`;
+
+function loadCache(city: string): AirSnapshot | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(cacheKey(city));
+    return raw ? (JSON.parse(raw) as AirSnapshot) : null;
+  } catch {
+    return null;
   }
-  return 500;
-};
+}
+
+function saveCache(city: string, snap: AirSnapshot) {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(cacheKey(city), JSON.stringify(snap));
+  } catch {
+    // ignore quota errors
+  }
+}
+
+function minutesAgo(iso: string | null): number | null {
+  if (!iso) return null;
+  const t = new Date(iso).getTime();
+  if (Number.isNaN(t)) return null;
+  return Math.max(0, Math.round((Date.now() - t) / 60000));
+}
 
 export async function fetchAir(city: string): Promise<AirSnapshot> {
-  const coord = CITY_COORDS[city] ?? CITY_COORDS.Sarajevo;
-
-  let pm25: number | null = null;
-  let updatedMinutesAgo: number | null = null;
-  let stale = false;
+  const cached = loadCache(city);
 
   try {
-    // Open-Meteo air quality (free, no key) — European AQ model
-    const aqRes = await fetch(
-      `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${coord.lat}&longitude=${coord.lon}&current=pm2_5&timezone=auto`
-    );
-    if (aqRes.ok) {
-      const j = await aqRes.json();
-      const v = j?.current?.pm2_5;
-      const time = j?.current?.time;
-      if (typeof v === "number") {
-        pm25 = v;
-        if (time) {
-          const t = new Date(time).getTime();
-          updatedMinutesAgo = Math.max(0, Math.round((Date.now() - t) / 60000));
-          stale = updatedMinutesAgo > 360;
-        }
-      }
+    const res = await fetchAqicn({ data: { city } });
+    if (res.ok && res.pm25 != null) {
+      const snap: AirSnapshot = {
+        pm25: res.pm25,
+        aqi: res.aqi,
+        temp: res.temp,
+        updatedMinutesAgo: minutesAgo(res.updatedIso),
+        updatedString: res.updatedString,
+        stale: false,
+        whoMultiplier: Math.max(1, +(res.pm25 / WHO_PM25).toFixed(1)),
+        station: res.station,
+      };
+      saveCache(city, snap);
+      return snap;
     }
   } catch {
-    stale = true;
+    // fall through to cache
   }
 
-  let temp: number | null = null;
-  try {
-    const wRes = await fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${coord.lat}&longitude=${coord.lon}&current=temperature_2m&timezone=auto`
-    );
-    if (wRes.ok) {
-      const j = await wRes.json();
-      const t = j?.current?.temperature_2m;
-      if (typeof t === "number") temp = Math.round(t);
-    }
-  } catch {
-    // ignore
+  if (cached) {
+    return { ...cached, stale: true };
   }
 
-  if (pm25 == null) {
-    pm25 = 42; // fallback typical winter value
-    stale = true;
-    updatedMinutesAgo = updatedMinutesAgo ?? null;
-  }
-
-  const aqi = pm25 != null ? pmToAqi(pm25) : null;
-  const whoMultiplier = pm25 != null ? Math.max(1, +(pm25 / WHO_PM25).toFixed(1)) : 1;
-
-  return { pm25, aqi, temp, updatedMinutesAgo, stale, whoMultiplier };
+  return {
+    pm25: null, aqi: null, temp: null,
+    updatedMinutesAgo: null, updatedString: null,
+    stale: true, whoMultiplier: 1, station: null,
+  };
 }
 
 export const WHO_LIMIT = WHO_PM25;
