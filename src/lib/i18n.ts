@@ -150,8 +150,8 @@ const en: typeof bs = {
   heat_coal: "coal/wood", heat_gas: "gas", heat_district: "district", heat_unsure: "unknown heating",
 
   live_pm: "PM2.5 (µg/m³)", live_aqi: "AQI", live_temp: "Temperature",
-  live_source: (m) => `OpenAQ · updated ${m} min ago`,
-  live_stale: "Live data is currently unavailable: showing last known values.",
+  live_source: (m) => `aqicn.org · Federalni Hidrometeorološki Zavod · updated ${m} min ago`,
+  live_stale: "Refreshing data... Showing last known values.",
 
   why_title: "Why is the air bad today?",
   why_text: (tp) =>
