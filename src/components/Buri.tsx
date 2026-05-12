@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/lib/i18n";
 
-type Props = { pm25: number | null; lang?: Lang };
+type Props = { pm25: number | null; lang?: Lang; bubbleText?: string; captionText?: string };
 
 type State = "clean" | "moderate" | "unhealthy" | "hazardous";
 
@@ -27,10 +27,14 @@ const COPY: Record<Lang, Record<State, { caption: string; bubble: string }>> = {
   },
 };
 
-export function Buri({ pm25, lang = "bs" }: Props) {
+export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
   const v = pm25 ?? 20;
   const state = stateOf(v);
-  const copy = COPY[lang][state];
+  const baseCopy = COPY[lang][state];
+  const copy = {
+    caption: captionText ?? baseCopy.caption,
+    bubble: bubbleText ?? baseCopy.bubble,
+  };
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const [eye, setEye] = useState({ x: 0, y: 0 });
@@ -83,14 +87,14 @@ export function Buri({ pm25, lang = "bs" }: Props) {
 
   // Eyes
   const eyesOpen = state !== "hazardous";
-  const eyeY = state === "clean" ? 72 : state === "moderate" ? 73 : state === "unhealthy" ? 75 : 74;
+  const eyeY = state === "clean" ? 68 : state === "moderate" ? 69 : state === "unhealthy" ? 71 : 70;
 
-  // Mouth — face expressions like before
+  // Mouth — face expressions, centered in cloud body
   const mouth =
-    state === "clean"     ? "M48 88 Q60 100 72 88" :   // grin
-    state === "moderate"  ? "M50 90 Q60 94 70 90" :    // small smile
-    state === "unhealthy" ? "M50 92 Q60 88 70 92" :    // frown
-                            "M52 94 Q60 90 68 94";     // sad
+    state === "clean"     ? "M52 78 Q60 87 68 78" :   // grin
+    state === "moderate"  ? "M53 79 Q60 83 67 79" :   // small smile
+    state === "unhealthy" ? "M53 81 Q60 77 67 81" :   // frown
+                            "M54 82 Q60 78 66 82";    // sad
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
@@ -155,8 +159,8 @@ export function Buri({ pm25, lang = "bs" }: Props) {
             />
 
             {/* Cheeks */}
-            <circle cx="42" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
-            <circle cx="78" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="44" cy="76" r="4" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="76" cy="76" r="4" fill="var(--amber-brand)" opacity="0.55" />
 
             {/* Eyes */}
             {eyesOpen ? (
