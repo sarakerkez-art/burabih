@@ -53,9 +53,9 @@ const bs = {
 
   greet_morning: "Dobro jutro.",
   greet_kids_coal: (city: string, x: string) =>
-    `Danas u ${city} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
+    `Danas u ${cityLocative(city)} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
   greet_default: (city: string, pm: string, x: string) =>
-    `Danas u ${city} PM2.5 je ${pm}. ${x}× iznad WHO granice.`,
+    `Danas u ${cityLocative(city)} PM2.5 je ${pm}. ${x}× iznad WHO granice.`,
   buri_tag: "Buri prati vaš zrak. Svaki dan.",
 
   actions_title: "Vaši koraci za danas",
