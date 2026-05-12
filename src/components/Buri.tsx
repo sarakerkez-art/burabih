@@ -83,14 +83,14 @@ export function Buri({ pm25, lang = "bs" }: Props) {
 
   // Eyes
   const eyesOpen = state !== "hazardous";
-  const eyeY = state === "clean" ? 72 : state === "moderate" ? 73 : state === "unhealthy" ? 75 : 74;
+  const eyeY = state === "clean" ? 68 : state === "moderate" ? 69 : state === "unhealthy" ? 71 : 70;
 
-  // Mouth — face expressions like before
+  // Mouth — face expressions, centered in cloud body
   const mouth =
-    state === "clean"     ? "M48 88 Q60 100 72 88" :   // grin
-    state === "moderate"  ? "M50 90 Q60 94 70 90" :    // small smile
-    state === "unhealthy" ? "M50 92 Q60 88 70 92" :    // frown
-                            "M52 94 Q60 90 68 94";     // sad
+    state === "clean"     ? "M52 78 Q60 87 68 78" :   // grin
+    state === "moderate"  ? "M53 79 Q60 83 67 79" :   // small smile
+    state === "unhealthy" ? "M53 81 Q60 77 67 81" :   // frown
+                            "M54 82 Q60 78 66 82";    // sad
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
