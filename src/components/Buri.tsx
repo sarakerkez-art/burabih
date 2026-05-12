@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { Lang } from "@/lib/i18n";
 
-type Props = { pm25: number | null; lang?: Lang };
+type Props = { pm25: number | null; lang?: Lang; bubbleText?: string; captionText?: string };
 
 type State = "clean" | "moderate" | "unhealthy" | "hazardous";
 
@@ -27,10 +27,14 @@ const COPY: Record<Lang, Record<State, { caption: string; bubble: string }>> = {
   },
 };
 
-export function Buri({ pm25, lang = "bs" }: Props) {
+export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
   const v = pm25 ?? 20;
   const state = stateOf(v);
-  const copy = COPY[lang][state];
+  const baseCopy = COPY[lang][state];
+  const copy = {
+    caption: captionText ?? baseCopy.caption,
+    bubble: bubbleText ?? baseCopy.bubble,
+  };
 
   const wrapRef = useRef<HTMLDivElement>(null);
   const [eye, setEye] = useState({ x: 0, y: 0 });
@@ -155,8 +159,8 @@ export function Buri({ pm25, lang = "bs" }: Props) {
             />
 
             {/* Cheeks */}
-            <circle cx="42" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
-            <circle cx="78" cy="84" r="4.5" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="44" cy="76" r="4" fill="var(--amber-brand)" opacity="0.55" />
+            <circle cx="76" cy="76" r="4" fill="var(--amber-brand)" opacity="0.55" />
 
             {/* Eyes */}
             {eyesOpen ? (
