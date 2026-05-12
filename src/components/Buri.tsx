@@ -196,7 +196,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
         </div>
       </div>
 
-      <p className="-mt-1 text-xs sm:text-sm text-center text-[color:var(--offwhite)]/80 max-w-[15rem]">
+      <p className="-mt-1 text-base sm:text-lg leading-snug text-center text-[color:var(--offwhite)]/85 max-w-[18rem]">
         {copy.caption}
       </p>
     </div>
