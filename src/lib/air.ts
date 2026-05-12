@@ -8,6 +8,7 @@ const WHO_PM25 = 5; // WHO annual guideline (µg/m³)
 
 export type AirSnapshot = {
   pm25: number | null;
+  pm10: number | null;
   aqi: number | null;
   temp: number | null;
   updatedMinutesAgo: number | null;
@@ -56,6 +57,7 @@ export async function fetchAir(city: string): Promise<AirSnapshot> {
     if (res.ok && res.pm25 != null) {
       const snap: AirSnapshot = {
         pm25: res.pm25,
+        pm10: res.pm10,
         aqi: res.aqi,
         temp: res.temp,
         updatedMinutesAgo: minutesAgo(res.updatedIso),
@@ -76,7 +78,7 @@ export async function fetchAir(city: string): Promise<AirSnapshot> {
   }
 
   return {
-    pm25: null, aqi: null, temp: null,
+    pm25: null, pm10: null, aqi: null, temp: null,
     updatedMinutesAgo: null, updatedString: null,
     stale: true, whoMultiplier: 1, station: null,
   };
