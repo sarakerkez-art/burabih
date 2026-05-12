@@ -98,20 +98,27 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center select-none">
-      <div className="relative" style={{ width: 220, height: 240 }}>
+      <div className="relative" style={{ width: 240, height: 220 }}>
         {/* Speech bubble */}
         <div
-          className={`absolute left-1/2 -translate-x-1/2 -top-2 transition-all duration-300 ${
+          className={`absolute left-1/2 -translate-x-1/2 -top-4 transition-all duration-300 ${
             bubble ? "opacity-100 scale-100" : "opacity-0 scale-90 pointer-events-none"
           }`}
           style={{ transformOrigin: "50% 100%" }}
         >
-          <div className="relative bg-white text-[color:var(--forest)] text-xs font-medium px-3 py-2 rounded-2xl shadow-lg whitespace-nowrap max-w-[220px]">
+          <div className="relative bg-white text-[color:var(--forest)] text-xs font-medium leading-snug px-4 py-2.5 rounded-2xl shadow-lg text-center w-[240px]">
             {copy.bubble}
-            <span
-              className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-2 h-2 rotate-45"
-              style={{ background: "var(--amber-brand)" }}
-            />
+            {/* Soft, rounded tail flowing into Buri */}
+            <svg
+              className="absolute left-1/2 -translate-x-1/2 -bottom-[10px]"
+              width="22"
+              height="14"
+              viewBox="0 0 22 14"
+              fill="white"
+              aria-hidden="true"
+            >
+              <path d="M0 0 C 6 0, 8 12, 11 13 C 14 12, 16 0, 22 0 Z" />
+            </svg>
           </div>
         </div>
 
@@ -171,9 +178,9 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
                 <circle cx={70 + eye.x} cy={eyeY + eye.y} r="2.6" fill="#1A2E1A" />
               </g>
             ) : (
-              <g stroke="#1A2E1A" strokeWidth="1.8" strokeLinecap="round" fill="none">
-                <path d="M46 74 Q50 77 54 74" />
-                <path d="M66 74 Q70 77 74 74" />
+              <g stroke="#1A2E1A" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.85">
+                <path d="M45 74 Q50 70 55 74" />
+                <path d="M65 74 Q70 70 75 74" />
               </g>
             )}
 
@@ -189,7 +196,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
         </div>
       </div>
 
-      <p className="mt-3 text-xs sm:text-sm text-center text-[color:var(--offwhite)]/80 max-w-[14rem]">
+      <p className="-mt-1 text-xs sm:text-sm text-center text-[color:var(--offwhite)]/80 max-w-[15rem]">
         {copy.caption}
       </p>
     </div>
