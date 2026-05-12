@@ -5,6 +5,22 @@ export const cities = [
   "Živinice", "Kakanj", "Lukavac", "Prijedor", "Goražde", "Drugo",
 ];
 
+const cityLocativeMap: Record<string, string> = {
+  "Sarajevo": "Sarajevu",
+  "Zenica": "Zenici",
+  "Tuzla": "Tuzli",
+  "Mostar": "Mostaru",
+  "Banja Luka": "Banjoj Luci",
+  "Živinice": "Živinicama",
+  "Kakanj": "Kaknju",
+  "Lukavac": "Lukavcu",
+  "Prijedor": "Prijedoru",
+  "Goražde": "Goraždu",
+  "Drugo": "drugom gradu",
+};
+
+export const cityLocative = (city: string): string => cityLocativeMap[city] ?? city;
+
 export type Children = "young" | "older" | "none";
 export type Heating = "coal" | "gas" | "district" | "unsure";
 
@@ -37,9 +53,9 @@ const bs = {
 
   greet_morning: "Dobro jutro.",
   greet_kids_coal: (city: string, x: string) =>
-    `Danas u ${city} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
+    `Danas u ${cityLocative(city)} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
   greet_default: (city: string, pm: string, x: string) =>
-    `Danas u ${city} PM2.5 je ${pm}. ${x}× iznad WHO granice.`,
+    `Danas u ${cityLocative(city)} PM2.5 je ${pm}. ${x}× iznad WHO granice.`,
   buri_tag: "Buri prati vaš zrak. Svaki dan.",
 
   actions_title: "Vaši koraci za danas",
@@ -63,7 +79,7 @@ const bs = {
   ebm_title: "Svaki dah je važan.",
   ebm_sub: "Posebno za najmanja pluća.",
   ebm_p: (city: string, x: string) =>
-    `Upravo sada u ${city}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, 1 od 5 djece u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
+    `Upravo sada u ${cityLocative(city)}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, 1 od 5 djece u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
   ebm_source: "Izvor: UNICEF BiH, WHO",
 
   work_title: "Šta već funkcioniše",
