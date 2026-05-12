@@ -16,18 +16,18 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         cta_open: "Otvori aplikaciju",
         cta_more: "Saznaj više",
         hero_eyebrow: "Lični ekološki asistent za roditelje u BiH",
-        hero_title: "Znajte šta vaša djeca dišu — svako jutro.",
-        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam za 5 sekundi kaže šta je u zraku — i šta možete učiniti danas.",
+        hero_title: "Znajte šta vaša djeca dišu, svako jutro.",
+        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam za 5 sekundi kaže šta je u zraku, i šta možete učiniti danas.",
         what_title: "Šta je Bura?",
-        what_p1: "Sateliti odozgo. Senzori na zemlji. Prijave komšija. Bura spaja sve u jednu jednostavnu poruku — prilagođenu vašem gradu, vašem grijanju, vašoj djeci.",
+        what_p1: "Sateliti odozgo. Senzori na zemlji. Prijave komšija. Bura spaja sve u jednu jednostavnu poruku: prilagođenu vašem gradu, vašem grijanju, vašoj djeci.",
         what_p2: "Bez prijave. Bez reklama. Besplatno zauvijek.",
         story_title: "Zašto postoji Bura",
         story_eyebrow: "Priča osnivača",
-        story_p1: "Zovem se Andi Andinger. Živim u Beču, ali srce mi je u Bosni. Kada sam vidio mapu zagađenja Sarajeva u januaru, znao sam — roditelji u kotlini ne trebaju još jedan grafikon. Trebaju nekog ko će im jutrom reći: ‘Danas izvedi dijete poslije 14h.’",
+        story_p1: "Zovem se Andi Andinger. Živim u Beču, ali srce mi je u Bosni. Kada sam vidio mapu zagađenja Sarajeva u januaru, znao sam: roditelji u kotlini ne trebaju još jedan grafikon. Trebaju nekog ko će im jutrom reći: ‘Danas izvedi dijete poslije 14h.’",
         story_p2: "Bura je odgovor. Mali, topao, koristan. Da nijedno dijete ne diše slijepo.",
-        story_sig: "— Andi Andinger, Beč",
+        story_sig: "Andi Andinger, Beč",
         mission_title: "Naša misija",
-        mission_p: "Bura ne optužuje. Bura čini nevidljivo vidljivim — kako bi porodice mogle donijeti odluke koje štite zdravlje njihove djece.",
+        mission_p: "Bura ne optužuje. Bura čini nevidljivo vidljivim, kako bi porodice mogle donijeti odluke koje štite zdravlje njihove djece.",
         partners_title: "Partneri & podaci",
         partners_p: "Otvoreni podaci · EU Copernicus · OpenAQ · UNICEF BiH · WHO",
       }
@@ -35,18 +35,18 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         cta_open: "Open the app",
         cta_more: "Learn more",
         hero_eyebrow: "A personal environmental assistant for parents in BiH",
-        hero_title: "Know what your children breathe — every morning.",
-        hero_sub: "Bura isn't another dashboard. Bura is a trusted morning companion that tells you in 5 seconds what's in the air — and what you can do about it today.",
+        hero_title: "Know what your children breathe, every morning.",
+        hero_sub: "Bura isn't another dashboard. Bura is a trusted morning companion that tells you in 5 seconds what's in the air, and what you can do about it today.",
         what_title: "What is Bura?",
-        what_p1: "Satellites above. Sensors on the ground. Reports from neighbours. Bura connects them into one simple message — tailored to your city, your heating, your children.",
+        what_p1: "Satellites above. Sensors on the ground. Reports from neighbours. Bura connects them into one simple message: tailored to your city, your heating, your children.",
         what_p2: "No login. No ads. Free forever.",
         story_title: "Why Bura exists",
         story_eyebrow: "Founder's story",
-        story_p1: "I'm Andi Andinger. I live in Vienna, but my heart is in Bosnia. When I saw the pollution map of Sarajevo in January, I knew — parents in the valley don't need another chart. They need someone to tell them in the morning: 'Take the kids out after 2pm today.'",
+        story_p1: "I'm Andi Andinger. I live in Vienna, but my heart is in Bosnia. When I saw the pollution map of Sarajevo in January, I knew: parents in the valley don't need another chart. They need someone to tell them in the morning: 'Take the kids out after 2pm today.'",
         story_p2: "Bura is the answer. Small, warm, useful. So no child breathes blindly.",
-        story_sig: "— Andi Andinger, Vienna",
+        story_sig: "Andi Andinger, Vienna",
         mission_title: "Our mission",
-        mission_p: "Bura doesn't accuse. Bura makes the invisible visible — so families can make decisions that protect their children's health.",
+        mission_p: "Bura doesn't accuse. Bura makes the invisible visible, so families can make decisions that protect their children's health.",
         partners_title: "Partners & data",
         partners_p: "Open data · EU Copernicus · OpenAQ · UNICEF BiH · WHO",
       };
@@ -61,7 +61,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-2 hover:opacity-75 transition"
-          aria-label="Bura — home"
+          aria-label="Bura, home"
         >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />

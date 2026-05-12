@@ -8,13 +8,13 @@ import type { Lang, Profile } from "@/lib/i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bura — Znaj šta dišeš" },
+      { title: "Bura: Znaj šta dišeš" },
       {
         name: "description",
         content:
-          "Bura je lični ekološki asistent za roditelje u BiH. Svako jutro vam kaže šta vaša djeca dišu — i šta možete učiniti.",
+          "Bura je lični ekološki asistent za roditelje u BiH. Svako jutro vam kaže šta vaša djeca dišu, i šta možete učiniti.",
       },
-      { property: "og:title", content: "Bura — Znaj šta dišeš" },
+      { property: "og:title", content: "Bura: Znaj šta dišeš" },
       {
         property: "og:description",
         content: "Personalizovani jutarnji savjeti za roditelje u Sarajevu, Zenici i Tuzli.",

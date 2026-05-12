@@ -28,8 +28,8 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
   }, [profile.city]);
 
   const pm = air?.pm25 ?? null;
-  const x = air ? air.whoMultiplier.toFixed(1) : "—";
-  const pmStr = pm != null ? pm.toFixed(0) : "—";
+  const x = air ? air.whoMultiplier.toFixed(1) : "-";
+  const pmStr = pm != null ? pm.toFixed(0) : "-";
   const showAlert = (pm ?? 0) > 25;
 
   const famLabel =
@@ -56,7 +56,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <button
           onClick={onHome}
           className="flex items-center gap-2 hover:opacity-75 transition"
-          aria-label="Bura — home"
+          aria-label="Bura, home"
         >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
@@ -127,13 +127,13 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       <section className="bg-muted px-5 sm:px-8 py-8">
         <div className="max-w-2xl mx-auto grid grid-cols-3 gap-4 text-center">
           <Stat label={tr.live_pm} value={pmStr} />
-          <Stat label={tr.live_aqi} value={air?.aqi != null ? String(air.aqi) : "—"} />
-          <Stat label={tr.live_temp} value={air?.temp != null ? `${air.temp}°` : "—"} />
+          <Stat label={tr.live_aqi} value={air?.aqi != null ? String(air.aqi) : "-"} />
+          <Stat label={tr.live_temp} value={air?.temp != null ? `${air.temp}°` : "-"} />
         </div>
         <p className="text-center text-xs text-muted-foreground mt-4">
           {air?.stale
             ? tr.live_stale
-            : tr.live_source(air?.updatedMinutesAgo != null ? String(air.updatedMinutesAgo) : "—")}
+            : tr.live_source(air?.updatedMinutesAgo != null ? String(air.updatedMinutesAgo) : "-")}
         </p>
       </section>
 

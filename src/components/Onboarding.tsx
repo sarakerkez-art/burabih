@@ -28,7 +28,7 @@ export function Onboarding({ lang, onDone, onHome }: Props) {
         <button
           onClick={onHome}
           className="flex items-center gap-2 hover:opacity-75 transition"
-          aria-label="Bura — home"
+          aria-label="Bura, home"
         >
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
