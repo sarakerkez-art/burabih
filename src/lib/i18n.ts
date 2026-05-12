@@ -5,6 +5,22 @@ export const cities = [
   "Živinice", "Kakanj", "Lukavac", "Prijedor", "Goražde", "Drugo",
 ];
 
+const cityLocativeMap: Record<string, string> = {
+  "Sarajevo": "Sarajevu",
+  "Zenica": "Zenici",
+  "Tuzla": "Tuzli",
+  "Mostar": "Mostaru",
+  "Banja Luka": "Banjoj Luci",
+  "Živinice": "Živinicama",
+  "Kakanj": "Kaknju",
+  "Lukavac": "Lukavcu",
+  "Prijedor": "Prijedoru",
+  "Goražde": "Goraždu",
+  "Drugo": "drugom gradu",
+};
+
+export const cityLocative = (city: string): string => cityLocativeMap[city] ?? city;
+
 export type Children = "young" | "older" | "none";
 export type Heating = "coal" | "gas" | "district" | "unsure";
 
