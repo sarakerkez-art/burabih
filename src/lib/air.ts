@@ -49,21 +49,35 @@ function minutesAgo(iso: string | null): number | null {
   return Math.max(0, Math.round((Date.now() - t) / 60000));
 }
 
+function aqiToPm25(aqi: number): number {
+  if (aqi <= 50) return (aqi * 12) / 50;
+  if (aqi <= 100) return 12 + ((aqi - 50) * 23.4) / 50;
+  if (aqi <= 150) return 35.4 + ((aqi - 100) * 9.4) / 50;
+  if (aqi <= 200) return 55.4 + ((aqi - 150) * 99.4) / 50;
+  return 150.4 + ((aqi - 200) * 149.6) / 100;
+}
+
 export async function fetchAir(city: string): Promise<AirSnapshot> {
   const cached = loadCache(city);
 
   try {
     const res = await fetchAqicn({ data: { city } });
     if (res.ok && res.pm25 != null) {
+      // If station reports AQI in the pm25 field (pm25 === aqi), convert it.
+      const pm25 =
+        res.aqi != null && res.pm25 === res.aqi
+          ? +aqiToPm25(res.aqi).toFixed(1)
+          : res.pm25;
+      const temp = res.temp && res.temp !== 0 ? res.temp : null;
       const snap: AirSnapshot = {
-        pm25: res.pm25,
+        pm25,
         pm10: res.pm10,
         aqi: res.aqi,
-        temp: res.temp,
+        temp,
         updatedMinutesAgo: minutesAgo(res.updatedIso),
         updatedString: res.updatedString,
         stale: false,
-        whoMultiplier: Math.max(1, +(res.pm25 / WHO_PM25).toFixed(1)),
+        whoMultiplier: Math.max(1, +(pm25 / WHO_PM25).toFixed(1)),
         station: res.station,
       };
       saveCache(city, snap);

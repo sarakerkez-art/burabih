@@ -128,7 +128,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <div className="max-w-2xl mx-auto grid grid-cols-3 gap-4 text-center">
           <Stat label={tr.live_pm} value={pmStr} />
           <Stat label={tr.live_aqi} value={air?.aqi != null ? String(air.aqi) : "-"} />
-          <Stat label={tr.live_temp} value={air?.temp != null ? `${air.temp}°` : "-"} />
+          <Stat label={tr.live_temp} value={air?.temp ? `${air.temp}°` : "—"} />
         </div>
         <p className="text-center text-xs text-muted-foreground mt-4">
           {air?.stale
