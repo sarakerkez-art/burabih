@@ -115,7 +115,7 @@ const bs = {
   road_active: "aktivno",
 
   foot_tag: "Znaj šta dišeš.",
-  foot_data: "Otvoreni podaci · EU Copernicus · OpenAQ · UNICEF BiH",
+  foot_data: "Otvoreni podaci · EU Copernicus · aqicn.org · UNICEF BiH",
   foot_mission: "Bura ne optužuje. Bura čini nevidljivo vidljivim.",
   foot_founder: "Osnivač: Andi Andinger, Beč",
   foot_bottom: "Svaki dah je važan.",
@@ -206,7 +206,7 @@ const en: typeof bs = {
   road_active: "active",
 
   foot_tag: "Know what you breathe.",
-  foot_data: "Open data · EU Copernicus · OpenAQ · UNICEF BiH",
+  foot_data: "Open data · EU Copernicus · aqicn.org · UNICEF BiH",
   foot_mission: "Bura doesn't accuse. Bura makes the invisible visible.",
   foot_founder: "Founder: Andi Andinger, Vienna",
   foot_bottom: "Every breath matters.",
