@@ -46,17 +46,17 @@ function SkolePage() {
 
   const pins: SchoolPin[] = [
     {
-      id: "sa", x: 55, y: 60, color: "green",
+      id: "sa", lat: 43.8563, lng: 18.4131, color: "green",
       name: tr.schools_pin_sa, status: tr.schools_status_interested,
       href: "#join", moreLabel: tr.schools_more_info,
     },
     {
-      id: "ze", x: 48, y: 48, color: "green",
+      id: "ze", lat: 44.2039, lng: 17.9077, color: "green",
       name: tr.schools_pin_ze, status: tr.schools_status_interested,
       href: "#join", moreLabel: tr.schools_more_info,
     },
     {
-      id: "tu", x: 62, y: 38, color: "green",
+      id: "tu", lat: 44.5384, lng: 18.6739, color: "green",
       name: tr.schools_pin_tu, status: tr.schools_status_interested,
       href: "#join", moreLabel: tr.schools_more_info,
     },
