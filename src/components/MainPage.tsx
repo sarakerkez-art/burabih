@@ -379,59 +379,24 @@ function Roadmap({ tr }: { tr: ReturnType<typeof t> }) {
 /* ---------- personalized actions ---------- */
 type Action = { icon: React.ReactNode; title: string; tag: string; text: string };
 
-function buildActions(p: Profile, lang: Lang): Action[] {
-  const out: Action[] = [];
+function buildActions(_p: Profile, lang: Lang): Action[] {
   const isBs = lang === "bs";
-  const youngKids = p.children === "young";
-  const anyKids = p.children !== "none";
-
-  if (p.heating === "coal") {
-    out.push({
-      icon: <Flame size={22} />,
-      title: isBs ? "Večeras: ne dopunjavajte peć poslije 21h" : "Tonight: don't refill the stove after 9pm",
-      tag: isBs ? "Najbolje za večeras" : "Best for tonight",
+  return [
+    {
+      icon: <Wind size={22} />,
+      title: isBs ? "Prozračite u 14h, ne ujutro" : "Air out at 2pm, not in the morning",
+      tag: isBs ? "NAJČISTIJI ZRAK DANAS" : "CLEANEST AIR TODAY",
       text: isBs
-        ? "PM2.5 obično dostiže vrhunac između 22h i 6h dok se peći dopunjuju."
-        : "PM2.5 typically peaks between 10pm and 6am while stoves are refilled.",
-    });
-  }
-  out.push({
-    icon: <Wind size={22} />,
-    title: isBs ? "Prozračite u 14h, ne ujutro" : "Air out at 2pm, not in the morning",
-    tag: isBs ? "Najčistiji zrak danas" : "Cleanest air today",
-    text: isBs
-      ? "Vanjski zrak je čišći oko podneva. 5 minuta, potpuno otvoreno."
-      : "Outdoor air is cleanest around midday. 5 minutes, fully open.",
-  });
-  if (anyKids) {
-    out.push({
-      icon: <Baby size={22} />,
-      title: youngKids
-        ? (isBs ? "Zadržite djecu u kući do 11h" : "Keep children indoors until 11am")
-        : (isBs ? "Vježbe na otvorenom: poslije 14h" : "Outdoor activity: after 2pm"),
-      tag: isBs ? "Za vaše dijete" : "For your child",
+        ? "Vanjski zrak je čišći oko podneva. Otvorite prozore potpuno na 5 minuta između 13h i 15h, pa zatvorite prije večernjeg porasta zagađenja."
+        : "Outdoor air is cleanest around midday. Open the windows fully for 5 minutes between 1pm and 3pm, then close them before the evening pollution rise.",
+    },
+    {
+      icon: <Award size={22} />,
+      title: isBs ? "Podijelite ovo s komšijom" : "Share this with a neighbour",
+      tag: isBs ? "MALI KORAK" : "SMALL STEP",
       text: isBs
-        ? "Jutarnji PM2.5 će vjerovatno ostati visok do kasnih jutarnjih sati."
-        : "Morning PM2.5 is likely to stay high until late morning.",
-    });
-  }
-  if (p.heating === "gas" || p.heating === "district") {
-    out.push({
-      icon: <Recycle size={22} />,
-      title: isBs ? "Provjerite ventilaciju" : "Check ventilation",
-      tag: isBs ? "Za vaš dom" : "For your home",
-      text: isBs
-        ? "Čak i sa čistim grijanjem, vanjski PM2.5 ulazi kroz prozore i vrata."
-        : "Even with clean heating, outdoor PM2.5 enters through windows and doors.",
-    });
-  }
-  out.push({
-    icon: <Award size={22} />,
-    title: isBs ? "Podijelite ovo s komšijom" : "Share this with a neighbour",
-    tag: isBs ? "Mali korak" : "Small step",
-    text: isBs
-      ? "Što više ljudi razumije obrasce, to je manje noćnog dima."
-      : "The more people understand the patterns, the less smoke at night.",
-  });
-  return out;
+        ? "Što više ljudi razumije obrasce, to je manje noćnog dima u vašoj zgradi."
+        : "The more people understand the patterns, the less smoke at night in your building.",
+    },
+  ];
 }
