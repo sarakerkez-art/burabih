@@ -190,6 +190,21 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           {lang === "bs" ? "Svaki dah je važan. ❤️" : "Every breath matters. ❤️"}
         </p>
       </section>
+      {/* Schools teaser */}
+      <SchoolsTeaser lang={lang} />
+
+      {/* Final CTA */}
+      <section className="px-6 py-20 text-center">
+        <button
+          onClick={onOpen}
+          className="bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-8 py-4 rounded-full text-base transition hover:brightness-95"
+        >
+          {L.cta_open} →
+        </button>
+        <p className="mt-6 text-sm text-muted-foreground">
+          {lang === "bs" ? "Svaki dah je važan. ❤️" : "Every breath matters. ❤️"}
+        </p>
+      </section>
     </div>
   );
 }
