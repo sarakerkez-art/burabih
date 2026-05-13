@@ -222,16 +222,6 @@ function JoinItem({ icon, title, text }: { icon: React.ReactNode; title: string;
   );
 }
 
-function Story({ label, title, text, disclaimer }: { label: string; title: string; text: string; disclaimer: string }) {
-  return (
-    <div className="border-l-2 border-[color:var(--amber-brand)] pl-4">
-      <div className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{label}</div>
-      <h3 className="mt-2 font-bold leading-snug">{title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
-      <p className="mt-3 text-xs italic text-muted-foreground/80">{disclaimer}</p>
-    </div>
-  );
-}
 
 const schoolFormSchema = z.object({
   school_name: z.string().trim().min(1).max(200),
