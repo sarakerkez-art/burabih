@@ -5,6 +5,7 @@ import {
   Pencil,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
+import { SchoolsTeaser } from "@/components/SchoolsTeaser";
 import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
@@ -180,6 +181,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <Ranking pmCity={profile.city} pmValue={pm} />
         </div>
       </section>
+
+      {/* Schools teaser → /skole */}
+      <SchoolsTeaser lang={lang} />
 
       {/* Section G — Report */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
