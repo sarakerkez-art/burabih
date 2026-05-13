@@ -89,7 +89,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
   const eyesOpen = state !== "hazardous";
   const eyeY = state === "clean" ? 68 : state === "moderate" ? 69 : state === "unhealthy" ? 71 : 70;
 
-  // Mouth — face expressions, centered in cloud body
+  // Mouth, face expressions, centered in cloud body
   const mouth =
     state === "clean"     ? "M52 78 Q60 87 68 78" :   // grin
     state === "moderate"  ? "M53 79 Q60 83 67 79" :   // small smile
@@ -146,7 +146,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
               </radialGradient>
             </defs>
 
-            {/* Tiny wisp on top — waves on first visit */}
+            {/* Tiny wisp on top, waves on first visit */}
             <g
               className={wave ? "buri-wave" : ""}
               stroke="#FAFAF8"
@@ -159,7 +159,7 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
               <path d="M66 30 Q74 24 82 30" />
             </g>
 
-            {/* Cloud body — bumpy, like Lovable logo, breathes */}
+            {/* Cloud body, bumpy, like Lovable logo, breathes */}
             <path
               d="M30 86 C 18 86 14 70 26 64 C 22 50 38 42 48 50 C 52 38 70 38 76 50 C 90 46 100 60 92 70 C 102 78 96 92 84 90 C 80 100 64 100 58 92 C 50 100 34 98 30 86 Z"
               fill="url(#buriBody)"

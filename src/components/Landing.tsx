@@ -222,7 +222,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         </div>
       </section>
 
-      {/* Report — your eyes help */}
+      {/* Report, your eyes help */}
       <section className="px-6 py-20 border-t border-border">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
@@ -247,7 +247,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         </div>
       </section>
 
-      {/* How it works — open data */}
+      {/* How it works, open data */}
       <section className="px-6 py-20 border-t border-border">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.hiw_title}</h2>
