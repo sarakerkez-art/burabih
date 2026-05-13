@@ -138,8 +138,8 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <Buri
               pm25={8}
               lang={lang}
-              bubbleText={lang === "bs" ? "Ćao! Ja sam Buri. Tvoj mali čuvar zraka." : "Hi! I'm Buri. Your little air guardian."}
-              captionText={lang === "bs" ? "Hajde da vidimo kakav je danas zrak u tvom gradu." : "Let's see what the air is like in your city today."}
+              bubbleText={L.buri_bubble}
+              captionText={L.buri_caption}
             />
           </div>
         </div>
@@ -154,21 +154,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           {L.what_p1}
         </p>
         <p className="mt-5 text-base text-muted-foreground">{L.what_p2}</p>
-      </section>
-
-      {/* Founder story */}
-      <section className="px-6 py-20 border-t border-border" style={{ background: "var(--warm)" }}>
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">
-            {L.story_eyebrow}
-          </p>
-          <h2 className="font-bold text-3xl sm:text-4xl tracking-tight mb-8">
-            {L.story_title}
-          </h2>
-          <p className="text-lg leading-relaxed">{L.story_p1}</p>
-          <p className="mt-5 text-lg leading-relaxed">{L.story_p2}</p>
-          <p className="mt-8 text-sm text-muted-foreground">{L.story_sig}</p>
-        </div>
       </section>
 
       {/* Mission */}
