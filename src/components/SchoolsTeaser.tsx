@@ -4,9 +4,9 @@ import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
 
 const PINS: SchoolPin[] = [
-  { id: "sa", name: "Sarajevo", status: "", x: 55, y: 60, color: "green" },
-  { id: "ze", name: "Zenica", status: "", x: 48, y: 48, color: "green" },
-  { id: "tu", name: "Tuzla", status: "", x: 62, y: 38, color: "green" },
+  { id: "sa", name: "Sarajevo", status: "", lat: 43.8563, lng: 18.4131, color: "green" },
+  { id: "ze", name: "Zenica", status: "", lat: 44.2039, lng: 17.9077, color: "green" },
+  { id: "tu", name: "Tuzla", status: "", lat: 44.5384, lng: 18.6739, color: "green" },
 ];
 
 export function SchoolsTeaser({ lang }: { lang: Lang }) {
