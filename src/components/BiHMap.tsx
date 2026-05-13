@@ -24,7 +24,7 @@ const COLOR: Record<string, string> = {
 };
 
 const GEOJSON_URL =
-  "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/bosnia-and-herzegovina.geojson";
+  "https://raw.githubusercontent.com/johan/world.geo.json/master/countries/BIH.geo.json";
 
 export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -89,15 +89,25 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
       const bg = window.getComputedStyle(containerRef.current).backgroundColor;
       containerRef.current.style.background = bg && bg !== "rgba(0, 0, 0, 0)" ? bg : "white";
 
+      // Minimal light basemap with no labels
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+        {
+          subdomains: "abcd",
+          maxZoom: 19,
+          attribution: "",
+        },
+      ).addTo(map);
+
       try {
         const res = await fetch(GEOJSON_URL);
         const geo = await res.json();
         const layer = L.geoJSON(geo, {
           style: {
             color: "#1F3A2E",
-            weight: 1.5,
+            weight: 1.8,
             fillColor: "#CDE7D2",
-            fillOpacity: 1,
+            fillOpacity: 0.85,
           },
         }).addTo(map);
         map.fitBounds(layer.getBounds(), { padding: [10, 10] });
@@ -140,8 +150,8 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
     <div className={`relative w-full max-w-xl mx-auto ${className ?? ""}`}>
       <div
         ref={containerRef}
-        className="w-full"
-        style={{ aspectRatio: "4 / 3", background: "white" }}
+        className="w-full rounded-2xl overflow-hidden border border-border"
+        style={{ height: 500, background: "#F5F8F4" }}
         aria-label="Map of Bosnia and Herzegovina"
       />
       {!ready && (
