@@ -133,16 +133,16 @@ const bs = {
   road_active: "AKTIVNO",
 
   foot_tag: "Znaj šta dišeš.",
-  foot_data: "Otvoreni podaci · EU Copernicus · aqicn.org · UNICEF BiH",
+  foot_data: "Podaci: EU Copernicus · OpenAQ · aqicn.org · Federalni Hidrometeorološki Zavod BiH",
   foot_mission: "Bura ne optužuje. Bura čini nevidljivo vidljivim.",
-  foot_founder: "Osnivač: Andi Andinger, Beč",
+  foot_founder: "",
   foot_bottom: "Svaki dah je važan.",
   edit_profile: "Uredi profil",
 
   // Schools teaser (main page)
   schools_teaser_label: "ŠKOLE U AKCIJI",
   schools_teaser_title: "Škole koje predvode promjenu.",
-  schools_teaser_sub: "Neke škole u BiH već rade na čistijem zraku. Bura ih čini vidljivim.",
+  schools_teaser_sub: "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim i poziva ostale da im se pridruže.",
   schools_teaser_amber: "Budite prva škola u vašem gradu.",
   schools_teaser_cta: "Vidi sve škole →",
 
