@@ -89,7 +89,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       )}
 
       {/* Section A, Hero */}
-      <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 sm:py-20">
+      <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
           <Buri pm25={pm} />
           <p className="mt-8 text-xl sm:text-2xl font-semibold leading-snug">
