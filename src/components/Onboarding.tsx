@@ -33,7 +33,7 @@ export function Onboarding({ lang, onDone, onHome }: Props) {
     : {
         title: "What's your city?",
         sub: "Tell us where you live, we'll show you today's air.",
-        placeholder: "e.g. Sarajevo, Zenica, Tuzla…",
+        placeholder: "e.g. Sarajevo, Zenica, Tuzla",
         cta: "See the air",
         bubble: "Hi! Tell me where you live.",
       };
