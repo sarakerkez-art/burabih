@@ -181,6 +181,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
+      {/* Schools teaser → /skole */}
+      <SchoolsTeaser lang={lang} />
+
       {/* Section G — Report */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
