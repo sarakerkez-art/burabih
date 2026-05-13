@@ -272,6 +272,8 @@ export function Landing({ lang, setLang, onOpen }: Props) {
               {tr.brand} <WindMark size={18} color="white" />
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
+            <p className="mt-4 text-xs text-white/60 leading-relaxed">{tr.foot_data}</p>
+            <p className="mt-3 text-xs italic text-white/70 leading-relaxed">{tr.foot_mission}</p>
           </div>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
