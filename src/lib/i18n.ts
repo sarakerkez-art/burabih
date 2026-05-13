@@ -150,10 +150,10 @@ const bs = {
   schools_hero_title: "Škole koje predvode promjenu.",
   schools_hero_sub: "Čist zrak počinje u učionici.",
   schools_hero_body:
-    "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim, i poziva ostale da im se pridruže.",
+    "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim i poziva ostale da im se pridruže.",
 
   schools_map_title: "Škole na mapi",
-  schools_legend_active: "Aktivne, senzori + nastava",
+  schools_legend_active: "Aktivne, senzori i nastava",
   schools_legend_dev: "U razvoju, počinju",
   schools_legend_interested: "Zainteresirane, žele se pridružiti",
   schools_status_interested: "Zainteresirana",
@@ -170,7 +170,7 @@ const bs = {
     "Instaliraju senzore koji mjere PM2.5 u učionicama i školskom dvorištu. Učenici vide podatke uživo.",
   schools_what_b_t: "Podučavaju",
   schools_what_b_p:
-    "Nastavnici koriste Bura podatke u nastavi, nauka, geografija, zdravstveni odgoj.",
+    "Nastavnici koriste Bura podatke u nastavi: nauka, geografija, zdravstveni odgoj.",
   schools_what_c_t: "Dijele s porodicama",
   schools_what_c_p:
     "Rezultati mjerenja dostupni su roditeljima kroz Bura aplikaciju. Škola postaje dio lokalne zajednice.",
