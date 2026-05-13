@@ -132,30 +132,17 @@ function SkolePage() {
 
       {/* Stories */}
       <section className="bg-white px-5 sm:px-8 py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.schools_stories_title}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">{tr.schools_stories_sub}</p>
-
-          <div className="mt-10 grid sm:grid-cols-3 gap-6">
-            <Story
-              label={tr.schools_story1_label}
-              title={tr.schools_story1_title}
-              text={tr.schools_story1_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-            <Story
-              label={tr.schools_story2_label}
-              title={tr.schools_story2_title}
-              text={tr.schools_story2_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-            <Story
-              label={tr.schools_story3_label}
-              title={tr.schools_story3_title}
-              text={tr.schools_story3_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-          </div>
+          <p className="mt-6 text-base text-foreground/80 leading-relaxed">
+            {tr.schools_stories_body}
+          </p>
+          <a
+            href="#join"
+            className="mt-8 inline-block bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-7 py-3.5 rounded-full text-sm hover:brightness-95 transition"
+          >
+            {tr.schools_stories_cta}
+          </a>
         </div>
       </section>
 
@@ -183,6 +170,8 @@ function SkolePage() {
               {tr.brand} <WindMark size={18} color="white" />
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
+            <p className="mt-4 text-xs text-white/60 leading-relaxed">{tr.foot_data}</p>
+            <p className="mt-3 text-xs italic text-white/70 leading-relaxed">{tr.foot_mission}</p>
           </div>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
@@ -235,16 +224,6 @@ function JoinItem({ icon, title, text }: { icon: React.ReactNode; title: string;
   );
 }
 
-function Story({ label, title, text, disclaimer }: { label: string; title: string; text: string; disclaimer: string }) {
-  return (
-    <div className="border-l-2 border-[color:var(--amber-brand)] pl-4">
-      <div className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{label}</div>
-      <h3 className="mt-2 font-bold leading-snug">{title}</h3>
-      <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
-      <p className="mt-3 text-xs italic text-muted-foreground/80">{disclaimer}</p>
-    </div>
-  );
-}
 
 const schoolFormSchema = z.object({
   school_name: z.string().trim().min(1).max(200),

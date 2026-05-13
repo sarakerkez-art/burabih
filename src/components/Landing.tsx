@@ -25,40 +25,36 @@ export function Landing({ lang, setLang, onOpen }: Props) {
     ? {
         cta_open: "Otvori aplikaciju",
         cta_more: "Saznaj više",
-        hero_eyebrow: "Lični ekološki asistent za roditelje u BiH",
+        hero_eyebrow: "LIČNI EKOLOŠKI ASISTENT ZA RODITELJE U BiH",
         hero_title: "Znajte šta vaša djeca dišu, svako jutro.",
-        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam za 5 sekundi kaže šta je u zraku, i šta možete učiniti danas.",
+        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam za 5 sekundi kaže šta je u zraku i šta možete učiniti danas.",
+        buri_bubble: "Ćao! Ja sam Buri. Puham kroz gradove BiH i znam kakav je zrak svuda.",
+        buri_caption: "Hajde da vidimo kakav je danas zrak u tvom gradu.",
         what_title: "Šta je Bura?",
-        what_p1: "Sateliti odozgo. Senzori na zemlji. Prijave komšija. Bura spaja sve u jednu jednostavnu poruku: prilagođenu vašem gradu, vašem grijanju, vašoj djeci.",
-        what_p2: "Bez prijave. Bez reklama. Besplatno zauvijek.",
-        story_title: "Zašto postoji Bura",
-        story_eyebrow: "Priča osnivača",
-        story_p1: "Zovem se Andi Andinger. Živim u Beču, ali srce mi je u Bosni. Kada sam vidio mapu zagađenja Sarajeva u januaru, znao sam: roditelji u kotlini ne trebaju još jedan grafikon. Trebaju nekog ko će im jutrom reći: ‘Danas izvedi dijete poslije 14h.’",
-        story_p2: "Bura je odgovor. Mali, topao, koristan. Da nijedno dijete ne diše slijepo.",
-        story_sig: "Andi Andinger, Beč",
+        what_p1: "Sateliti odozgo. Senzori na zemlji. Prijave komšija. Bura spaja sve u jednu jednostavnu poruku, prilagođenu vašem gradu, vašem grijanju, vašoj djeci.",
+        what_p2: "Bez prijave. Vaši podaci su sigurni. Nikada ih ne prodajemo. Besplatno zauvijek.",
         mission_title: "Naša misija",
         mission_p: "Bura ne optužuje. Bura čini nevidljivo vidljivim, kako bi porodice mogle donijeti odluke koje štite zdravlje njihove djece.",
-        partners_title: "Partneri & podaci",
-        partners_p: "Otvoreni podaci · EU Copernicus · OpenAQ · UNICEF BiH · WHO",
+        partners_title: "Otvoreni podaci",
+        partners_p: "Podaci: EU Copernicus · OpenAQ · aqicn.org · Federalni Hidrometeorološki Zavod BiH",
+        final_tag: "Svaki dah je važan. ❤️",
       }
     : {
         cta_open: "Open the app",
         cta_more: "Learn more",
-        hero_eyebrow: "A personal environmental assistant for parents in BiH",
+        hero_eyebrow: "A PERSONAL ENVIRONMENTAL ASSISTANT FOR PARENTS IN BiH",
         hero_title: "Know what your children breathe, every morning.",
-        hero_sub: "Bura isn't another dashboard. Bura is a trusted morning companion that tells you in 5 seconds what's in the air, and what you can do about it today.",
+        hero_sub: "Bura isn't another dashboard. Bura is a trusted morning companion that tells you in 5 seconds what's in the air and what you can do about it today.",
+        buri_bubble: "Hi! I'm Buri. I blow through the cities of BiH and I know what the air is like everywhere.",
+        buri_caption: "Let's see what the air is like in your city today.",
         what_title: "What is Bura?",
-        what_p1: "Satellites above. Sensors on the ground. Reports from neighbours. Bura connects them into one simple message: tailored to your city, your heating, your children.",
-        what_p2: "No login. No ads. Free forever.",
-        story_title: "Why Bura exists",
-        story_eyebrow: "Founder's story",
-        story_p1: "I'm Andi Andinger. I live in Vienna, but my heart is in Bosnia. When I saw the pollution map of Sarajevo in January, I knew: parents in the valley don't need another chart. They need someone to tell them in the morning: 'Take the kids out after 2pm today.'",
-        story_p2: "Bura is the answer. Small, warm, useful. So no child breathes blindly.",
-        story_sig: "Andi Andinger, Vienna",
+        what_p1: "Satellites above. Sensors on the ground. Reports from neighbours. Bura connects them into one simple message, tailored to your city, your heating, your children.",
+        what_p2: "No login. Your data is safe. We never sell it. Free forever.",
         mission_title: "Our mission",
         mission_p: "Bura doesn't accuse. Bura makes the invisible visible, so families can make decisions that protect their children's health.",
-        partners_title: "Partners & data",
-        partners_p: "Open data · EU Copernicus · OpenAQ · UNICEF BiH · WHO",
+        partners_title: "Open data",
+        partners_p: "Data: EU Copernicus · OpenAQ · aqicn.org · Federalni Hidrometeorološki Zavod BiH",
+        final_tag: "Every breath matters. ❤️",
       };
 
   const scrollToMore = () => {
@@ -142,8 +138,8 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <Buri
               pm25={8}
               lang={lang}
-              bubbleText={lang === "bs" ? "Ćao! Ja sam Buri. Tvoj mali čuvar zraka." : "Hi! I'm Buri. Your little air guardian."}
-              captionText={lang === "bs" ? "Hajde da vidimo kakav je danas zrak u tvom gradu." : "Let's see what the air is like in your city today."}
+              bubbleText={L.buri_bubble}
+              captionText={L.buri_caption}
             />
           </div>
         </div>
@@ -158,21 +154,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           {L.what_p1}
         </p>
         <p className="mt-5 text-base text-muted-foreground">{L.what_p2}</p>
-      </section>
-
-      {/* Founder story */}
-      <section className="px-6 py-20 border-t border-border" style={{ background: "var(--warm)" }}>
-        <div className="max-w-3xl mx-auto">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">
-            {L.story_eyebrow}
-          </p>
-          <h2 className="font-bold text-3xl sm:text-4xl tracking-tight mb-8">
-            {L.story_title}
-          </h2>
-          <p className="text-lg leading-relaxed">{L.story_p1}</p>
-          <p className="mt-5 text-lg leading-relaxed">{L.story_p2}</p>
-          <p className="mt-8 text-sm text-muted-foreground">{L.story_sig}</p>
-        </div>
       </section>
 
       {/* Mission */}
@@ -214,10 +195,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-1">
               {tr.ranking}
             </h3>
+            <p className="text-xs text-muted-foreground mb-4">{tr.ranking_note}</p>
             <Ranking />
+            <p className="mt-4 text-xs text-muted-foreground">{tr.ranking_source}</p>
           </div>
         </div>
       </section>
@@ -277,7 +260,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           {L.cta_open} →
         </button>
         <p className="mt-6 text-sm text-muted-foreground">
-          {lang === "bs" ? "Svaki dah je važan. ❤️" : "Every breath matters. ❤️"}
+          {L.final_tag}
         </p>
       </section>
 
@@ -289,6 +272,8 @@ export function Landing({ lang, setLang, onOpen }: Props) {
               {tr.brand} <WindMark size={18} color="white" />
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
+            <p className="mt-4 text-xs text-white/60 leading-relaxed">{tr.foot_data}</p>
+            <p className="mt-3 text-xs italic text-white/70 leading-relaxed">{tr.foot_mission}</p>
           </div>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
