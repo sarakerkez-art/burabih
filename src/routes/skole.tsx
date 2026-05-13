@@ -132,30 +132,17 @@ function SkolePage() {
 
       {/* Stories */}
       <section className="bg-white px-5 sm:px-8 py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.schools_stories_title}</h2>
-          <p className="mt-2 text-sm text-muted-foreground">{tr.schools_stories_sub}</p>
-
-          <div className="mt-10 grid sm:grid-cols-3 gap-6">
-            <Story
-              label={tr.schools_story1_label}
-              title={tr.schools_story1_title}
-              text={tr.schools_story1_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-            <Story
-              label={tr.schools_story2_label}
-              title={tr.schools_story2_title}
-              text={tr.schools_story2_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-            <Story
-              label={tr.schools_story3_label}
-              title={tr.schools_story3_title}
-              text={tr.schools_story3_text}
-              disclaimer={tr.schools_story_disclaimer}
-            />
-          </div>
+          <p className="mt-6 text-base text-foreground/80 leading-relaxed">
+            {tr.schools_stories_body}
+          </p>
+          <a
+            href="#join"
+            className="mt-8 inline-block bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-7 py-3.5 rounded-full text-sm hover:brightness-95 transition"
+          >
+            {tr.schools_stories_cta}
+          </a>
         </div>
       </section>
 
