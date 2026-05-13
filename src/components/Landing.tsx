@@ -1,5 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
+import { SchoolsTeaser } from "./SchoolsTeaser";
 import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
 
@@ -66,6 +68,20 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </button>
+        <nav className="hidden sm:flex items-center gap-6 text-sm">
+          <Link
+            to="/skole"
+            className="text-foreground/80 hover:text-foreground transition font-medium"
+          >
+            {lang === "bs" ? "Škole" : "Schools"}
+          </Link>
+          <button
+            onClick={onOpen}
+            className="text-foreground/80 hover:text-foreground transition font-medium"
+          >
+            {lang === "bs" ? "Vidi zrak u svom gradu" : "See the air in your city"}
+          </button>
+        </nav>
         <button
           onClick={() => setLang(lang === "bs" ? "en" : "bs")}
           className="text-xs tracking-wide text-muted-foreground hover:text-foreground transition"
@@ -161,6 +177,9 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <p className="text-base">{L.partners_p}</p>
         </div>
       </section>
+
+      {/* Schools teaser */}
+      <SchoolsTeaser lang={lang} />
 
       {/* Final CTA */}
       <section className="px-6 py-20 text-center">
