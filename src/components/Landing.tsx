@@ -1,5 +1,7 @@
+import { Link } from "@tanstack/react-router";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
+import { SchoolsTeaser } from "./SchoolsTeaser";
 import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
 
