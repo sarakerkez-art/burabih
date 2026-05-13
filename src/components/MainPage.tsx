@@ -136,9 +136,6 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             ? tr.live_stale
             : tr.live_source(air?.updatedMinutesAgo != null ? String(air.updatedMinutesAgo) : "-")}
         </p>
-        <p className="text-center text-xs text-muted-foreground/70 mt-2 font-mono">
-          Debug: AQI={air?.aqi ?? "-"}, PM25={air?.pm25 ?? "-"}, PM10={air?.pm10 ?? "-"}
-        </p>
       </section>
 
       {/* Section D, Why */}
