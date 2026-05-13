@@ -116,13 +116,13 @@ const bs = {
 
   hiw_title: "Otvoreni podaci. Otvoreni kod. Besplatno zauvijek.",
   hiw_a: "Sateliti gledaju odozgo",
-  hiw_a_t: "Sateliti EU Copernicus svakodnevno prelijevaju BiH.",
+  hiw_a_t: "Sateliti EU Copernicus svakodnevno prelijevaju BiH i otkrivaju oblake dima, prašinu i obrasce zagađenja.",
   hiw_b: "Senzori mjere na zemlji",
-  hiw_b_t: "Senzori mjere čestice koje vaša porodica zaista udiše.",
+  hiw_b_t: "Senzori u gradovima mjere čestice koje vaša porodica zaista udiše, ulica po ulica, sat po sat.",
   hiw_c: "Građani prijavljuju šta vide",
-  hiw_c_t: "Vi prijavljujete, lokalne oči vide što sateliti propuste.",
+  hiw_c_t: "Vi prijavljujete dim, deponije i mirise. Lokalne oči vide ono što sateliti propuste.",
   hiw_d: "Spajamo tri izvora",
-  hiw_d_t: "Naš sistem uspoređuje izvore, traži obrasce i objašnjava ih jednostavnim jezikom.",
+  hiw_d_t: "Naš sistem uspoređuje sve izvore, traži obrasce i objašnjava ih jednostavnim jezikom. Kad se izvori slažu, signal je pouzdan.",
 
   road_title: "Od podataka do utjecaja",
   road_p1: "Sateliti + senzori + prijave građana",
