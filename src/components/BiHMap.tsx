@@ -150,8 +150,8 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
     <div className={`relative w-full max-w-xl mx-auto ${className ?? ""}`}>
       <div
         ref={containerRef}
-        className="w-full"
-        style={{ aspectRatio: "4 / 3", background: "white" }}
+        className="w-full rounded-2xl overflow-hidden border border-border"
+        style={{ height: 500, background: "#F5F8F4" }}
         aria-label="Map of Bosnia and Herzegovina"
       />
       {!ready && (
