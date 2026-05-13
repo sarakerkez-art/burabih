@@ -89,15 +89,25 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
       const bg = window.getComputedStyle(containerRef.current).backgroundColor;
       containerRef.current.style.background = bg && bg !== "rgba(0, 0, 0, 0)" ? bg : "white";
 
+      // Minimal light basemap with no labels
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+        {
+          subdomains: "abcd",
+          maxZoom: 19,
+          attribution: "",
+        },
+      ).addTo(map);
+
       try {
         const res = await fetch(GEOJSON_URL);
         const geo = await res.json();
         const layer = L.geoJSON(geo, {
           style: {
             color: "#1F3A2E",
-            weight: 1.5,
+            weight: 1.8,
             fillColor: "#CDE7D2",
-            fillOpacity: 1,
+            fillOpacity: 0.85,
           },
         }).addTo(map);
         map.fitBounds(layer.getBounds(), { padding: [10, 10] });
