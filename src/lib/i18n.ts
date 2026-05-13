@@ -111,7 +111,7 @@ const bs = {
   sub_sub: "Šta vaša djeca dišu danas. Šta možete učiniti. Ništa više.",
   sub_email: "Vaš email",
   sub_cta: "Primajte jutarnje poruke",
-  sub_note: "Besplatno. Bez spam-a. Možete se odjaviti u bilo kom trenutku.",
+  sub_note: "Besplatno. Vaši podaci su sigurni. Možete se odjaviti u bilo kom trenutku.",
   sub_done: "Prijavljeni ste. Vidimo se sutra u 7h.",
 
   hiw_title: "Otvoreni podaci. Otvoreni kod. Besplatno zauvijek.",
