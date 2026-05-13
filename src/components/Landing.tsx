@@ -291,12 +291,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
             </a>
-            <a
-              href="https://github.com"
-              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
-            >
-              <Github size={14} /> GitHub
-            </a>
           </div>
         </div>
         <p className="mt-10 text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
