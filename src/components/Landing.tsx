@@ -1,9 +1,17 @@
 import { Link } from "@tanstack/react-router";
+import { Github, Leaf, Satellite, Signal, Users, Bot, MapPin, Camera, HelpCircle, Baby } from "lucide-react";
+import { useState } from "react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
 import { SchoolsTeaser } from "./SchoolsTeaser";
 import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
+
+const IconBox = ({ children }: { children: React.ReactNode }) => (
+  <div className="shrink-0 w-12 h-12 rounded-xl bg-sage flex items-center justify-center text-[color:var(--forest)]">
+    {children}
+  </div>
+);
 
 type Props = {
   lang: Lang;
