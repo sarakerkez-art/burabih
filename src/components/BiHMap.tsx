@@ -89,13 +89,14 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
       const bg = window.getComputedStyle(containerRef.current).backgroundColor;
       containerRef.current.style.background = bg && bg !== "rgba(0, 0, 0, 0)" ? bg : "white";
 
-      // Minimal light basemap with no labels
+      // Minimal CartoDB Positron basemap (no labels, no road detail)
       L.tileLayer(
         "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
         {
           subdomains: "abcd",
           maxZoom: 19,
           attribution: "",
+          opacity: 0.35,
         },
       ).addTo(map);
 
@@ -107,10 +108,13 @@ export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
             color: "#1F3A2E",
             weight: 1.8,
             fillColor: "#CDE7D2",
-            fillOpacity: 0.85,
+            fillOpacity: 0.9,
           },
         }).addTo(map);
-        map.fitBounds(layer.getBounds(), { padding: [10, 10] });
+        const bounds = layer.getBounds();
+        map.fitBounds(bounds, { padding: [20, 20] });
+        // Re-center on BiH centroid so it sits in the middle of the container
+        map.setView(bounds.getCenter(), map.getZoom(), { animate: false });
       } catch {
         map.setView([44.0, 17.8], 7);
       }
