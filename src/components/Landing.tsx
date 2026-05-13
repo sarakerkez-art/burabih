@@ -85,17 +85,26 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           </Link>
           <button
             onClick={onOpen}
-            className="text-foreground/80 hover:text-foreground transition font-medium"
+            className="text-foreground/80 hover:text-amber-brand transition font-medium"
           >
-            {lang === "bs" ? "Vidi zrak u svom gradu" : "See the air in your city"}
+            {lang === "bs" ? "Zrak u mom gradu" : "Air in my city"}
           </button>
         </nav>
-        <button
-          onClick={() => setLang(lang === "bs" ? "en" : "bs")}
-          className="text-xs tracking-wide text-muted-foreground hover:text-foreground transition"
-        >
-          {tr.langToggle}
-        </button>
+        <div className="flex items-center gap-2 text-xs tracking-wide">
+          <button
+            onClick={() => setLang("bs")}
+            className={`hover:text-amber-brand transition ${lang === "bs" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+          >
+            BHS
+          </button>
+          <span className="text-muted-foreground">·</span>
+          <button
+            onClick={() => setLang("en")}
+            className={`hover:text-amber-brand transition ${lang === "en" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+          >
+            EN
+          </button>
+        </div>
       </header>
 
       {/* Hero */}
