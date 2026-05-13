@@ -160,52 +160,6 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
-      {/* Section F — What's working */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-3xl mx-auto">
-        <div className="flex items-center gap-2">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.work_title}</h2>
-          <Leaf size={22} className="text-[color:var(--forest)]" />
-        </div>
-        <p className="text-sm text-muted-foreground mt-2">{tr.work_sub}</p>
-
-        <div className="mt-10 grid sm:grid-cols-3 gap-6">
-          <Win label={tr.work_eu} city={tr.work_eu_city} text={tr.work_eu_text} />
-          <Win label={tr.work_rec} city={tr.work_rec_city} text={tr.work_rec_text} />
-          <Win label={tr.work_air} city={tr.work_air_city} text={tr.work_air_text} />
-        </div>
-
-        <div className="mt-12">
-          <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
-            {tr.ranking}
-          </h3>
-          <Ranking pmCity={profile.city} pmValue={pm} />
-        </div>
-      </section>
-
-
-      {/* Section G — Report */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
-          {tr.rep_title}
-        </h2>
-        <p className="mt-4 text-base text-muted-foreground leading-relaxed">{tr.rep_sub}</p>
-
-        <div className="mt-8 grid sm:grid-cols-3 gap-5">
-          {[
-            { icon: <Satellite size={22} />, text: tr.rep_b1 },
-            { icon: <Signal size={22} />, text: tr.rep_b2 },
-            { icon: <Baby size={22} />, text: tr.rep_b3 },
-          ].map((b, i) => (
-            <div key={i} className="flex sm:flex-col gap-3">
-              <IconBox>{b.icon}</IconBox>
-              <p className="text-sm text-foreground/80">{b.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <ReportForm tr={tr} />
-      </section>
-
       {/* Section H — Alert signup */}
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-xl mx-auto text-center">
@@ -215,23 +169,6 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <SignupForm tr={tr} />
           <p className="mt-4 text-xs italic text-white/70">{tr.sub_note}</p>
         </div>
-      </section>
-
-      {/* Section I — How it works */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-4xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.hiw_title}</h2>
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <HiwItem icon={<Satellite size={22} />} title={tr.hiw_a} text={tr.hiw_a_t} />
-          <HiwItem icon={<Signal size={22} />} title={tr.hiw_b} text={tr.hiw_b_t} />
-          <HiwItem icon={<Users size={22} />} title={tr.hiw_c} text={tr.hiw_c_t} />
-          <HiwItem icon={<Bot size={22} />} title={tr.hiw_d} text={tr.hiw_d_t} />
-        </div>
-      </section>
-
-      {/* Section J — Roadmap */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 bg-background max-w-5xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.road_title}</h2>
-        <Roadmap tr={tr} />
       </section>
 
       {/* Footer */}
