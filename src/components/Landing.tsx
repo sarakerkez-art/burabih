@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Leaf, Satellite, Signal, Users, Bot, MapPin, Camera, HelpCircle, Baby } from "lucide-react";
+import { Leaf, Satellite, Signal, Users, Bot, MapPin, Camera, HelpCircle, Baby } from "lucide-react";
 import { useState } from "react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
