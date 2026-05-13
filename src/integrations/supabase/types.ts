@@ -14,13 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      schools: {
+        Row: {
+          city: string
+          contact_name: string
+          created_at: string
+          email: string
+          id: string
+          school_name: string
+          status: string
+        }
+        Insert: {
+          city: string
+          contact_name: string
+          created_at?: string
+          email: string
+          id?: string
+          school_name: string
+          status?: string
+        }
+        Update: {
+          city?: string
+          contact_name?: string
+          created_at?: string
+          email?: string
+          id?: string
+          school_name?: string
+          status?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      schools_count: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never
