@@ -108,42 +108,43 @@ export function Landing({ lang, setLang, onOpen }: Props) {
       </header>
 
       {/* Hero */}
-      <section className="bg-[color:var(--teal-brand)] text-white">
-        <div className="px-6 max-w-6xl mx-auto pt-8 pb-20 sm:pt-16 sm:pb-28">
-          <div className="grid sm:grid-cols-[1.3fr_1fr] gap-10 items-center">
-            <div className="fade-up">
-              <p className="text-xs uppercase tracking-[0.18em] text-white/60 mb-5">
-                {L.hero_eyebrow}
-              </p>
-              <h1 className="font-bold text-4xl sm:text-6xl leading-[1.05] tracking-tight text-white">
-                {L.hero_title}
-              </h1>
-              <p className="mt-6 text-lg text-white/75 max-w-xl leading-relaxed">
-                {L.hero_sub}
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={onOpen}
-                  className="bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-7 py-4 rounded-full text-base transition hover:brightness-95"
-                >
-                  {L.cta_open} →
-                </button>
-                <button
-                  onClick={scrollToMore}
-                  className="border border-white/25 text-white font-medium px-7 py-4 rounded-full text-base transition hover:border-white/60 hover:bg-white/10"
-                >
-                  {L.cta_more}
-                </button>
-              </div>
+      <section className="px-6 max-w-6xl mx-auto pt-8 pb-20 sm:pt-16 sm:pb-28">
+        <div className="grid sm:grid-cols-[1.3fr_1fr] gap-10 items-center">
+          <div className="fade-up">
+            <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-5">
+              {L.hero_eyebrow}
+            </p>
+            <h1 className="font-bold text-4xl sm:text-6xl leading-[1.05] tracking-tight">
+              {L.hero_title}
+            </h1>
+            <p className="mt-6 text-lg text-muted-foreground max-w-xl leading-relaxed">
+              {L.hero_sub}
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={onOpen}
+                className="bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-7 py-4 rounded-full text-base transition hover:brightness-95"
+              >
+                {L.cta_open} →
+              </button>
+              <button
+                onClick={scrollToMore}
+                className="border border-foreground/15 text-foreground font-medium px-7 py-4 rounded-full text-base transition hover:border-foreground/40 hover:bg-card"
+              >
+                {L.cta_more}
+              </button>
             </div>
-            <div className="flex items-center justify-center aspect-square sm:aspect-auto sm:h-80">
-              <Buri
-                pm25={8}
-                lang={lang}
-                bubbleText={lang === "bs" ? "Ćao! Ja sam Buri. Tvoj mali čuvar zraka." : "Hi! I'm Buri. Your little air guardian."}
-                captionText={lang === "bs" ? "Hajde da vidimo kakav je danas zrak u tvom gradu." : "Let's see what the air is like in your city today."}
-              />
-            </div>
+          </div>
+          <div
+            className="rounded-3xl p-10 flex items-center justify-center aspect-square sm:aspect-auto sm:h-80"
+            style={{ background: "var(--forest)" }}
+          >
+            <Buri
+              pm25={8}
+              lang={lang}
+              bubbleText={lang === "bs" ? "Ćao! Ja sam Buri. Tvoj mali čuvar zraka." : "Hi! I'm Buri. Your little air guardian."}
+              captionText={lang === "bs" ? "Hajde da vidimo kakav je danas zrak u tvom gradu." : "Let's see what the air is like in your city today."}
+            />
           </div>
         </div>
       </section>
