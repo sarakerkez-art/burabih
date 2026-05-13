@@ -48,7 +48,7 @@
   --offwhite: oklch(0.984 0.005 90);          /* #FAFAF8 */
   --forest: oklch(0.27 0.04 145);              /* #1A2E1A */
   --amber-brand: oklch(0.755 0.145 75);        /* #E8A030 */
-  --teal-brand: oklch(0.40 0.06 220);          /* #1B4D5C */
+  --teal-brand: oklch(0.42 0.05 145);          /* warm deep forest #2F4A35 */
   --sage: oklch(0.94 0.025 145);               /* #E8F0E8 */
   --warm: oklch(0.95 0.018 75);                /* #F5F0E8 */
 
