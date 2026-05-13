@@ -88,8 +88,8 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       )}
 
-      {/* Section A — Hero */}
-      <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 sm:py-20">
+      {/* Section A, Hero */}
+      <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
           <Buri pm25={pm} />
           <p className="mt-8 text-xl sm:text-2xl font-semibold leading-snug">
@@ -100,7 +100,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
-      {/* Section B — Actions */}
+      {/* Section B, Actions */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
@@ -124,12 +124,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </ul>
       </section>
 
-      {/* Section C — Live data strip */}
+      {/* Section C, Live data strip */}
       <section className="bg-muted px-5 sm:px-8 py-8">
         <div className="max-w-2xl mx-auto grid grid-cols-3 gap-4 text-center">
           <Stat label={tr.live_pm} value={pmStr} />
           <Stat label={tr.live_aqi} value={air?.aqi != null ? String(air.aqi) : "-"} />
-          <Stat label={tr.live_temp} value={air?.temp ? `${air.temp}°` : "—"} />
+          <Stat label={tr.live_temp} value={air?.temp ? `${air.temp}°` : "-"} />
         </div>
         <p className="text-center text-xs text-muted-foreground mt-4">
           {air?.stale
@@ -141,7 +141,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </p>
       </section>
 
-      {/* Section D — Why */}
+      {/* Section D, Why */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.why_title}</h2>
         <p className="mt-5 text-base leading-relaxed text-foreground/85">
@@ -150,7 +150,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <p className="mt-4 text-xs text-muted-foreground">{tr.why_source}</p>
       </section>
 
-      {/* Section E — Every breath matters */}
+      {/* Section E, Every breath matters */}
       <section className="bg-[color:var(--warm)] px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.ebm_title}</h2>
@@ -160,7 +160,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
-      {/* Section H — Alert signup */}
+      {/* Section H, Alert signup */}
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-xl mx-auto text-center">
           <div className="flex justify-center"><WindMark size={28} color="white" /></div>

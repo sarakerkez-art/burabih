@@ -148,17 +148,17 @@ const bs = {
   schools_hero_title: "Škole koje predvode promjenu.",
   schools_hero_sub: "Čist zrak počinje u učionici.",
   schools_hero_body:
-    "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim — i poziva ostale da im se pridruže.",
+    "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim, i poziva ostale da im se pridruže.",
 
   schools_map_title: "Škole na mapi",
-  schools_legend_active: "Aktivne — senzori + nastava",
-  schools_legend_dev: "U razvoju — počinju",
-  schools_legend_interested: "Zainteresirane — žele se pridružiti",
+  schools_legend_active: "Aktivne, senzori + nastava",
+  schools_legend_dev: "U razvoju, počinju",
+  schools_legend_interested: "Zainteresirane, žele se pridružiti",
   schools_status_interested: "Zainteresirana",
   schools_more_info: "Više info →",
-  schools_pin_sa: "OŠ pilot — Sarajevo",
-  schools_pin_ze: "OŠ pilot — Zenica",
-  schools_pin_tu: "OŠ pilot — Tuzla",
+  schools_pin_sa: "OŠ pilot, Sarajevo",
+  schools_pin_ze: "OŠ pilot, Zenica",
+  schools_pin_tu: "OŠ pilot, Tuzla",
   schools_map_disclaimer:
     "Ovo je pilot mapa. Prve škole se pridružuju 2026. Vaša škola može biti prva u vašem gradu.",
 
@@ -168,7 +168,7 @@ const bs = {
     "Instaliraju senzore koji mjere PM2.5 u učionicama i školskom dvorištu. Učenici vide podatke uživo.",
   schools_what_b_t: "Podučavaju",
   schools_what_b_p:
-    "Nastavnici koriste Bura podatke u nastavi — nauka, geografija, zdravstveni odgoj.",
+    "Nastavnici koriste Bura podatke u nastavi, nauka, geografija, zdravstveni odgoj.",
   schools_what_c_t: "Dijele s porodicama",
   schools_what_c_p:
     "Rezultati mjerenja dostupni su roditeljima kroz Bura aplikaciju. Škola postaje dio lokalne zajednice.",
@@ -182,7 +182,7 @@ const bs = {
   schools_story2_label: "ZENICA · PILOT",
   schools_story2_title: "Đaci napravili prezentaciju za općinsko vijeće",
   schools_story2_text:
-    "Nakon što su izmjerili kvalitet zraka u svom kvartu, učenici su pripremili prezentaciju za lokalne vijećnike — sa podacima, grafikonima i prijedlozima.",
+    "Nakon što su izmjerili kvalitet zraka u svom kvartu, učenici su pripremili prezentaciju za lokalne vijećnike, sa podacima, grafikonima i prijedlozima.",
   schools_story3_label: "TUZLA · PILOT",
   schools_story3_title: "Roditelji promijenili jutarnju rutinu",
   schools_story3_text:
@@ -307,17 +307,17 @@ const en: typeof bs = {
   schools_hero_title: "Schools leading the change.",
   schools_hero_sub: "Clean air starts in the classroom.",
   schools_hero_body:
-    "Some schools in BiH are already taking action for cleaner air. They install sensors. They teach children. They share results with the community. Bura makes them visible — and invites others to join.",
+    "Some schools in BiH are already taking action for cleaner air. They install sensors. They teach children. They share results with the community. Bura makes them visible, and invites others to join.",
 
   schools_map_title: "Schools on the map",
-  schools_legend_active: "Active — sensors + teaching",
-  schools_legend_dev: "In development — starting",
-  schools_legend_interested: "Interested — want to join",
+  schools_legend_active: "Active, sensors + teaching",
+  schools_legend_dev: "In development, starting",
+  schools_legend_interested: "Interested, want to join",
   schools_status_interested: "Interested",
   schools_more_info: "More info →",
-  schools_pin_sa: "Pilot primary school — Sarajevo",
-  schools_pin_ze: "Pilot primary school — Zenica",
-  schools_pin_tu: "Pilot primary school — Tuzla",
+  schools_pin_sa: "Pilot primary school, Sarajevo",
+  schools_pin_ze: "Pilot primary school, Zenica",
+  schools_pin_tu: "Pilot primary school, Tuzla",
   schools_map_disclaimer:
     "This is a pilot map. The first schools join in 2026. Your school can be the first in your city.",
 
@@ -327,7 +327,7 @@ const en: typeof bs = {
     "They install sensors that measure PM2.5 in classrooms and the schoolyard. Students see the data live.",
   schools_what_b_t: "Teach",
   schools_what_b_p:
-    "Teachers use Bura data in lessons — science, geography, health education.",
+    "Teachers use Bura data in lessons, science, geography, health education.",
   schools_what_c_t: "Share with families",
   schools_what_c_p:
     "Measurement results are available to parents through the Bura app. The school becomes part of the local community.",
@@ -341,7 +341,7 @@ const en: typeof bs = {
   schools_story2_label: "ZENICA · PILOT",
   schools_story2_title: "Students presented to the municipal council",
   schools_story2_text:
-    "After measuring air quality in their neighbourhood, students prepared a presentation for local councillors — with data, charts and proposals.",
+    "After measuring air quality in their neighbourhood, students prepared a presentation for local councillors, with data, charts and proposals.",
   schools_story3_label: "TUZLA · PILOT",
   schools_story3_title: "Parents changed their morning routine",
   schools_story3_text:

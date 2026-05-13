@@ -14,7 +14,7 @@ export const Route = createFileRoute("/skole")({
       {
         name: "description",
         content:
-          "Škole u BiH koje rade na čistijem zraku — instaliraju senzore, podučavaju djecu, dijele rezultate sa zajednicom.",
+          "Škole u BiH koje rade na čistijem zraku, instaliraju senzore, podučavaju djecu, dijele rezultate sa zajednicom.",
       },
       { property: "og:title", content: "Bura · Škole koje predvode promjenu" },
       {

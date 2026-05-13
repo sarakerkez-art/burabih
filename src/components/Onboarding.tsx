@@ -25,14 +25,14 @@ export function Onboarding({ lang, onDone, onHome }: Props) {
   const L = lang === "bs"
     ? {
         title: "Koji je tvoj grad?",
-        sub: "Reci nam gdje živiš — pokazat ćemo ti kakav je danas zrak.",
+        sub: "Reci nam gdje živiš, pokazat ćemo ti kakav je danas zrak.",
         placeholder: "Npr. Sarajevo, Zenica, Tuzla…",
         cta: "Vidi zrak",
         bubble: "Ćao! Reci mi gdje živiš.",
       }
     : {
         title: "What's your city?",
-        sub: "Tell us where you live — we'll show you today's air.",
+        sub: "Tell us where you live, we'll show you today's air.",
         placeholder: "e.g. Sarajevo, Zenica, Tuzla…",
         cta: "See the air",
         bubble: "Hi! Tell me where you live.",
