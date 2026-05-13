@@ -173,28 +173,23 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14">
-        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm">
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 text-sm">
           <div>
             <div className="flex items-center gap-2 font-bold text-lg">
               {tr.brand} <WindMark size={18} color="white" />
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
           </div>
-          <div className="text-white/80">
-            <p>{tr.foot_data}</p>
-            <p className="mt-3 italic text-white/60">{tr.foot_mission}</p>
-          </div>
-          <div className="text-white/80">
-            <a href="mailto:contact@bura.earth" className="hover:text-amber-brand transition">
-              contact@bura.earth
+          <div className="text-white/80 sm:text-right">
+            <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
+              contact@burabih.org
             </a>
             <a
               href="https://github.com"
-              className="mt-2 flex items-center gap-2 hover:text-amber-brand transition"
+              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
             >
               <Github size={14} /> GitHub
             </a>
-            <p className="mt-3 text-white/60">{tr.foot_founder}</p>
           </div>
         </div>
         <p className="mt-10 text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
