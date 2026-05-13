@@ -5,6 +5,7 @@ import {
   Pencil,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
+import { SchoolsTeaser } from "@/components/SchoolsTeaser";
 import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
