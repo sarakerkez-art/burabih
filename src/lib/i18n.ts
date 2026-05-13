@@ -136,6 +136,76 @@ const bs = {
   foot_founder: "Osnivač: Andi Andinger, Beč",
   foot_bottom: "Svaki dah je važan.",
   edit_profile: "Uredi profil",
+
+  // Schools teaser (main page)
+  schools_teaser_label: "ŠKOLE U AKCIJI",
+  schools_teaser_title: "Škole koje predvode promjenu.",
+  schools_teaser_sub: "Neke škole u BiH već rade na čistijem zraku. Bura ih čini vidljivim.",
+  schools_teaser_amber: "Budite prva škola u vašem gradu.",
+  schools_teaser_cta: "Vidi sve škole →",
+
+  // /skole page
+  schools_hero_title: "Škole koje predvode promjenu.",
+  schools_hero_sub: "Čist zrak počinje u učionici.",
+  schools_hero_body:
+    "Neke škole u BiH već poduzimaju akciju za čišći zrak. Instaliraju senzore. Podučavaju djecu. Dijele rezultate sa zajednicom. Bura ih čini vidljivim — i poziva ostale da im se pridruže.",
+
+  schools_map_title: "Škole na mapi",
+  schools_legend_active: "Aktivne — senzori + nastava",
+  schools_legend_dev: "U razvoju — počinju",
+  schools_legend_interested: "Zainteresirane — žele se pridružiti",
+  schools_status_interested: "Zainteresirana",
+  schools_more_info: "Više info →",
+  schools_pin_sa: "OŠ pilot — Sarajevo",
+  schools_pin_ze: "OŠ pilot — Zenica",
+  schools_pin_tu: "OŠ pilot — Tuzla",
+  schools_map_disclaimer:
+    "Ovo je pilot mapa. Prve škole se pridružuju 2026. Vaša škola može biti prva u vašem gradu.",
+
+  schools_what_title: "Šta škole rade?",
+  schools_what_a_t: "Mjere zrak",
+  schools_what_a_p:
+    "Instaliraju senzore koji mjere PM2.5 u učionicama i školskom dvorištu. Učenici vide podatke uživo.",
+  schools_what_b_t: "Podučavaju",
+  schools_what_b_p:
+    "Nastavnici koriste Bura podatke u nastavi — nauka, geografija, zdravstveni odgoj.",
+  schools_what_c_t: "Dijele s porodicama",
+  schools_what_c_p:
+    "Rezultati mjerenja dostupni su roditeljima kroz Bura aplikaciju. Škola postaje dio lokalne zajednice.",
+
+  schools_stories_title: "Priče iz škola",
+  schools_stories_sub: "Šta se dešava kad djeca počnu mjeriti vlastiti zrak.",
+  schools_story1_label: "SARAJEVO · PILOT",
+  schools_story1_title: "Učenici otkrili da je zrak u učionici najgori ujutro",
+  schools_story1_text:
+    "Mjerenja su pokazala da PM2.5 u učionici dostiže vrhunac između 8h i 10h. Škola sada prozračuje svaki dan u 7:45h prije dolaska djece.",
+  schools_story2_label: "ZENICA · PILOT",
+  schools_story2_title: "Đaci napravili prezentaciju za općinsko vijeće",
+  schools_story2_text:
+    "Nakon što su izmjerili kvalitet zraka u svom kvartu, učenici su pripremili prezentaciju za lokalne vijećnike — sa podacima, grafikonima i prijedlozima.",
+  schools_story3_label: "TUZLA · PILOT",
+  schools_story3_title: "Roditelji promijenili jutarnju rutinu",
+  schools_story3_text:
+    "Kada su roditelji počeli primati Bura jutarnje poruke sa podacima njihove škole, 34% je promijenilo vrijeme kada vode djecu u školu.",
+  schools_story_disclaimer: "Ovo je ilustrativni primjer budućeg pilota.",
+
+  schools_join_title: "Je li vaša škola sljedeća?",
+  schools_join_sub: "Tražimo prve škole u BiH koje žele biti dio Bura mreže.",
+  schools_join_a_t: "Besplatni senzor",
+  schools_join_a_p: "Prve pilot škole dobivaju Bura senzor bez naknade.",
+  schools_join_b_t: "Materijali za nastavu",
+  schools_join_b_p:
+    "Pripremamo nastavne materijale za integraciju podataka o kvalitetu zraka u nastavu.",
+  schools_join_c_t: "Vidljivost na mapi",
+  schools_join_c_p: "Vaša škola postaje vidljiva svim porodicama u vašem gradu.",
+  schools_form_school: "NAZIV ŠKOLE",
+  schools_form_city: "GRAD",
+  schools_form_contact: "IME KONTAKT OSOBE",
+  schools_form_email: "EMAIL",
+  schools_form_cta: "Prijavite svoju školu",
+  schools_form_done: "Hvala! Kontaktirat ćemo vas u roku 48 sati.",
+  schools_form_count: (n: number) =>
+    `Do sada primili smo ${n} prijava od škola širom BiH. Budite prvi.`,
 };
 
 const en: typeof bs = {
