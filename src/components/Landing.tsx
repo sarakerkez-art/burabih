@@ -195,10 +195,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           </div>
 
           <div className="mt-12">
-            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-1">
               {tr.ranking}
             </h3>
+            <p className="text-xs text-muted-foreground mb-4">{tr.ranking_note}</p>
             <Ranking />
+            <p className="mt-4 text-xs text-muted-foreground">{tr.ranking_source}</p>
           </div>
         </div>
       </section>
