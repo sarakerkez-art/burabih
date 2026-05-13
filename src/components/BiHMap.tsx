@@ -24,7 +24,7 @@ const COLOR: Record<string, string> = {
 };
 
 const GEOJSON_URL =
-  "https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/bosnia-and-herzegovina.geojson";
+  "https://raw.githubusercontent.com/johan/world.geo.json/master/countries/BIH.geo.json";
 
 export function BiHMap({ pins = [], className, showTooltips = true }: Props) {
   const containerRef = useRef<HTMLDivElement | null>(null);
