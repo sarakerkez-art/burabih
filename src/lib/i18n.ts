@@ -125,12 +125,12 @@ const bs = {
   hiw_d_t: "Naš sistem uspoređuje sve izvore, traži obrasce i objašnjava ih jednostavnim jezikom. Kad se izvori slažu, signal je pouzdan.",
 
   road_title: "Od podataka do utjecaja",
-  road_p1: "Sateliti + senzori + prijave građana",
-  road_p2: "Senzori u školama + edukacija",
-  road_p3: "Buri + gejmifikacija + nagrade",
+  road_p1: "Sateliti, senzori i prijave građana",
+  road_p2: "Senzori u školama i edukacija",
+  road_p3: "Buri, gejmifikacija i nagrade",
   road_p4: "Srbija, Kosovo, Sjeverna Makedonija",
   road_phase: "FAZA",
-  road_active: "aktivno",
+  road_active: "AKTIVNO",
 
   foot_tag: "Znaj šta dišeš.",
   foot_data: "Otvoreni podaci · EU Copernicus · aqicn.org · UNICEF BiH",
