@@ -176,20 +176,9 @@ const bs = {
     "Rezultati mjerenja dostupni su roditeljima kroz Bura aplikaciju. Škola postaje dio lokalne zajednice.",
 
   schools_stories_title: "Priče iz škola",
-  schools_stories_sub: "Šta se dešava kad djeca počnu mjeriti vlastiti zrak.",
-  schools_story1_label: "SARAJEVO · PILOT",
-  schools_story1_title: "Učenici otkrili da je zrak u učionici najgori ujutro",
-  schools_story1_text:
-    "Mjerenja su pokazala da PM2.5 u učionici dostiže vrhunac između 8h i 10h. Škola sada prozračuje svaki dan u 7:45h prije dolaska djece.",
-  schools_story2_label: "ZENICA · PILOT",
-  schools_story2_title: "Đaci napravili prezentaciju za općinsko vijeće",
-  schools_story2_text:
-    "Nakon što su izmjerili kvalitet zraka u svom kvartu, učenici su pripremili prezentaciju za lokalne vijećnike, sa podacima, grafikonima i prijedlozima.",
-  schools_story3_label: "TUZLA · PILOT",
-  schools_story3_title: "Roditelji promijenili jutarnju rutinu",
-  schools_story3_text:
-    "Kada su roditelji počeli primati Bura jutarnje poruke sa podacima njihove škole, 34% je promijenilo vrijeme kada vode djecu u školu.",
-  schools_story_disclaimer: "Ovo je ilustrativni primjer budućeg pilota.",
+  schools_stories_body:
+    "Prve priče dolaze uskoro. Prijavite svoju školu i budite dio prve generacije Bura škola u BiH.",
+  schools_stories_cta: "Prijavite svoju školu →",
 
   schools_join_title: "Je li vaša škola sljedeća?",
   schools_join_sub: "Tražimo prve škole u BiH koje žele biti dio Bura mreže.",
