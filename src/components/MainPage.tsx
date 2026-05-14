@@ -72,7 +72,10 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
     return tr.greet_default(profile.city, pmStr, x);
   }, [profile, x, pmStr, tr]);
 
-  const actions = buildActions(profile, lang);
+  const fallbackActions = buildActions(profile, lang);
+  const actions = aiActions
+    ? aiActions.map((a) => ({ icon: <Wind size={22} />, title: a.title, tag: a.tag, text: a.text }))
+    : fallbackActions;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
