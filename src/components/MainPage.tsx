@@ -132,6 +132,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
           {tr.actions_sub(profile.city, famLabel, heatLabel)}
+          {aiLoading && !aiActions && (
+            <span className="ml-2 text-amber-brand">· {lang === "bs" ? "personalizujem savjete..." : "personalizing advice..."}</span>
+          )}
         </p>
         <ul className="mt-10 flex flex-col gap-8">
           {actions.map((a, i) => (
