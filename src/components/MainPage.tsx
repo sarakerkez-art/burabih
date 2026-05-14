@@ -9,6 +9,8 @@ import { WindMark } from "@/components/WindMark";
 import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
+import { useServerFn } from "@tanstack/react-start";
+import { fetchAdvice, type AdviceItem } from "@/lib/advice.functions";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
@@ -21,12 +23,34 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
 export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
+  const [aiActions, setAiActions] = useState<AdviceItem[] | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const getAdvice = useServerFn(fetchAdvice);
 
   useEffect(() => {
     let alive = true;
     fetchAir(profile.city).then((a) => alive && setAir(a));
     return () => { alive = false; };
   }, [profile.city]);
+
+  useEffect(() => {
+    if (air == null) return;
+    let alive = true;
+    setAiLoading(true);
+    getAdvice({
+      data: {
+        city: profile.city,
+        heating: profile.heating,
+        children: profile.children,
+        pm25: air.pm25,
+        lang,
+      },
+    })
+      .then((r) => { if (alive && r.ok && r.items.length) setAiActions(r.items); })
+      .catch(() => {})
+      .finally(() => { if (alive) setAiLoading(false); });
+    return () => { alive = false; };
+  }, [air, profile.city, profile.heating, profile.children, lang, getAdvice]);
 
   const pm = air?.pm25 ?? null;
   const x = air ? air.whoMultiplier.toFixed(1) : "-";
@@ -48,7 +72,10 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
     return tr.greet_default(profile.city, pmStr, x);
   }, [profile, x, pmStr, tr]);
 
-  const actions = buildActions(profile, lang);
+  const fallbackActions = buildActions(profile, lang);
+  const actions = aiActions
+    ? aiActions.map((a) => ({ icon: <Wind size={22} />, title: a.title, tag: a.tag, text: a.text }))
+    : fallbackActions;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -105,6 +132,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
           {tr.actions_sub(profile.city, famLabel, heatLabel)}
+          {aiLoading && !aiActions && (
+            <span className="ml-2 text-amber-brand">· {lang === "bs" ? "personalizujem savjete..." : "personalizing advice..."}</span>
+          )}
         </p>
         <ul className="mt-10 flex flex-col gap-8">
           {actions.map((a, i) => (
