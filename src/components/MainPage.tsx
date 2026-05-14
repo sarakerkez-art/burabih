@@ -23,12 +23,34 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
 export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
+  const [aiActions, setAiActions] = useState<AdviceItem[] | null>(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const getAdvice = useServerFn(fetchAdvice);
 
   useEffect(() => {
     let alive = true;
     fetchAir(profile.city).then((a) => alive && setAir(a));
     return () => { alive = false; };
   }, [profile.city]);
+
+  useEffect(() => {
+    if (air == null) return;
+    let alive = true;
+    setAiLoading(true);
+    getAdvice({
+      data: {
+        city: profile.city,
+        heating: profile.heating,
+        children: profile.children,
+        pm25: air.pm25,
+        lang,
+      },
+    })
+      .then((r) => { if (alive && r.ok && r.items.length) setAiActions(r.items); })
+      .catch(() => {})
+      .finally(() => { if (alive) setAiLoading(false); });
+    return () => { alive = false; };
+  }, [air, profile.city, profile.heating, profile.children, lang, getAdvice]);
 
   const pm = air?.pm25 ?? null;
   const x = air ? air.whoMultiplier.toFixed(1) : "-";
