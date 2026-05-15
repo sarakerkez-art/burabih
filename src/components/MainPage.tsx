@@ -5,6 +5,7 @@ import {
   Pencil, Loader2,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
+import { MobileNav } from "@/components/MobileNav";
 
 import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
@@ -130,7 +131,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </button>
-        <div className="flex items-center gap-4 text-sm">
+        <div className="hidden sm:flex items-center gap-4 text-sm">
           <Link
             to="/vizija"
             className="text-muted-foreground hover:text-foreground transition font-medium text-xs sm:text-sm"
@@ -172,6 +173,16 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             {lang === "bs" ? "BHS · EN" : "EN · BHS"}
           </button>
         </div>
+        <MobileNav
+          lang={lang}
+          setLang={setLang}
+          items={[
+            { label: lang === "bs" ? "Početna" : "Home", onClick: () => onHome?.() },
+            { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
+            { label: `${profile.city} · ${tr.edit_profile}`, onClick: onEditProfile },
+          ]}
+        />
       </header>
 
       {/* Demo winter mode banner */}

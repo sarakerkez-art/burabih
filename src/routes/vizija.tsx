@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Wind, Droplets, Trees, Check } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
+import { MobileNav } from "@/components/MobileNav";
 import { type Lang, t } from "@/lib/i18n";
 
 export const Route = createFileRoute("/vizija")({
@@ -129,7 +130,7 @@ function VizijaPage() {
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </Link>
-        <nav className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+        <nav className="hidden sm:flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
           <Link to="/" className="text-foreground/80 hover:text-foreground transition font-medium">
             {L.nav_home}
           </Link>
@@ -140,7 +141,7 @@ function VizijaPage() {
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
         </nav>
-        <div className="flex items-center gap-2 text-xs tracking-wide">
+        <div className="hidden sm:flex items-center gap-2 text-xs tracking-wide">
           <button
             onClick={() => setLang("bs")}
             className={`hover:text-amber-brand transition ${lang === "bs" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
@@ -155,6 +156,15 @@ function VizijaPage() {
             EN
           </button>
         </div>
+        <MobileNav
+          lang={lang}
+          setLang={setLang}
+          items={[
+            { label: L.nav_home, to: "/" },
+            { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
+            { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+          ]}
+        />
       </header>
 
       <section className="max-w-3xl mx-auto px-6 pt-10 pb-12 text-center">
