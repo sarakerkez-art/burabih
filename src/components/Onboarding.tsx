@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
