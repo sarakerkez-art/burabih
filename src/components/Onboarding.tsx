@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Search } from "lucide-react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
-import { cities, type Children, type Heating, type Lang, type Profile, t } from "@/lib/i18n";
+import { type Children, type Heating, type Lang, type Profile, t } from "@/lib/i18n";
 
 type Props = { lang: Lang; onDone: (p: Profile) => void; onHome?: () => void };
 
