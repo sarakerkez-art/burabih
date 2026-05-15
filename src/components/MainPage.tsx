@@ -130,6 +130,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <WindMark size={20} color="var(--forest)" />
         </button>
         <div className="flex items-center gap-4 text-sm">
+          <Link
+            to="/vizija"
+            className="hidden sm:inline text-muted-foreground hover:text-foreground transition font-medium"
+          >
+            {lang === "bs" ? "Naša vizija" : "Our vision"}
+          </Link>
           <span className="text-muted-foreground">{profile.city}</span>
           <button
             onClick={onEditProfile}
