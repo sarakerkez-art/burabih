@@ -14,11 +14,41 @@ export function Onboarding({ lang, onDone, onHome }: Props) {
   const [city, setCity] = useState("");
   const [children, setChildren] = useState<Children | null>(null);
 
-  const suggestions = useMemo(() => {
-    const q = city.trim().toLowerCase();
-    if (!q) return [];
-    return cities.filter((c) => c.toLowerCase().includes(q) && c.toLowerCase() !== q).slice(0, 5);
-  }, [city]);
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [loadingSug, setLoadingSug] = useState(false);
+
+  useEffect(() => {
+    const q = city.trim();
+    if (q.length < 2) {
+      setSuggestions([]);
+      setLoadingSug(false);
+      return;
+    }
+    const ctrl = new AbortController();
+    const timer = setTimeout(async () => {
+      setLoadingSug(true);
+      try {
+        const url = `https://nominatim.openstreetmap.org/search?format=json&countrycodes=ba&accept-language=${lang}&limit=6&featureType=city&q=${encodeURIComponent(q)}`;
+        const res = await fetch(url, { signal: ctrl.signal, headers: { "Accept": "application/json" } });
+        const data: Array<{ display_name: string; name?: string; type?: string }> = await res.json();
+        const seen = new Set<string>();
+        const names: string[] = [];
+        for (const d of data) {
+          const n = (d.name || d.display_name.split(",")[0] || "").trim();
+          if (n && !seen.has(n.toLowerCase())) {
+            seen.add(n.toLowerCase());
+            names.push(n);
+          }
+        }
+        setSuggestions(names.slice(0, 5));
+      } catch (e) {
+        if ((e as Error).name !== "AbortError") setSuggestions([]);
+      } finally {
+        setLoadingSug(false);
+      }
+    }, 300);
+    return () => { ctrl.abort(); clearTimeout(timer); };
+  }, [city, lang]);
 
   const goChildren = (chosen?: string) => {
     const value = (chosen ?? city).trim();
