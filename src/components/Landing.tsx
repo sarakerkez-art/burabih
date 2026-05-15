@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
 import { SchoolsTeaser } from "./SchoolsTeaser";
+import { MobileNav } from "./MobileNav";
 import type { Lang } from "@/lib/i18n";
 import { t } from "@/lib/i18n";
 
@@ -72,7 +73,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </button>
-        <nav className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+        <nav className="hidden sm:flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
           <Link
             to="/skole"
             className="text-foreground/80 hover:text-foreground transition font-medium"
@@ -92,7 +93,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             {lang === "bs" ? "Zrak u mom gradu" : "Air in my city"}
           </button>
         </nav>
-        <div className="flex items-center gap-2 text-xs tracking-wide">
+        <div className="hidden sm:flex items-center gap-2 text-xs tracking-wide">
           <button
             onClick={() => setLang("bs")}
             className={`hover:text-amber-brand transition ${lang === "bs" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
@@ -107,6 +108,15 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             EN
           </button>
         </div>
+        <MobileNav
+          lang={lang}
+          setLang={setLang}
+          items={[
+            { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
+            { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Zrak u mom gradu" : "Air in my city", onClick: onOpen },
+          ]}
+        />
       </header>
 
       {/* Hero */}
