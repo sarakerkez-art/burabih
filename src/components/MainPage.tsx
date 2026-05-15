@@ -329,6 +329,41 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
+// Apple-Weather-style PM2.5 scale. Stops in µg/m³.
+// 0 green → 12 yellow → 35 orange → 55 red → 150 deep red.
+function PmScale({ value, lang }: { value: number | null; lang: Lang }) {
+  const max = 150;
+  const v = value == null ? 0 : Math.max(0, Math.min(max, value));
+  const pct = (v / max) * 100;
+  const labels = lang === "bs"
+    ? { good: "Dobro", mod: "Umjereno", bad: "Loše", haz: "Opasno" }
+    : { good: "Good", mod: "Moderate", bad: "Unhealthy", haz: "Hazardous" };
+  return (
+    <div className="px-2">
+      <div className="relative h-2 rounded-full overflow-visible"
+        style={{
+          background:
+            "linear-gradient(to right, #34c759 0%, #ffd60a 25%, #ff9f0a 50%, #ff3b30 75%, #8e0e00 100%)",
+        }}
+      >
+        {value != null && (
+          <div
+            className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-white border-2 border-foreground shadow"
+            style={{ left: `${pct}%` }}
+            aria-label={`PM2.5 ${v} µg/m³`}
+          />
+        )}
+      </div>
+      <div className="mt-2 flex justify-between text-[10px] uppercase tracking-wide text-muted-foreground">
+        <span>{labels.good}</span>
+        <span>{labels.mod}</span>
+        <span>{labels.bad}</span>
+        <span>{labels.haz}</span>
+      </div>
+    </div>
+  );
+}
+
 function Win({ label, city, text }: { label: string; city: string; text: string }) {
   return (
     <div className="border-l-2 border-[color:var(--amber-brand)] pl-4">
