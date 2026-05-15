@@ -463,3 +463,14 @@ function buildActions(_p: Profile, lang: Lang): Action[] {
     },
   ];
 }
+
+function parseAdvice(text: string | null): string[] {
+  if (!text) return [];
+  const lines = text
+    .split(/\n+/)
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .map((l) => l.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, "").trim())
+    .filter(Boolean);
+  return lines.length ? lines.slice(0, 3) : [text.trim()];
+}
