@@ -22,17 +22,50 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
 
 export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
-  const [air, setAir] = useState<AirSnapshot | null>(null);
+  const [rawAir, setRawAir] = useState<AirSnapshot | null>(null);
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [demoWinter, setDemoWinter] = useState(false);
   const getAdvice = useServerFn(fetchAdvice);
 
   useEffect(() => {
+    try {
+      if (localStorage.getItem("bura.demoWinter") === "1") setDemoWinter(true);
+    } catch { /* ignore */ }
+  }, []);
+
+  useEffect(() => {
+    try { localStorage.setItem("bura.demoWinter", demoWinter ? "1" : "0"); } catch { /* ignore */ }
+  }, [demoWinter]);
+
+  useEffect(() => {
     let alive = true;
-    fetchAir(profile.city).then((a) => alive && setAir(a));
+    fetchAir(profile.city).then((a) => alive && setRawAir(a));
     return () => { alive = false; };
   }, [profile.city]);
+
+  const WHO_PM25 = 5;
+  const WINTER_PM: Record<string, number> = {
+    Sarajevo: 89,
+    Zenica: 124,
+    Tuzla: 67,
+    Mostar: 31,
+    "Banja Luka": 45,
+  };
+  const air = useMemo<AirSnapshot | null>(() => {
+    if (!rawAir) return rawAir;
+    if (!demoWinter) return rawAir;
+    const pm25 = WINTER_PM[profile.city] ?? rawAir.pm25 ?? 80;
+    return {
+      ...rawAir,
+      pm25,
+      aqi: Math.round(pm25 * 2),
+      temp: rawAir.temp ?? -2,
+      whoMultiplier: Math.max(1, +(pm25 / WHO_PM25).toFixed(1)),
+      stale: false,
+    };
+  }, [rawAir, demoWinter, profile.city]);
 
   useEffect(() => {
     if (air == null) return;
