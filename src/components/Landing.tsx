@@ -146,14 +146,16 @@ export function Landing({ lang, setLang, onOpen }: Props) {
       </section>
 
       {/* What is Bura */}
-      <section id="more" className="px-6 max-w-3xl mx-auto py-20 border-t border-border">
-        <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">
-          {L.what_title}
-        </p>
-        <p className="text-2xl sm:text-3xl leading-snug font-medium">
-          {L.what_p1}
-        </p>
-        <p className="mt-5 text-base text-muted-foreground">{L.what_p2}</p>
+      <section id="more" className="px-6 py-20 border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mb-4">
+            {L.what_title}
+          </p>
+          <p className="text-2xl sm:text-3xl leading-snug font-medium">
+            {L.what_p1}
+          </p>
+          <p className="mt-5 text-base text-muted-foreground">{L.what_p2}</p>
+        </div>
       </section>
 
       {/* Mission */}
