@@ -266,7 +266,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-6 py-14">
-        <div className="max-w-5xl mx-auto grid sm:grid-cols-2 gap-10 text-sm">
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center">
           <div>
             <div className="flex items-center gap-2 font-bold text-lg">
               {tr.brand} <WindMark size={18} color="white" />
@@ -275,6 +275,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <p className="mt-4 text-xs text-white/60 leading-relaxed">{tr.foot_data}</p>
             <p className="mt-3 text-xs italic text-white/70 leading-relaxed">{tr.foot_mission}</p>
           </div>
+          <p className="text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
@@ -287,7 +288,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             </a>
           </div>
         </div>
-        <p className="mt-10 text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
       </footer>
     </div>
   );
