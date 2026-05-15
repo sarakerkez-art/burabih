@@ -35,14 +35,9 @@ function Home() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
+    // Always start on the landing page when the link is opened.
     try {
-      const raw = localStorage.getItem(KEY);
-      if (raw) {
-        setProfile(JSON.parse(raw));
-        setStarted(true);
-      } else if (sessionStorage.getItem(SKEY) === "1") {
-        setStarted(true);
-      }
+      sessionStorage.removeItem(SKEY);
       const l = localStorage.getItem(LKEY) as Lang | null;
       if (l === "bs" || l === "en") setLang(l);
     } catch { /* ignore */ }
