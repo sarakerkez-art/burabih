@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   Flame, Wind, Baby, Satellite, Signal, Users, Bot,
   HelpCircle, MapPin, Camera, Recycle, Award, Leaf, Github,
-  Pencil,
+  Pencil, Loader2,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 
@@ -10,7 +10,7 @@ import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchAdvice, type AdviceItem } from "@/lib/advice.functions";
+import { fetchAdvice } from "@/lib/advice.functions";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
@@ -23,8 +23,9 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
 export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
-  const [aiActions, setAiActions] = useState<AdviceItem[] | null>(null);
+  const [aiText, setAiText] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
   const getAdvice = useServerFn(fetchAdvice);
 
   useEffect(() => {
@@ -37,17 +38,25 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
     if (air == null) return;
     let alive = true;
     setAiLoading(true);
+    setAiError(null);
+    setAiText(null);
     getAdvice({
       data: {
         city: profile.city,
         heating: profile.heating,
         children: profile.children,
         pm25: air.pm25,
+        temp: air.temp ?? null,
+        hour: new Date().getHours(),
         lang,
       },
     })
-      .then((r) => { if (alive && r.ok && r.items.length) setAiActions(r.items); })
-      .catch(() => {})
+      .then((r) => {
+        if (!alive) return;
+        if (r.ok) setAiText(r.text);
+        else setAiError(r.error ?? "AI nedostupan");
+      })
+      .catch((e) => { if (alive) setAiError(String(e?.message ?? e)); })
       .finally(() => { if (alive) setAiLoading(false); });
     return () => { alive = false; };
   }, [air, profile.city, profile.heating, profile.children, lang, getAdvice]);
@@ -72,10 +81,8 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
     return tr.greet_default(profile.city, pmStr, x);
   }, [profile, x, pmStr, tr]);
 
+  const aiItems = useMemo(() => parseAdvice(aiText), [aiText]);
   const fallbackActions = buildActions(profile, lang);
-  const actions = aiActions
-    ? aiActions.map((a) => ({ icon: <Wind size={22} />, title: a.title, tag: a.tag, text: a.text }))
-    : fallbackActions;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -127,31 +134,55 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
-      {/* Section B, Actions */}
+      {/* Section B, AI Actions */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
           {tr.actions_sub(profile.city, famLabel, heatLabel)}
-          {aiLoading && !aiActions && (
-            <span className="ml-2 text-amber-brand">· {lang === "bs" ? "personalizujem savjete..." : "personalizing advice..."}</span>
-          )}
         </p>
-        <ul className="mt-10 flex flex-col gap-8">
-          {actions.map((a, i) => (
-            <li key={i} className="flex gap-4">
-              <IconBox>{a.icon}</IconBox>
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
-                  <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">
-                    {a.tag}
-                  </span>
+
+        {aiLoading && (
+          <div className="mt-10 flex items-center gap-3 text-muted-foreground">
+            <Loader2 size={18} className="animate-spin text-amber-brand" />
+            <span className="text-sm">
+              {lang === "bs" ? "Buri priprema vaše savjete..." : "Buri is preparing your advice..."}
+            </span>
+          </div>
+        )}
+
+        {!aiLoading && aiItems.length > 0 && (
+          <ul className="mt-10 flex flex-col gap-8">
+            {aiItems.map((text, i) => (
+              <li key={i} className="flex gap-4">
+                <IconBox><Wind size={22} /></IconBox>
+                <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {!aiLoading && aiItems.length === 0 && (
+          <ul className="mt-10 flex flex-col gap-8">
+            {fallbackActions.map((a, i) => (
+              <li key={i} className="flex gap-4">
+                <IconBox>{a.icon}</IconBox>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
+                    <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{a.tag}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {aiError && !aiLoading && (
+          <p className="mt-4 text-xs text-muted-foreground italic">
+            {lang === "bs" ? "Prikazujemo opće savjete (AI trenutno nedostupan)." : "Showing general advice (AI temporarily unavailable)."}
+          </p>
+        )}
       </section>
 
       {/* Section C, Live data strip */}
@@ -431,4 +462,15 @@ function buildActions(_p: Profile, lang: Lang): Action[] {
         : "The more people understand the patterns, the less smoke at night in your building.",
     },
   ];
+}
+
+function parseAdvice(text: string | null): string[] {
+  if (!text) return [];
+  const lines = text
+    .split(/\n+/)
+    .map((l) => l.trim())
+    .filter(Boolean)
+    .map((l) => l.replace(/^\s*(?:\d+[.)]|[-*•])\s*/, "").trim())
+    .filter(Boolean);
+  return lines.length ? lines.slice(0, 3) : [text.trim()];
 }
