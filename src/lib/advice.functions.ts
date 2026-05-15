@@ -29,7 +29,11 @@ export const fetchAdvice = createServerFn({ method: "POST" })
   }) => d)
   .handler(async ({ data }): Promise<AdviceResult> => {
     const key = process.env.ANTHROPIC_API_KEY;
-    if (!key) return { ok: false, text: "", error: "Missing ANTHROPIC_API_KEY" };
+    console.log("[advice] ANTHROPIC_API_KEY defined:", Boolean(key));
+    if (!key) {
+      console.error("[advice] Exact error: Missing ANTHROPIC_API_KEY");
+      return { ok: false, text: "", error: "Missing ANTHROPIC_API_KEY" };
+    }
 
     const pm = data.pm25 != null ? data.pm25.toFixed(0) : "nepoznato";
     const temp = data.temp != null ? `${data.temp}°C` : "nepoznata";
@@ -56,25 +60,30 @@ Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
           "anthropic-version": "2023-06-01",
         },
         body: JSON.stringify({
-          model: "claude-3-5-sonnet-20241022",
+          model: "claude-sonnet-4-20250514",
           max_tokens: 1000,
           messages: [{ role: "user", content: prompt }],
         }),
       });
       if (!res.ok) {
         const t = await res.text();
-        console.error("[advice] Anthropic error", res.status, t);
+        const message = `Anthropic ${res.status}: ${t}`;
+        console.error("[advice] Exact error:", message);
+        console.error("[advice] Full API response:", t);
         return { ok: false, text: "", error: `Anthropic ${res.status}: ${t.slice(0, 300)}` };
       }
       const j: any = await res.json();
+      console.log("[advice] Full API response:", JSON.stringify(j));
       const text: string = (j?.content?.[0]?.text ?? "").trim();
       if (!text) {
-        console.error("[advice] Empty response", JSON.stringify(j).slice(0, 300));
+        console.error("[advice] Exact error: Empty response");
+        console.error("[advice] Full API response:", JSON.stringify(j));
         return { ok: false, text: "", error: "Empty response" };
       }
       return { ok: true, text };
     } catch (e: any) {
-      console.error("[advice] Fetch failed", e);
+      console.error("[advice] Exact error:", String(e?.message ?? e));
+      console.error("[advice] Full API response: No response received", e);
       return { ok: false, text: "", error: String(e?.message ?? e) };
     }
   });
