@@ -23,8 +23,9 @@ const IconBox = ({ children }: { children: React.ReactNode }) => (
 export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Props) {
   const tr = t(lang);
   const [air, setAir] = useState<AirSnapshot | null>(null);
-  const [aiActions, setAiActions] = useState<AdviceItem[] | null>(null);
+  const [aiText, setAiText] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
+  const [aiError, setAiError] = useState<string | null>(null);
   const getAdvice = useServerFn(fetchAdvice);
 
   useEffect(() => {
@@ -37,17 +38,25 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
     if (air == null) return;
     let alive = true;
     setAiLoading(true);
+    setAiError(null);
+    setAiText(null);
     getAdvice({
       data: {
         city: profile.city,
         heating: profile.heating,
         children: profile.children,
         pm25: air.pm25,
+        temp: air.temp ?? null,
+        hour: new Date().getHours(),
         lang,
       },
     })
-      .then((r) => { if (alive && r.ok && r.items.length) setAiActions(r.items); })
-      .catch(() => {})
+      .then((r) => {
+        if (!alive) return;
+        if (r.ok) setAiText(r.text);
+        else setAiError(r.error ?? "AI nedostupan");
+      })
+      .catch((e) => { if (alive) setAiError(String(e?.message ?? e)); })
       .finally(() => { if (alive) setAiLoading(false); });
     return () => { alive = false; };
   }, [air, profile.city, profile.heating, profile.children, lang, getAdvice]);
