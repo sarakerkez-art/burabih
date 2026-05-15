@@ -10,6 +10,7 @@ import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
+import { Link } from "@tanstack/react-router";
 import { fetchAdvice } from "@/lib/advice.functions";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
@@ -130,6 +131,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <WindMark size={20} color="var(--forest)" />
         </button>
         <div className="flex items-center gap-4 text-sm">
+          <Link
+            to="/vizija"
+            className="hidden sm:inline text-muted-foreground hover:text-foreground transition font-medium"
+          >
+            {lang === "bs" ? "Naša vizija" : "Our vision"}
+          </Link>
           <span className="text-muted-foreground">{profile.city}</span>
           <button
             onClick={onEditProfile}

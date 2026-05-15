@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VizijaRouteImport } from './routes/vizija'
 import { Route as SkoleRouteImport } from './routes/skole'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VizijaRoute = VizijaRouteImport.update({
+  id: '/vizija',
+  path: '/vizija',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SkoleRoute = SkoleRouteImport.update({
   id: '/skole',
   path: '/skole',
@@ -26,31 +32,42 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/skole': typeof SkoleRoute
+  '/vizija': typeof VizijaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/skole': typeof SkoleRoute
+  '/vizija': typeof VizijaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/skole': typeof SkoleRoute
+  '/vizija': typeof VizijaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/skole'
+  fullPaths: '/' | '/skole' | '/vizija'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/skole'
-  id: '__root__' | '/' | '/skole'
+  to: '/' | '/skole' | '/vizija'
+  id: '__root__' | '/' | '/skole' | '/vizija'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SkoleRoute: typeof SkoleRoute
+  VizijaRoute: typeof VizijaRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vizija': {
+      id: '/vizija'
+      path: '/vizija'
+      fullPath: '/vizija'
+      preLoaderRoute: typeof VizijaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/skole': {
       id: '/skole'
       path: '/skole'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SkoleRoute: SkoleRoute,
+  VizijaRoute: VizijaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
