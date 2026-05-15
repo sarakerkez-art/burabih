@@ -35,18 +35,30 @@ export const fetchAdvice = createServerFn({ method: "POST" })
       return { ok: false, text: "", error: "Missing ANTHROPIC_API_KEY" };
     }
 
-    const pm = data.pm25 != null ? data.pm25.toFixed(0) : "nepoznato";
-    const temp = data.temp != null ? `${data.temp}°C` : "nepoznata";
+    const isEn = data.lang === "en";
+    const pm = data.pm25 != null ? data.pm25.toFixed(0) : (isEn ? "unknown" : "nepoznato");
+    const temp = data.temp != null ? `${data.temp}°C` : (isEn ? "unknown" : "nepoznata");
     const tod = timeOfDay(data.hour, data.lang);
 
     let toneRule = "";
     if (data.pm25 != null) {
-      if (data.pm25 < 15) toneRule = "Zrak je čist, koristi prijateljski i pozitivan ton.";
-      else if (data.pm25 <= 35) toneRule = "Zrak je umjeren, koristi oprezan ton sa praktičnim mjerama predostrožnosti.";
-      else toneRule = "Zrak je jako zagađen, koristi hitan zaštitnički ton, fokus na zaštitu djece i ranjivih.";
+      if (isEn) {
+        if (data.pm25 < 15) toneRule = "Air is clean, use a friendly and positive tone.";
+        else if (data.pm25 <= 35) toneRule = "Air is moderate, use a cautious tone with practical precautions.";
+        else toneRule = "Air is heavily polluted, use an urgent protective tone, focus on protecting children and vulnerable people.";
+      } else {
+        if (data.pm25 < 15) toneRule = "Zrak je čist, koristi prijateljski i pozitivan ton.";
+        else if (data.pm25 <= 35) toneRule = "Zrak je umjeren, koristi oprezan ton sa praktičnim mjerama predostrožnosti.";
+        else toneRule = "Zrak je jako zagađen, koristi hitan zaštitnički ton, fokus na zaštitu djece i ranjivih.";
+      }
     }
 
-    const prompt = `Ti si Buri, AI asistent za kvalitet zraka u BiH. PM2.5 u ${data.city} je ${pm} µg/m³, temperatura je ${temp}, doba dana je ${tod}, grijanje: ${data.heating}, djeca: ${data.children}.
+    const prompt = isEn
+      ? `You are Buri, an AI air-quality assistant for Bosnia and Herzegovina. PM2.5 in ${data.city} is ${pm} µg/m³, temperature is ${temp}, time of day is ${tod}, heating: ${data.heating}, children: ${data.children}.
+Write 3 concrete pieces of advice in English for this family today. Be specific with times. Maximum 100 words.
+${toneRule}
+No dashes (—). No intro. Return only a numbered list 1. 2. 3.`
+      : `Ti si Buri, AI asistent za kvalitet zraka u BiH. PM2.5 u ${data.city} je ${pm} µg/m³, temperatura je ${temp}, doba dana je ${tod}, grijanje: ${data.heating}, djeca: ${data.children}.
 Napiši 3 konkretna savjeta na bosanskom za ovu porodicu danas. Budi specifican sa vremenima. Maksimalno 100 rijeci.
 ${toneRule}
 Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
