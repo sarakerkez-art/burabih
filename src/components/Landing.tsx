@@ -72,7 +72,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </button>
-        <nav className="hidden sm:flex items-center gap-6 text-sm">
+        <nav className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
           <Link
             to="/skole"
             className="text-foreground/80 hover:text-foreground transition font-medium"

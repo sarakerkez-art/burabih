@@ -133,7 +133,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <div className="flex items-center gap-4 text-sm">
           <Link
             to="/vizija"
-            className="hidden sm:inline text-muted-foreground hover:text-foreground transition font-medium"
+            className="text-muted-foreground hover:text-foreground transition font-medium text-xs sm:text-sm"
           >
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
