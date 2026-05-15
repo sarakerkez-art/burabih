@@ -81,9 +81,13 @@ Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
         return { ok: false, text: "", error: "Empty response" };
       }
       return { ok: true, text };
-    } catch (e: any) {
-      console.error("[advice] Exact error:", String(e?.message ?? e));
-      console.error("[advice] Full API response: No response received", e);
-      return { ok: false, text: "", error: String(e?.message ?? e) };
+    } catch (error: any) {
+      console.log('[advice] Error type:', error?.constructor?.name);
+      console.log('[advice] Error message:', error?.message);
+      console.log('[advice] Full error:', JSON.stringify(error, null, 2));
+      console.log('[advice] Status:', error?.status);
+      console.error("[advice] Exact error:", String(error?.message ?? error));
+      console.error("[advice] Full API response: No response received", error);
+      return { ok: false, text: "", error: String(error?.message ?? error) };
     }
   });
