@@ -134,31 +134,55 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         </div>
       </section>
 
-      {/* Section B, Actions */}
+      {/* Section B, AI Actions */}
       <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
         <p className="text-sm text-muted-foreground mt-2">
           {tr.actions_sub(profile.city, famLabel, heatLabel)}
-          {aiLoading && !aiActions && (
-            <span className="ml-2 text-amber-brand">· {lang === "bs" ? "personalizujem savjete..." : "personalizing advice..."}</span>
-          )}
         </p>
-        <ul className="mt-10 flex flex-col gap-8">
-          {actions.map((a, i) => (
-            <li key={i} className="flex gap-4">
-              <IconBox>{a.icon}</IconBox>
-              <div className="flex-1">
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
-                  <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">
-                    {a.tag}
-                  </span>
+
+        {aiLoading && (
+          <div className="mt-10 flex items-center gap-3 text-muted-foreground">
+            <Loader2 size={18} className="animate-spin text-amber-brand" />
+            <span className="text-sm">
+              {lang === "bs" ? "Buri priprema vaše savjete..." : "Buri is preparing your advice..."}
+            </span>
+          </div>
+        )}
+
+        {!aiLoading && aiItems.length > 0 && (
+          <ul className="mt-10 flex flex-col gap-8">
+            {aiItems.map((text, i) => (
+              <li key={i} className="flex gap-4">
+                <IconBox><Wind size={22} /></IconBox>
+                <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {!aiLoading && aiItems.length === 0 && (
+          <ul className="mt-10 flex flex-col gap-8">
+            {fallbackActions.map((a, i) => (
+              <li key={i} className="flex gap-4">
+                <IconBox>{a.icon}</IconBox>
+                <div className="flex-1">
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                    <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
+                    <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{a.tag}</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
                 </div>
-                <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {aiError && !aiLoading && (
+          <p className="mt-4 text-xs text-muted-foreground italic">
+            {lang === "bs" ? "Prikazujemo opće savjete (AI trenutno nedostupan)." : "Showing general advice (AI temporarily unavailable)."}
+          </p>
+        )}
       </section>
 
       {/* Section C, Live data strip */}
