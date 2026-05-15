@@ -70,7 +70,10 @@ Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
         const message = `Anthropic ${res.status}: ${t}`;
         console.error("[advice] Exact error:", message);
         console.error("[advice] Full API response:", t);
-        return { ok: false, text: "", error: `Anthropic ${res.status}: ${t.slice(0, 300)}` };
+        const error = new Error(message) as Error & { status?: number; apiResponse?: string };
+        error.status = res.status;
+        error.apiResponse = t;
+        throw error;
       }
       const j: any = await res.json();
       console.log("[advice] Full API response:", JSON.stringify(j));
