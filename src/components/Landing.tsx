@@ -259,9 +259,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         >
           {L.cta_open} →
         </button>
-        <p className="mt-6 text-sm text-muted-foreground">
-          {L.final_tag}
-        </p>
       </section>
 
       {/* Footer */}
