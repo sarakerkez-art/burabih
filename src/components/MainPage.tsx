@@ -10,7 +10,7 @@ import { Buri } from "@/components/Buri";
 import { fetchAir, type AirSnapshot } from "@/lib/air";
 import { type Lang, type Profile, t } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
-import { fetchAdvice, type AdviceItem } from "@/lib/advice.functions";
+import { fetchAdvice } from "@/lib/advice.functions";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
