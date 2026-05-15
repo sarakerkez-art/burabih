@@ -139,7 +139,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           >
             <Pencil size={16} />
           </button>
-          <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer select-none" title="Demo winter mode">
+          <label
+            className="group relative flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer select-none"
+          >
             <input
               type="checkbox"
               checked={demoWinter}
@@ -147,6 +149,14 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
               className="accent-amber-brand"
             />
             ❄
+            <span
+              role="tooltip"
+              className="pointer-events-none absolute top-full right-0 mt-2 w-56 rounded-lg bg-foreground text-background text-[11px] leading-snug px-3 py-2 shadow-lg opacity-0 translate-y-1 transition-all duration-150 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0 z-20"
+            >
+              {lang === "bs"
+                ? "Uključi za simulirane zimske vrijednosti zraka."
+                : "Toggle to mock winter air values."}
+            </span>
           </label>
           <button
             onClick={() => setLang(lang === "bs" ? "en" : "bs")}
