@@ -57,6 +57,8 @@ function Home() {
   };
 
   const handleOpen = () => {
+    setProfile(null);
+    try { localStorage.removeItem(KEY); } catch { /* ignore */ }
     setStarted(true);
     try { sessionStorage.setItem(SKEY, "1"); } catch { /* ignore */ }
   };
