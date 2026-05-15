@@ -251,6 +251,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <Stat label={tr.live_aqi} value={air?.aqi != null ? String(air.aqi) : "-"} />
           <Stat label={tr.live_temp} value={air?.temp ? `${air.temp}°` : "-"} />
         </div>
+        <div className="max-w-2xl mx-auto mt-5">
+          <PmScale value={pm} lang={lang} />
+        </div>
         <p className="text-center text-xs text-muted-foreground mt-4">
           {air?.stale
             ? tr.live_stale
