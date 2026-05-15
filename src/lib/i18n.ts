@@ -137,6 +137,7 @@ const bs = {
   foot_mission: "Bura ne optužuje. Bura čini nevidljivo vidljivim.",
   foot_founder: "",
   foot_bottom: "Svaki dah je važan.",
+  foot_disclaimer: "Ovo je prototip. Podaci i preporuke služe isključivo u demonstrativne svrhe i možda ne odražavaju stvarno stanje kvaliteta zraka u realnom vremenu.",
   edit_profile: "Uredi profil",
 
   // Schools teaser (main page)
@@ -293,6 +294,7 @@ const en: typeof bs = {
   foot_mission: "Bura doesn't accuse. Bura makes the invisible visible.",
   foot_founder: "",
   foot_bottom: "Every breath matters.",
+  foot_disclaimer: "This is a prototype. Data and recommendations are for demonstration purposes only and may not reflect real-time air quality conditions.",
   edit_profile: "Edit profile",
 
   schools_teaser_label: "SCHOOLS IN ACTION",
