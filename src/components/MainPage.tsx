@@ -194,31 +194,32 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       </section>
 
       {/* Section B, AI Actions */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
-        <p className="text-sm text-muted-foreground mt-2">
-          {tr.actions_sub(profile.city, famLabel, heatLabel)}
-        </p>
+      <section className="px-5 sm:px-8 py-16 sm:py-24">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
+          <p className="text-sm text-muted-foreground mt-2">
+            {tr.actions_sub(profile.city, famLabel, heatLabel)}
+          </p>
 
-        {aiLoading && (
-          <div className="mt-10 flex items-center gap-3 text-muted-foreground">
-            <Loader2 size={18} className="animate-spin text-amber-brand" />
-            <span className="text-sm">
-              {lang === "bs" ? "Buri priprema vaše savjete..." : "Buri is preparing your advice..."}
-            </span>
-          </div>
-        )}
+          {aiLoading && (
+            <div className="mt-10 flex items-center gap-3 text-muted-foreground">
+              <Loader2 size={18} className="animate-spin text-amber-brand" />
+              <span className="text-sm">
+                {lang === "bs" ? "Buri priprema vaše savjete..." : "Buri is preparing your advice..."}
+              </span>
+            </div>
+          )}
 
-        {!aiLoading && aiItems.length > 0 && (
-          <ul className="mt-10 flex flex-col gap-8">
-            {aiItems.map((text, i) => (
-              <li key={i} className="flex gap-4">
-                <IconBox><Wind size={22} /></IconBox>
-                <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
-              </li>
-            ))}
-          </ul>
-        )}
+          {!aiLoading && aiItems.length > 0 && (
+            <ul className="mt-10 flex flex-col gap-8">
+              {aiItems.map((text, i) => (
+                <li key={i} className="flex gap-4">
+                  <IconBox><Wind size={22} /></IconBox>
+                  <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
+                </li>
+              ))}
+            </ul>
+          )}
 
         {!aiLoading && aiItems.length === 0 && (
           <ul className="mt-10 flex flex-col gap-8">
@@ -237,11 +238,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           </ul>
         )}
 
-        {aiError && !aiLoading && (
-          <p className="mt-4 text-xs text-muted-foreground italic">
-            {lang === "bs" ? "Prikazujemo opće savjete (AI trenutno nedostupan)." : "Showing general advice (AI temporarily unavailable)."}
-          </p>
-        )}
+          {aiError && !aiLoading && (
+            <p className="mt-4 text-xs text-muted-foreground italic">
+              {lang === "bs" ? "Prikazujemo opće savjete (AI trenutno nedostupan)." : "Showing general advice (AI temporarily unavailable)."}
+            </p>
+          )}
+        </div>
       </section>
 
       {/* Section C, Live data strip */}
@@ -262,12 +264,14 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       </section>
 
       {/* Section D, Why */}
-      <section className="px-5 sm:px-8 py-16 sm:py-24 max-w-2xl mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.why_title}</h2>
-        <p className="mt-5 text-base leading-relaxed text-foreground/85">
-          {tr.why_text(air?.temp != null ? String(air.temp) : "−2")}
-        </p>
-        <p className="mt-4 text-xs text-muted-foreground">{tr.why_source}</p>
+      <section className="px-5 sm:px-8 py-16 sm:py-24">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.why_title}</h2>
+          <p className="mt-5 text-base leading-relaxed text-foreground/85">
+            {tr.why_text(air?.temp != null ? String(air.temp) : "−2")}
+          </p>
+          <p className="mt-4 text-xs text-muted-foreground">{tr.why_source}</p>
+        </div>
       </section>
 
       {/* Section E, Every breath matters */}
