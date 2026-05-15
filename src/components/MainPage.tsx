@@ -139,6 +139,15 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           >
             <Pencil size={16} />
           </button>
+          <label className="flex items-center gap-1.5 text-xs text-muted-foreground cursor-pointer select-none" title="Demo winter mode">
+            <input
+              type="checkbox"
+              checked={demoWinter}
+              onChange={(e) => setDemoWinter(e.target.checked)}
+              className="accent-amber-brand"
+            />
+            ❄
+          </label>
           <button
             onClick={() => setLang(lang === "bs" ? "en" : "bs")}
             className="font-medium tracking-wide hover:text-accent transition"
@@ -147,6 +156,13 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           </button>
         </div>
       </header>
+
+      {/* Demo winter mode banner */}
+      {demoWinter && (
+        <div className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-2 text-xs sm:text-sm text-center">
+          ❄ {lang === "bs" ? "Demo zimski mod — ilustrativni zimski podaci" : "Demo winter mode — illustrative winter data"}
+        </div>
+      )}
 
       {/* Amber alert banner */}
       {showAlert && (
