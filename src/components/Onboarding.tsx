@@ -140,14 +140,12 @@ export function Onboarding({ lang, onDone, onHome }: Props) {
                   placeholder={L.cityPh}
                   autoFocus
                   className="flex-1 bg-transparent text-base focus:outline-none"
-                  list="bura-cities"
                 />
               </div>
-              <datalist id="bura-cities">
-                {cities.filter((c) => c !== "Drugo").map((c) => (
-                  <option key={c} value={c} />
-                ))}
-              </datalist>
+
+              {loadingSug && city.trim().length >= 2 && suggestions.length === 0 && (
+                <p className="mt-3 text-xs text-muted-foreground">…</p>
+              )}
 
               {suggestions.length > 0 && (
                 <ul className="mt-3 flex flex-wrap gap-2">
