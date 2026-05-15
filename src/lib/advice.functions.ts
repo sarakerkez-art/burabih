@@ -51,25 +51,30 @@ Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           "x-api-key": key,
           "anthropic-version": "2023-06-01",
-          "content-type": "application/json",
         },
         body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 600,
+          model: "claude-3-5-sonnet-20241022",
+          max_tokens: 1000,
           messages: [{ role: "user", content: prompt }],
         }),
       });
       if (!res.ok) {
         const t = await res.text();
-        return { ok: false, text: "", error: `Anthropic ${res.status}: ${t.slice(0, 200)}` };
+        console.error("[advice] Anthropic error", res.status, t);
+        return { ok: false, text: "", error: `Anthropic ${res.status}: ${t.slice(0, 300)}` };
       }
       const j: any = await res.json();
       const text: string = (j?.content?.[0]?.text ?? "").trim();
-      if (!text) return { ok: false, text: "", error: "Empty response" };
+      if (!text) {
+        console.error("[advice] Empty response", JSON.stringify(j).slice(0, 300));
+        return { ok: false, text: "", error: "Empty response" };
+      }
       return { ok: true, text };
     } catch (e: any) {
+      console.error("[advice] Fetch failed", e);
       return { ok: false, text: "", error: String(e?.message ?? e) };
     }
   });
