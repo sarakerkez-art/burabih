@@ -311,7 +311,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
           </div>
-          <p className="text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
+          <p className="text-left sm:text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
@@ -324,7 +324,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             </a>
           </div>
         </div>
-        <p className="max-w-3xl mx-auto mt-10 text-center text-xs italic text-white/60 leading-relaxed">
+        <p className="max-w-3xl mx-auto mt-10 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
           {tr.foot_disclaimer}
         </p>
       </footer>
