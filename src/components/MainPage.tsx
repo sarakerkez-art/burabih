@@ -317,6 +317,9 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             </a>
           </div>
         </div>
+        <p className="max-w-3xl mx-auto mt-10 text-center text-xs italic text-white/60 leading-relaxed">
+          {tr.foot_disclaimer}
+        </p>
       </footer>
     </div>
   );
