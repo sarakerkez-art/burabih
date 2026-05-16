@@ -66,21 +66,50 @@ function SkolePage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <header className="px-5 sm:px-8 py-5 flex items-center justify-between">
+      <header className="px-6 py-6 flex items-center justify-between max-w-6xl mx-auto">
         <Link to="/" className="flex items-center gap-2 hover:opacity-75 transition" aria-label="Bura, home">
           <span className="font-bold text-xl tracking-tight">{tr.brand}</span>
           <WindMark size={20} color="var(--forest)" />
         </Link>
-        <button
-          onClick={() => setLang(lang === "bs" ? "en" : "bs")}
-          className="text-sm font-medium tracking-wide hover:text-accent transition"
-        >
-          {lang === "bs" ? "BHS · EN" : "EN · BHS"}
-        </button>
+        <nav className="hidden sm:flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+          <Link to="/" className="text-foreground/80 hover:text-foreground transition font-medium">
+            {lang === "bs" ? "Početna" : "Home"}
+          </Link>
+          <Link to="/skole" className="text-foreground hover:text-foreground transition font-semibold">
+            {lang === "bs" ? "Škole" : "Schools"}
+          </Link>
+          <Link to="/vizija" className="text-foreground/80 hover:text-foreground transition font-medium">
+            {lang === "bs" ? "Naša vizija" : "Our vision"}
+          </Link>
+        </nav>
+        <div className="hidden sm:flex items-center gap-2 text-xs tracking-wide">
+          <button
+            onClick={() => setLang("bs")}
+            className={`hover:text-amber-brand transition ${lang === "bs" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+          >
+            BHS
+          </button>
+          <span className="text-muted-foreground">·</span>
+          <button
+            onClick={() => setLang("en")}
+            className={`hover:text-amber-brand transition ${lang === "en" ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+          >
+            EN
+          </button>
+        </div>
+        <MobileNav
+          lang={lang}
+          setLang={setLang}
+          items={[
+            { label: lang === "bs" ? "Početna" : "Home", to: "/" },
+            { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
+            { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+          ]}
+        />
       </header>
 
       {/* Hero */}
-      <section className="bg-[color:var(--teal-brand)] text-white px-5 sm:px-8 py-16 sm:py-24">
+      <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">
             {tr.schools_hero_title}
