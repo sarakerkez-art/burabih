@@ -499,15 +499,32 @@ function ReportForm({ tr }: { tr: ReturnType<typeof t> }) {
   );
 }
 
-function SignupForm({ tr }: { tr: ReturnType<typeof t> }) {
+function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   if (done) {
-    return <p className="mt-8 text-amber-brand">{tr.sub_done}</p>;
+    return <p className="mt-8 text-amber-brand whitespace-pre-line">{tr.sub_done}</p>;
   }
   return (
     <form
-      onSubmit={(e) => { e.preventDefault(); if (email.includes("@")) setDone(true); }}
+      onSubmit={async (e) => {
+        e.preventDefault();
+        if (!email.includes("@") || loading) return;
+        setLoading(true);
+        setError(null);
+        try {
+          const { joinWaitlist } = await import("@/lib/waitlist.functions");
+          await joinWaitlist({ data: { email, city } });
+          setDone(true);
+        } catch (err) {
+          console.error(err);
+          setError("Greška. Pokušajte ponovo.");
+        } finally {
+          setLoading(false);
+        }
+      }}
       className="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
     >
       <input
@@ -518,9 +535,13 @@ function SignupForm({ tr }: { tr: ReturnType<typeof t> }) {
         onChange={(e) => setEmail(e.target.value)}
         className="flex-1 bg-white text-foreground border border-white/20 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-amber-brand"
       />
-      <button className="bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-6 py-3 rounded-full text-sm hover:brightness-95 transition">
-        {tr.sub_cta}
+      <button
+        disabled={loading}
+        className="bg-amber-brand text-[color:var(--accent-foreground)] font-semibold px-6 py-3 rounded-full text-sm hover:brightness-95 transition disabled:opacity-60"
+      >
+        {loading ? "..." : tr.sub_cta}
       </button>
+      {error && <p className="text-xs text-red-200 sm:basis-full">{error}</p>}
     </form>
   );
 }
