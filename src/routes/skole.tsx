@@ -194,14 +194,14 @@ function SkolePage() {
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
-        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center">
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">
           <div>
             <div className="flex items-center gap-2 font-bold text-lg">
               {tr.brand} <WindMark size={18} color="white" />
             </div>
             <p className="mt-3 text-white/70">{tr.foot_tag}</p>
           </div>
-          <p className="text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
+          <p className="sm:text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
