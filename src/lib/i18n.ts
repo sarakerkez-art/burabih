@@ -269,7 +269,7 @@ const en: typeof bs = {
   sub_email: "Your email",
   sub_cta: "Get morning messages",
   sub_note: "Free. Your data is safe. Unsubscribe anytime.",
-  sub_done: "You're in. See you tomorrow at 7am.",
+  sub_done: "Thanks! Buri is waiting for you. We'll be in touch soon. 🌬️",
 
   hiw_title: "Open data. Open code. Free forever.",
   hiw_a: "Satellites watch from above",
