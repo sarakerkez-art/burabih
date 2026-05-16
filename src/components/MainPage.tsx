@@ -308,7 +308,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <div className="flex justify-center"><WindMark size={28} color="white" /></div>
           <h2 className="mt-5 text-2xl sm:text-3xl font-bold tracking-tight">{tr.sub_title}</h2>
           <p className="mt-4 text-amber-brand text-base">{tr.sub_sub}</p>
-          <SignupForm tr={tr} />
+          <SignupForm tr={tr} city={profile.city} />
           <p className="mt-4 text-xs italic text-white/70">{tr.sub_note}</p>
         </div>
       </section>
