@@ -349,6 +349,4 @@ const en: typeof bs = {
   schools_form_email: "EMAIL",
   schools_form_cta: "Sign up your school",
   schools_form_done: "Thank you! We will contact you within 48 hours.",
-  schools_form_count: (n: number) =>
-    `So far we have received ${n} applications from schools across BiH. Be the first.`,
 };
