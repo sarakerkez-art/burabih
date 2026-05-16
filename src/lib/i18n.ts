@@ -196,8 +196,6 @@ const bs = {
   schools_form_email: "EMAIL",
   schools_form_cta: "Prijavite svoju školu",
   schools_form_done: "Hvala! Kontaktirat ćemo vas u roku 48 sati.",
-  schools_form_count: (n: number) =>
-    `Do sada primili smo ${n} prijava od škola širom BiH. Budite prvi.`,
 };
 
 const en: typeof bs = {
@@ -351,6 +349,4 @@ const en: typeof bs = {
   schools_form_email: "EMAIL",
   schools_form_cta: "Sign up your school",
   schools_form_done: "Thank you! We will contact you within 48 hours.",
-  schools_form_count: (n: number) =>
-    `So far we have received ${n} applications from schools across BiH. Be the first.`,
 };
