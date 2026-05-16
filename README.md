@@ -1,6 +1,6 @@
 # Bura 🌬️
 
-A guidance-first air quality companion for families in Bosnia & Herzegovina.
+Turning air quality data into simple daily guidance for families in Bosnia & Herzegovina
 
 Know what you breathe. Protect what you love.
 
