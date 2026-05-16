@@ -44,6 +44,27 @@ export type Database = {
         }
         Relationships: []
       }
+      waitlist: {
+        Row: {
+          city: string | null
+          created_at: string
+          email: string
+          id: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          email: string
+          id?: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
