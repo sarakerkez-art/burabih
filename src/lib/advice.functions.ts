@@ -17,6 +17,16 @@ function timeOfDay(hour: number, lang: "bs" | "en"): string {
   return "evening";
 }
 
+const CYR_MAP: Record<string, string> = {
+  а:"a",б:"b",в:"v",г:"g",д:"d",ђ:"đ",е:"e",ж:"ž",з:"z",и:"i",ј:"j",к:"k",л:"l",љ:"lj",м:"m",
+  н:"n",њ:"nj",о:"o",п:"p",р:"r",с:"s",т:"t",ћ:"ć",у:"u",ф:"f",х:"h",ц:"c",ч:"č",џ:"dž",ш:"š",
+  А:"A",Б:"B",В:"V",Г:"G",Д:"D",Ђ:"Đ",Е:"E",Ж:"Ž",З:"Z",И:"I",Ј:"J",К:"K",Л:"L",Љ:"Lj",М:"M",
+  Н:"N",Њ:"Nj",О:"O",П:"P",Р:"R",С:"S",Т:"T",Ћ:"Ć",У:"U",Ф:"F",Х:"H",Ц:"C",Ч:"Č",Џ:"Dž",Ш:"Š",
+};
+function cyrillicToLatin(s: string): string {
+  return s.replace(/[\u0400-\u04FF]/g, (ch) => CYR_MAP[ch] ?? ch);
+}
+
 export const fetchAdvice = createServerFn({ method: "POST" })
   .inputValidator((d: {
     city: string;
@@ -59,9 +69,9 @@ Write 3 concrete pieces of advice in English for this family today. Be specific 
 ${toneRule}
 No dashes (—). No intro. Return only a numbered list 1. 2. 3.`
       : `Ti si Buri, AI asistent za kvalitet zraka u BiH. PM2.5 u ${data.city} je ${pm} µg/m³, temperatura je ${temp}, doba dana je ${tod}, grijanje: ${data.heating}, djeca: ${data.children}.
-Napiši 3 konkretna savjeta na bosanskom za ovu porodicu danas. Budi specifican sa vremenima. Maksimalno 100 rijeci.
+Napiši 3 konkretna savjeta na bosanskom jeziku za ovu porodicu danas. Budi specifican sa vremenima. Maksimalno 100 rijeci.
 ${toneRule}
-Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
+VAŽNO: Piši ISKLJUČIVO latinicom (bosanska latinica: č, ć, š, ž, đ). NIKADA ne koristi ćirilicu ni jedno slovo. Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
 
     try {
       const res = await fetch("https://api.anthropic.com/v1/messages", {
@@ -89,7 +99,8 @@ Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
       }
       const j: any = await res.json();
       console.log("[advice] Full API response:", JSON.stringify(j));
-      const text: string = (j?.content?.[0]?.text ?? "").trim();
+      let text: string = (j?.content?.[0]?.text ?? "").trim();
+      text = cyrillicToLatin(text);
       if (!text) {
         console.error("[advice] Exact error: Empty response");
         console.error("[advice] Full API response:", JSON.stringify(j));
