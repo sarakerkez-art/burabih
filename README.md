@@ -4,16 +4,20 @@ A guidance-first air quality companion for families in Bosnia & Herzegovina.
 
 Know what you breathe. Protect what you love.
 
-![Bura Screenshot](<img width="1215" height="654" alt="Bildschirmfoto 2026-05-16 um 21 18 15" src="https://github.com/user-attachments/assets/1198baf8-6ff1-4337-99bc-f51db790349b" />)
+<img width="1215" height="654" alt="Bildschirmfoto 2026-05-16 um 21 18 15" src="https://github.com/user-attachments/assets/d8eed4e1-4845-43f6-804e-3eecd1fcba6f" />
 
 
 🌍 Live prototype: https://burabih.org
 
 ## 🚀 How to use
 
-1. Open the live prototype  
-2. See today’s guidance  
-3. (Optional) personalise your context
+1. Open the live prototype
+2. Personalise your context
+<img width="515" height="627" alt="Bildschirmfoto 2026-05-16 um 21 26 12" src="https://github.com/user-attachments/assets/5f635034-c681-4cef-b3b2-f5fa5f338da1" />
+
+3. See today’s guidance
+<img width="747" height="471" alt="Bildschirmfoto 2026-05-16 um 21 26 31" src="https://github.com/user-attachments/assets/f70c89e8-f5f0-4b55-aba3-60e8f47f119d" />
+
 
 ## 💡 What is Bura?
 
