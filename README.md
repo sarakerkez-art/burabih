@@ -4,7 +4,8 @@ A guidance-first air quality companion for families in Bosnia & Herzegovina.
 
 Know what you breathe. Protect what you love.
 
-![Bura Screenshot](<img width="1235" height="630" alt="image" src="https://github.com/user-attachments/assets/8b69dbac-9210-4df8-a8f7-0076d0b49b9f" />)
+![Bura Screenshot](<img width="1215" height="654" alt="Bildschirmfoto 2026-05-16 um 21 18 15" src="https://github.com/user-attachments/assets/1198baf8-6ff1-4337-99bc-f51db790349b" />)
+
 
 🌍 Live prototype: https://burabih.org
 
