@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Wind, BookOpen, Users, Map as MapIcon, Github } from "lucide-react";
 import { z } from "zod";
 import { WindMark } from "@/components/WindMark";
+import { MobileNav } from "@/components/MobileNav";
 import { BiHMap, type SchoolPin } from "@/components/BiHMap";
 import { type Lang, t } from "@/lib/i18n";
 import { supabase } from "@/integrations/supabase/client";
