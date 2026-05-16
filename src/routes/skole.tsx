@@ -266,13 +266,6 @@ function SchoolForm({ lang }: { lang: Lang }) {
   const [done, setDone] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
-  const [count, setCount] = useState<number>(0);
-
-  useEffect(() => {
-    supabase.rpc("schools_count").then(({ data }) => {
-      if (typeof data === "number") setCount(data);
-    });
-  }, [done]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
