@@ -314,9 +314,6 @@ function SchoolForm({ lang }: { lang: Lang }) {
           </button>
         </form>
       )}
-      <p className="mt-4 text-xs italic text-white/60 text-center">
-        {tr.schools_form_count(count)}
-      </p>
     </div>
   );
 }
