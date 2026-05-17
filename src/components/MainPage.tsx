@@ -202,7 +202,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       {/* Section A, Hero */}
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
-          <Buri pm25={pm} />
+          <Buri pm25={pm} lang={lang} />
           <p className="mt-8 text-xl sm:text-2xl font-semibold leading-snug">
             {tr.greet_morning}{" "}
             <span className="font-normal text-white/90">{greet}</span>
