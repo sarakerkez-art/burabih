@@ -96,6 +96,9 @@ const bs = {
   ranking: "Rang gradova ovaj mjesec",
   ranking_note: "Niži broj znači čistiji zrak",
   ranking_source: "Podaci: aqicn.org · Federalni Hidrometeorološki Zavod BiH",
+  ranking_disclaimer: "Rang je ilustrativan i baziran na dostupnim podacima o kvalitetu zraka. Ne predstavlja zvanično rangiranje gradova.",
+  actions_info: "Savjeti su generisani pomoću AI na osnovu trenutnih podataka o kvalitetu zraka. Ne zamjenjuju medicinski savjet.",
+  foot_beta: "Bura je u beta fazi. Podaci iz zvaničnih izvora: aqicn.org · Federalni Hidrometeorološki Zavod BiH.",
 
   rep_title: "Vaše oči pomažu zaštititi djecu u blizini.",
   rep_sub: "Dim iz dimnjaka koji ne bi trebao gorjeti. Hrpa bačena pored škole. Miris kojeg juče nije bilo. Podijelite šta vidite.",
