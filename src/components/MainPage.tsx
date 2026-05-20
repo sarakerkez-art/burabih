@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   Flame, Wind, Baby, Satellite, Signal, Users, Bot,
   HelpCircle, MapPin, Camera, Recycle, Award, Leaf, Github,
-  Pencil, Loader2,
+  Pencil, Loader2, Info,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
