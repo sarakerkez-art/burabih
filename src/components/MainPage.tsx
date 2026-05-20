@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   Flame, Wind, Baby, Satellite, Signal, Users, Bot,
-  HelpCircle, MapPin, Camera, Recycle, Award, Leaf, Github,
+  HelpCircle, MapPin, Camera, Recycle, Award, Leaf,
   Pencil, Loader2, Info, CheckCircle2,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
@@ -133,6 +133,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <WindMark size={20} color="var(--forest)" />
         </button>
         <div className="hidden sm:flex items-center gap-4 text-sm">
+          <Link
+            to="/skole"
+            className="text-muted-foreground hover:text-foreground transition font-medium text-xs sm:text-sm"
+          >
+            {lang === "bs" ? "Škole" : "Schools"}
+          </Link>
           <Link
             to="/vizija"
             className="text-muted-foreground hover:text-foreground transition font-medium text-xs sm:text-sm"
@@ -348,12 +354,6 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
-            </a>
-            <a
-              href="https://github.com"
-              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
-            >
-              <Github size={14} /> GitHub
             </a>
           </div>
         </div>
