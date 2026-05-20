@@ -65,6 +65,37 @@ contact@burabih.org`,
           const body = await res.text();
           console.error("[waitlist] resend send failed", res.status, body);
         }
+
+        // Also notify the Bura team inbox.
+        try {
+          const notifyRes = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${LOVABLE_API_KEY}`,
+              "X-Connection-Api-Key": RESEND_API_KEY,
+            },
+            body: JSON.stringify({
+              from: "Bura <contact@burabih.org>",
+              to: ["contact@burabih.org"],
+              reply_to: email,
+              subject: "New Bura signup",
+              text: `New Bura signup\n\nEmail: ${email}\nCity: ${city ?? "(not provided)"}\nTimestamp: ${new Date().toISOString()}`,
+              html: `<div style="font-family:Arial,sans-serif;font-size:14px;line-height:1.6;color:#1a1a1a">
+                <h2 style="margin:0 0 12px">New Bura signup</h2>
+                <p style="margin:0"><strong>Email:</strong> ${email}</p>
+                <p style="margin:0"><strong>City:</strong> ${city ?? "(not provided)"}</p>
+                <p style="margin:0"><strong>Timestamp:</strong> ${new Date().toISOString()}</p>
+              </div>`,
+            }),
+          });
+          if (!notifyRes.ok) {
+            const body = await notifyRes.text();
+            console.error("[waitlist] notify send failed", notifyRes.status, body);
+          }
+        } catch (err) {
+          console.error("[waitlist] notify error", err);
+        }
       } catch (err) {
         console.error("[waitlist] resend error", err);
       }
