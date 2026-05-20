@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Wind, BookOpen, Users, Map as MapIcon, Github } from "lucide-react";
+import { Wind, BookOpen, Users, Map as MapIcon } from "lucide-react";
 import { z } from "zod";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
@@ -203,12 +203,6 @@ function SkolePage() {
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
-            </a>
-            <a
-              href="https://github.com"
-              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
-            >
-              <Github size={14} /> GitHub
             </a>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Wind, Droplets, Trees, Check, Github } from "lucide-react";
+import { Wind, Droplets, Trees, Check } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
 import { type Lang, t } from "@/lib/i18n";
@@ -254,12 +254,6 @@ function VizijaPage() {
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
-            </a>
-            <a
-              href="https://github.com"
-              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
-            >
-              <Github size={14} /> GitHub
             </a>
           </div>
         </div>
