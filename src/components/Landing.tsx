@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Github, Leaf, Satellite, Signal, Users, Bot, MapPin, Camera, HelpCircle, Baby } from "lucide-react";
+import { Leaf, Satellite, Signal, Users, Bot, MapPin, Camera, HelpCircle, Baby } from "lucide-react";
 import { useState } from "react";
 import { Buri } from "./Buri";
 import { WindMark } from "./WindMark";
@@ -300,12 +300,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <div className="text-white/80 sm:text-right">
             <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
               contact@burabih.org
-            </a>
-            <a
-              href="https://github.com"
-              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
-            >
-              <Github size={14} /> GitHub
             </a>
           </div>
         </div>
