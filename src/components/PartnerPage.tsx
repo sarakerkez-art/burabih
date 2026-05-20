@@ -100,13 +100,8 @@ const copy: Record<Lang, Copy> = {
     what_title: "Nismo još jedan dashboard.",
     what_body: [
       "Bura je personalizirani ekološki asistent za porodice u BiH. Svako jutro, na osnovu živih podataka o kvalitetu zraka, Bura kaže roditeljima šta njihova djeca dišu i šta mogu učiniti danas.",
-      "Ne brojeve. Konkretne savjete. Na bosanskom. Besplatno. Zauvijek.",
     ],
-    what_stats: [
-      { source: "burabih.org", note: "živi prototip" },
-      { source: "Claude AI", note: "personalizirani savjeti" },
-      { source: "aqicn.org", note: "živi podaci za BiH" },
-    ],
+    what_stats: [] as { source: string; note: string }[],
 
     who_eyebrow: "KO MOŽE POMOĆI",
     who_title: "Tražimo partnere iz raznih oblasti.",
