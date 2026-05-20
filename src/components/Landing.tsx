@@ -302,7 +302,10 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             </a>
           </div>
         </div>
-        <p className="max-w-3xl mx-auto mt-10 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
+        <p className="max-w-3xl mx-auto mt-8 text-left sm:text-center text-xs text-white/75 leading-relaxed">
+          {tr.foot_beta}
+        </p>
+        <p className="max-w-3xl mx-auto mt-4 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
           {tr.foot_disclaimer}
         </p>
       </footer>
