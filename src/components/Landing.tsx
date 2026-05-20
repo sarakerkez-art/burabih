@@ -219,6 +219,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <p className="text-xs text-muted-foreground mb-4">{tr.ranking_note}</p>
             <Ranking />
             <p className="mt-4 text-xs text-muted-foreground">{tr.ranking_source}</p>
+            <p className="mt-2 text-xs italic text-muted-foreground/80">{tr.ranking_disclaimer}</p>
           </div>
         </div>
       </section>
@@ -301,7 +302,10 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             </a>
           </div>
         </div>
-        <p className="max-w-3xl mx-auto mt-10 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
+        <p className="max-w-3xl mx-auto mt-8 text-left sm:text-center text-xs text-white/75 leading-relaxed">
+          {tr.foot_beta}
+        </p>
+        <p className="max-w-3xl mx-auto mt-4 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
           {tr.foot_disclaimer}
         </p>
       </footer>

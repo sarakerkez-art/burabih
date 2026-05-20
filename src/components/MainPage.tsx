@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import {
   Flame, Wind, Baby, Satellite, Signal, Users, Bot,
   HelpCircle, MapPin, Camera, Recycle, Award, Leaf, Github,
-  Pencil, Loader2,
+  Pencil, Loader2, Info,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
@@ -28,6 +28,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [showAiInfo, setShowAiInfo] = useState(false);
   const [demoWinter, setDemoWinter] = useState(false);
   const getAdvice = useServerFn(fetchAdvice);
 
@@ -214,7 +215,21 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       {/* Section B, AI Actions */}
       <section className="px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
+            <button
+              type="button"
+              aria-label={tr.actions_info}
+              title={tr.actions_info}
+              onClick={() => setShowAiInfo((v) => !v)}
+              className="text-muted-foreground hover:text-foreground transition"
+            >
+              <Info size={16} />
+            </button>
+          </div>
+          {showAiInfo && (
+            <p className="mt-2 text-xs italic text-muted-foreground leading-relaxed">{tr.actions_info}</p>
+          )}
           <p className="text-sm text-muted-foreground mt-2">
             {tr.actions_sub(profile.city, famLabel, heatLabel)}
           </p>
@@ -335,7 +350,10 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
             </a>
           </div>
         </div>
-        <p className="max-w-3xl mx-auto mt-10 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
+        <p className="max-w-3xl mx-auto mt-8 text-left sm:text-center text-xs text-white/75 leading-relaxed">
+          {tr.foot_beta}
+        </p>
+        <p className="max-w-3xl mx-auto mt-4 text-left sm:text-center text-xs italic text-white/60 leading-relaxed">
           {tr.foot_disclaimer}
         </p>
       </footer>
