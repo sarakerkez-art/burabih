@@ -35,16 +35,14 @@ function Home() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    // Always start on the landing page when the link is opened.
+    // Always start on the landing page in Bosnian when the link is opened.
     try {
       sessionStorage.removeItem(SKEY);
-      const l = localStorage.getItem(LKEY) as Lang | null;
-      if (l === "bs" || l === "en") setLang(l);
+      localStorage.removeItem(LKEY);
     } catch { /* ignore */ }
+    setLang("bs");
     setHydrated(true);
   }, []);
-
-  useEffect(() => { if (hydrated) localStorage.setItem(LKEY, lang); }, [lang, hydrated]);
 
   const handleDone = (p: Profile) => {
     setProfile(p);
