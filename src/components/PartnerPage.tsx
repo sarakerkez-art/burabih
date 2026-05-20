@@ -5,9 +5,7 @@ import {
   Sparkles,
   TrendingUp,
   Users,
-  Building2,
-  GraduationCap,
-  Stethoscope,
+  Heart,
   Newspaper,
   CheckCircle2,
   Github,
@@ -48,7 +46,13 @@ type Copy = {
   // Who can help
   who_eyebrow: string;
   who_title: string;
-  who_cards: { Icon: React.ComponentType<{ size?: number }>; title: string; body: string }[];
+  who_cards: {
+    Icon: React.ComponentType<{ size?: number }>;
+    title: string;
+    body: string;
+    cta: string;
+    typeValue: string;
+  }[];
 
   // Contact form
   form_eyebrow: string;
@@ -108,34 +112,58 @@ const copy: Record<Lang, Copy> = {
     who_eyebrow: "KO MOŽE POMOĆI",
     who_title: "Tražimo partnere iz raznih oblasti.",
     who_cards: [
-      { Icon: Building2, title: "Kompanije", body: "Placeholder opis." },
-      { Icon: GraduationCap, title: "Obrazovanje", body: "Placeholder opis." },
-      { Icon: Stethoscope, title: "Zdravstvo", body: "Placeholder opis." },
-      { Icon: Newspaper, title: "Mediji", body: "Placeholder opis." },
+      {
+        Icon: Newspaper,
+        title: "Imate priču. Mi imamo podatke.",
+        body: "Bura gradi prvi verifikovani sloj podataka o okolišu u BiH: kvalitet zraka, ilegalne deponije, napredak gradova. Sve dostupno novinarima i istraživačkim medijima.",
+        cta: "Koristite naše podatke →",
+        typeValue: "media",
+      },
+      {
+        Icon: Users,
+        title: "Borite se za čišći zrak? Mi gradimo alat koji vam treba.",
+        body: "Ekološki aktivizam bez podataka je težak. Bura daje NGO-ima verifikovanu osnovu za zagovaranje: brojeve koje niko ne može osporiti, jer dolaze direktno iz EU satelita i zvaničnih stanica.",
+        cta: "Postanite partner →",
+        typeValue: "ngo",
+      },
+      {
+        Icon: Heart,
+        title: "Otišli ste iz Bosne. Bosna nije otišla iz vas.",
+        body: "Hiljade Bosanaca u Beču, Berlinu, Zürichu pita se kako pomoći. Bura je konkretan odgovor: platforma koja štiti djecu koje volite, u gradu iz kojeg dolazite.",
+        cta: "Podržite Bura →",
+        typeValue: "diaspora",
+      },
+      {
+        Icon: TrendingUp,
+        title: "Gradimo infrastrukturu koju BiH nikad nije imala.",
+        body: "Bura nije samo aplikacija. Bura je ekološki operativni sistem za Zapadni Balkan: zrak, voda, otpad, od BiH do regije. Trenutno apliciramo za UNICEF Venture Fund.",
+        cta: "Razgovarajmo →",
+        typeValue: "investor",
+      },
     ],
 
     form_eyebrow: "KONTAKT",
-    form_title: "Javite nam se.",
-    form_sub: "Ostavite poruku i javljamo se u narednim danima.",
-    form_name: "IME I PREZIME",
+    form_title: "Zainteresirani ste?",
+    form_sub: "Recite nam ko ste i kako možemo sarađivati.",
+    form_name: "IME",
     form_email: "EMAIL",
-    form_type: "TIP PARTNERA",
+    form_type: "TIP SARADNJE",
     form_type_placeholder: "Odaberite",
     form_type_options: [
-      { value: "company", label: "Kompanija" },
-      { value: "education", label: "Obrazovanje" },
-      { value: "health", label: "Zdravstvo" },
-      { value: "media", label: "Mediji" },
-      { value: "other", label: "Drugo" },
+      { value: "media", label: "Novinar/ka ili medij" },
+      { value: "ngo", label: "NGO ili aktivizam" },
+      { value: "diaspora", label: "Dijaspora" },
+      { value: "investor", label: "Investitor/ka" },
+      { value: "other", label: "Nešto drugo" },
     ],
-    form_message: "PORUKA",
-    form_cta: "Pošalji",
+    form_message: "PORUKA (opcionalno)",
+    form_cta: "Pošaljite poruku",
     form_sending: "Šaljem...",
     form_done_title: "Hvala!",
-    form_done_body: "Primili smo vašu poruku. Javljamo se u narednim danima.",
+    form_done_body: "Javit ćemo vam se u roku 48 sati. 🌬️",
     form_error: "Došlo je do greške. Pokušajte ponovo.",
 
-    quote: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam jasno kaže šta je u zraku i šta možete učiniti danas.",
+    quote: "Bura ne optužuje. Bura čini nevidljivo vidljivim.",
     quote_attrib: "",
   },
   en: {
@@ -172,34 +200,58 @@ const copy: Record<Lang, Copy> = {
     who_eyebrow: "WHO CAN HELP",
     who_title: "We are looking for partners across sectors.",
     who_cards: [
-      { Icon: Building2, title: "Companies", body: "Placeholder description." },
-      { Icon: GraduationCap, title: "Education", body: "Placeholder description." },
-      { Icon: Stethoscope, title: "Health", body: "Placeholder description." },
-      { Icon: Newspaper, title: "Media", body: "Placeholder description." },
+      {
+        Icon: Newspaper,
+        title: "You have the story. We have the data.",
+        body: "Bura is building the first verified environmental data layer in BiH: air quality, illegal dump sites, city progress. Available to journalists and investigative media.",
+        cta: "Use our data →",
+        typeValue: "media",
+      },
+      {
+        Icon: Users,
+        title: "Fighting for clean air? We're building the tool you need.",
+        body: "Environmental activism without data is an uphill battle. Bura gives NGOs a verified foundation for advocacy: numbers no one can dispute, because they come directly from EU satellites and official monitoring stations.",
+        cta: "Become a partner →",
+        typeValue: "ngo",
+      },
+      {
+        Icon: Heart,
+        title: "You left Bosnia. Bosnia never left you.",
+        body: "Thousands of Bosnians in Vienna, Berlin, Zürich wonder how to help. Bura is a concrete answer: a platform that protects the children you love, in the city you come from.",
+        cta: "Support Bura →",
+        typeValue: "diaspora",
+      },
+      {
+        Icon: TrendingUp,
+        title: "We're building the infrastructure BiH never had.",
+        body: "Bura is not just an app. Bura is the environmental operating system for the Western Balkans: air, water, waste, from BiH to the region. Currently applying to the UNICEF Venture Fund.",
+        cta: "Let's talk →",
+        typeValue: "investor",
+      },
     ],
 
     form_eyebrow: "CONTACT",
-    form_title: "Reach out.",
-    form_sub: "Leave us a message and we will get back to you in the coming days.",
-    form_name: "FULL NAME",
+    form_title: "Interested?",
+    form_sub: "Tell us who you are and how we can work together.",
+    form_name: "NAME",
     form_email: "EMAIL",
-    form_type: "PARTNER TYPE",
+    form_type: "TYPE OF COLLABORATION",
     form_type_placeholder: "Select one",
     form_type_options: [
-      { value: "company", label: "Company" },
-      { value: "education", label: "Education" },
-      { value: "health", label: "Health" },
-      { value: "media", label: "Media" },
-      { value: "other", label: "Other" },
+      { value: "media", label: "Journalist or media" },
+      { value: "ngo", label: "NGO or activism" },
+      { value: "diaspora", label: "Diaspora" },
+      { value: "investor", label: "Investor" },
+      { value: "other", label: "Something else" },
     ],
-    form_message: "MESSAGE",
-    form_cta: "Send",
+    form_message: "MESSAGE (optional)",
+    form_cta: "Send message",
     form_sending: "Sending...",
     form_done_title: "Thank you!",
-    form_done_body: "We received your message and will reach out in the coming days.",
+    form_done_body: "We'll be in touch within 48 hours. 🌬️",
     form_error: "Something went wrong. Please try again.",
 
-    quote: "Bura is not another dashboard. Bura is a trusted morning companion that tells you clearly what is in the air and what you can do today.",
+    quote: "Bura does not point fingers. Bura makes the invisible visible.",
     quote_attrib: "",
   },
 };
@@ -208,7 +260,7 @@ const schema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(255),
   type: z.string().min(1).max(60),
-  message: z.string().trim().min(1).max(2000),
+  message: z.string().trim().max(2000).optional().default(""),
 });
 
 export function PartnerPage({ lang }: Props) {
@@ -384,13 +436,25 @@ export function PartnerPage({ lang }: Props) {
             return (
               <div
                 key={i}
-                className="rounded-2xl bg-card p-7 border border-[color:var(--forest)]/10 hover:shadow-md transition"
+                className="rounded-2xl bg-card p-7 border border-[color:var(--forest)]/10 hover:shadow-md transition flex flex-col"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-4">
                   <Icon size={22} />
                 </div>
-                <h3 className="text-xl font-semibold tracking-tight mb-2">{c.title}</h3>
-                <p className="text-[15px] text-foreground/75 leading-relaxed">{c.body}</p>
+                <h3 className="text-xl font-semibold tracking-tight mb-2 text-[color:var(--forest)]">{c.title}</h3>
+                <p className="text-[15px] text-foreground/75 leading-relaxed mb-6">{c.body}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setType(c.typeValue);
+                    if (typeof document !== "undefined") {
+                      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="mt-auto self-start inline-flex items-center gap-2 rounded-full bg-amber-brand text-[color:var(--forest)] px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+                >
+                  {c.cta}
+                </button>
               </div>
             );
           })}
@@ -457,7 +521,6 @@ export function PartnerPage({ lang }: Props) {
               </Field>
               <Field label={L.form_message}>
                 <textarea
-                  required
                   maxLength={2000}
                   rows={5}
                   value={message}
