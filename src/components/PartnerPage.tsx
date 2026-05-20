@@ -521,7 +521,6 @@ export function PartnerPage({ lang }: Props) {
               </Field>
               <Field label={L.form_message}>
                 <textarea
-                  required
                   maxLength={2000}
                   rows={5}
                   value={message}
