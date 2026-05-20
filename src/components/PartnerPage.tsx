@@ -354,7 +354,7 @@ export function PartnerPage({ lang }: Props) {
       </header>
 
       {/* 1. Hero - full width teal */}
-      <section className="w-full bg-[color:var(--teal-brand)] text-white">
+      <section className="w-full bg-[color:var(--forest)] text-white">
         <div className="max-w-5xl mx-auto px-6 py-20 sm:py-28 text-center">
           <p className="text-xs tracking-[0.25em] text-white/70 font-medium mb-5">{L.hero_eyebrow}</p>
           <h1 className="text-4xl sm:text-6xl font-semibold tracking-tight mb-6">{L.hero_title}</h1>
@@ -553,7 +553,7 @@ export function PartnerPage({ lang }: Props) {
       <section className="max-w-3xl mx-auto px-6 py-20 text-center">
         <Users size={28} className="mx-auto mb-5 text-[color:var(--amber-brand)]" />
         <p className="text-xl sm:text-2xl italic text-[color:var(--forest)] leading-relaxed">
-          &ldquo;{L.quote}&rdquo;
+          {L.quote}
         </p>
         {L.quote_attrib && (
           <p className="mt-4 text-sm tracking-wide text-foreground/60 uppercase">{L.quote_attrib}</p>

@@ -75,6 +75,9 @@ function SkolePage() {
           <Link to="/vizija" className="text-foreground/80 hover:text-foreground transition font-medium">
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
+          <Link to="/partner" className="text-foreground/80 hover:text-foreground transition font-medium">
+            {lang === "bs" ? "Partneri" : "Partners"}
+          </Link>
         </nav>
         <div className="hidden sm:flex items-center gap-2 text-xs tracking-wide">
           <button
@@ -98,6 +101,7 @@ function SkolePage() {
             { label: lang === "bs" ? "Početna" : "Home", to: "/" },
             { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
             { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Partneri" : "Partners", to: "/partner" },
           ]}
         />
       </header>
