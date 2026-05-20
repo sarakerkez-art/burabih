@@ -537,19 +537,8 @@ function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
         setLoading(true);
         setError(null);
         try {
-          const res = await fetch("https://formsubmit.co/ajax/contact@burabih.org", {
-            method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({
-              email,
-              city: city || "(nije navedeno)",
-              timestamp: new Date().toISOString(),
-              _subject: "New Bura signup",
-              _template: "table",
-              _captcha: "false",
-            }),
-          });
-          if (!res.ok) throw new Error("Network error");
+          const { joinWaitlist } = await import("@/lib/waitlist.functions");
+          await joinWaitlist({ data: { email, city } });
           setDone(true);
         } catch (err) {
           console.error(err);
