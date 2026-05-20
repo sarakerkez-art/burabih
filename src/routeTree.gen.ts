@@ -11,7 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizijaRouteImport } from './routes/vizija'
 import { Route as SkoleRouteImport } from './routes/skole'
+import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EnPartnerRouteImport } from './routes/en.partner'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
 const VizijaRoute = VizijaRouteImport.update({
@@ -24,9 +26,19 @@ const SkoleRoute = SkoleRouteImport.update({
   path: '/skole',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PartnerRoute = PartnerRouteImport.update({
+  id: '/partner',
+  path: '/partner',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnPartnerRoute = EnPartnerRouteImport.update({
+  id: '/en/partner',
+  path: '/en/partner',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailQueueProcessRoute =
@@ -38,35 +50,62 @@ const LovableEmailQueueProcessRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
+  '/en/partner': typeof EnPartnerRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
+  '/en/partner': typeof EnPartnerRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/partner': typeof PartnerRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
+  '/en/partner': typeof EnPartnerRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/skole' | '/vizija' | '/lovable/email/queue/process'
+  fullPaths:
+    | '/'
+    | '/partner'
+    | '/skole'
+    | '/vizija'
+    | '/en/partner'
+    | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/skole' | '/vizija' | '/lovable/email/queue/process'
-  id: '__root__' | '/' | '/skole' | '/vizija' | '/lovable/email/queue/process'
+  to:
+    | '/'
+    | '/partner'
+    | '/skole'
+    | '/vizija'
+    | '/en/partner'
+    | '/lovable/email/queue/process'
+  id:
+    | '__root__'
+    | '/'
+    | '/partner'
+    | '/skole'
+    | '/vizija'
+    | '/en/partner'
+    | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PartnerRoute: typeof PartnerRoute
   SkoleRoute: typeof SkoleRoute
   VizijaRoute: typeof VizijaRoute
+  EnPartnerRoute: typeof EnPartnerRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
@@ -86,11 +125,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SkoleRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/partner': {
+      id: '/partner'
+      path: '/partner'
+      fullPath: '/partner'
+      preLoaderRoute: typeof PartnerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/en/partner': {
+      id: '/en/partner'
+      path: '/en/partner'
+      fullPath: '/en/partner'
+      preLoaderRoute: typeof EnPartnerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lovable/email/queue/process': {
@@ -105,20 +158,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PartnerRoute: PartnerRoute,
   SkoleRoute: SkoleRoute,
   VizijaRoute: VizijaRoute,
+  EnPartnerRoute: EnPartnerRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

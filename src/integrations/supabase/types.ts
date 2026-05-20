@@ -101,6 +101,33 @@ export type Database = {
         }
         Relationships: []
       }
+      partner_interest: {
+        Row: {
+          created_at: string
+          email: string
+          id: string
+          message: string
+          name: string
+          type: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          id?: string
+          message: string
+          name: string
+          type: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          id?: string
+          message?: string
+          name?: string
+          type?: string
+        }
+        Relationships: []
+      }
       schools: {
         Row: {
           city: string
