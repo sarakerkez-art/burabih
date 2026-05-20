@@ -219,6 +219,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
             <p className="text-xs text-muted-foreground mb-4">{tr.ranking_note}</p>
             <Ranking />
             <p className="mt-4 text-xs text-muted-foreground">{tr.ranking_source}</p>
+            <p className="mt-2 text-xs italic text-muted-foreground/80">{tr.ranking_disclaimer}</p>
           </div>
         </div>
       </section>
