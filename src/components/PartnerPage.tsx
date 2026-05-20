@@ -100,13 +100,8 @@ const copy: Record<Lang, Copy> = {
     what_title: "Nismo još jedan dashboard.",
     what_body: [
       "Bura je personalizirani ekološki asistent za porodice u BiH. Svako jutro, na osnovu živih podataka o kvalitetu zraka, Bura kaže roditeljima šta njihova djeca dišu i šta mogu učiniti danas.",
-      "Ne brojeve. Konkretne savjete. Na bosanskom. Besplatno. Zauvijek.",
     ],
-    what_stats: [
-      { source: "burabih.org", note: "živi prototip" },
-      { source: "Claude AI", note: "personalizirani savjeti" },
-      { source: "aqicn.org", note: "živi podaci za BiH" },
-    ],
+    what_stats: [] as { source: string; note: string }[],
 
     who_eyebrow: "KO MOŽE POMOĆI",
     who_title: "Tražimo partnere iz raznih oblasti.",
@@ -188,13 +183,8 @@ const copy: Record<Lang, Copy> = {
     what_title: "We are not another dashboard.",
     what_body: [
       "Bura is a personalised environmental assistant for families in BiH. Every morning, based on live air quality data, Bura tells parents what their children are breathing and what they can do about it today.",
-      "Not numbers. Concrete actions. In Bosnian. Free. Forever.",
     ],
-    what_stats: [
-      { source: "burabih.org", note: "live prototype" },
-      { source: "Claude AI", note: "personalised advice" },
-      { source: "aqicn.org", note: "live BiH data" },
-    ],
+    what_stats: [],
 
     who_eyebrow: "WHO CAN HELP",
     who_title: "We are looking for partners across sectors.",
@@ -396,27 +386,12 @@ export function PartnerPage({ lang }: Props) {
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
             {L.what_title}
           </h2>
-          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed mb-12">
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
             {L.what_body.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {L.what_stats.map((s, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-background p-5 text-center shadow-sm border border-[color:var(--forest)]/10"
-              >
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-3">
-                  <TrendingUp size={18} />
-                </div>
-                <div className="text-base font-semibold text-[color:var(--forest)] mb-1">
-                  {s.source}
-                </div>
-                <div className="text-xs tracking-wide text-foreground/65">{s.note}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
@@ -548,18 +523,8 @@ export function PartnerPage({ lang }: Props) {
         </div>
       </section>
 
-      {/* 6. Footer quote */}
-      <section className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <Users size={28} className="mx-auto mb-5 text-[color:var(--amber-brand)]" />
-        <p className="text-xl sm:text-2xl italic text-[color:var(--forest)] leading-relaxed">
-          {L.quote}
-        </p>
-        {L.quote_attrib && (
-          <p className="mt-4 text-sm tracking-wide text-foreground/60 uppercase">{L.quote_attrib}</p>
-        )}
-      </section>
-
       {/* Site footer */}
+
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
         <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">
           <div>
