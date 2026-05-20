@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Wind, Droplets, Trees, Check } from "lucide-react";
+import { Wind, Droplets, Trees, Check, Github } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
 import { type Lang, t } from "@/lib/i18n";
@@ -243,6 +243,32 @@ function VizijaPage() {
           {L.tagline}
         </p>
       </section>
+
+      <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
+        <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">
+          <div>
+            <div className="flex items-center gap-2 font-bold text-lg">
+              {tr.brand} <WindMark size={18} color="white" />
+            </div>
+            <p className="mt-3 text-white/70">{tr.foot_tag}</p>
+          </div>
+          <p className="sm:text-center text-amber-brand text-sm">{tr.foot_bottom} ❤</p>
+          <div className="text-white/80 sm:text-right">
+            <a href="mailto:contact@burabih.org" className="hover:text-amber-brand transition">
+              contact@burabih.org
+            </a>
+            <a
+              href="https://github.com"
+              className="mt-2 flex items-center gap-2 sm:justify-end hover:text-amber-brand transition"
+            >
+              <Github size={14} /> GitHub
+            </a>
+          </div>
+        </div>
+        <p className="max-w-3xl mx-auto mt-8 text-left sm:text-center text-xs text-white/75 leading-relaxed">
+          {tr.foot_beta}
+        </p>
+      </footer>
     </div>
   );
 }
