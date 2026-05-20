@@ -279,7 +279,11 @@ export function PartnerPage({ lang }: Props) {
         </div>
         <MobileNav
           lang={lang}
-          setLang={() => { /* lang is controlled by route on this page */ }}
+          setLang={(l) => {
+            if (typeof window !== "undefined") {
+              window.location.href = l === "bs" ? "/partner" : "/en/partner";
+            }
+          }}
           items={[
             { label: L.nav_home, to: "/" },
             { label: L.nav_schools, to: "/skole" },
