@@ -28,7 +28,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         cta_more: "Saznaj više",
         hero_eyebrow: "LIČNI EKOLOŠKI ASISTENT ZA RODITELJE U BiH",
         hero_title: "Znajte šta vaša djeca dišu, svako jutro.",
-        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam za 5 sekundi kaže šta je u zraku i šta možete učiniti danas.",
+        hero_sub: "Bura nije još jedan dashboard. Bura je povjerljiv jutarnji saputnik koji vam jasno kaže šta je u zraku i šta možete učiniti danas.",
         buri_bubble: "Ćao! Ja sam Buri. Puham kroz gradove BiH i znam kakav je zrak svuda.",
         buri_caption: "Hajde da vidimo kakav je danas zrak u tvom gradu.",
         what_title: "Šta je Bura?",
