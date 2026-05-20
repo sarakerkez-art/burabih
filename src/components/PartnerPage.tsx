@@ -319,58 +319,56 @@ export function PartnerPage({ lang }: Props) {
       </section>
 
       {/* 2. Why now */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
+      <section className="max-w-3xl mx-auto px-6 py-20">
         <p className="text-xs tracking-[0.2em] text-[color:var(--forest)]/70 font-medium mb-3 text-center">
           {L.why_eyebrow}
         </p>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
           {L.why_title}
         </h2>
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
-          {L.why_stats.map((s, i) => (
-            <div
-              key={i}
-              className="rounded-2xl bg-[color:var(--warm)] p-6 text-center border border-[color:var(--forest)]/10"
-            >
-              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--forest)] mb-1">
-                {s.value}
-              </div>
-              <div className="text-xs tracking-wide text-foreground/65 uppercase">{s.label}</div>
-            </div>
+        <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
+          {L.why_body.map((p, i) => (
+            <p key={i}>{p}</p>
           ))}
         </div>
-        <p className="max-w-2xl mx-auto text-center text-base sm:text-lg text-foreground/75 leading-relaxed">
-          {L.why_body}
+        <p className="mt-8 text-xs tracking-wide text-foreground/55 text-center">
+          {L.why_sources}
         </p>
       </section>
 
-      {/* 3. What is Bura - 3 stat badges */}
+      {/* 3. What is Bura */}
       <section className="bg-[color:var(--sage)]/40">
-        <div className="max-w-5xl mx-auto px-6 py-20">
+        <div className="max-w-3xl mx-auto px-6 py-20">
           <p className="text-xs tracking-[0.2em] text-[color:var(--forest)]/70 font-medium mb-3 text-center">
             {L.what_eyebrow}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
             {L.what_title}
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed mb-12">
+            {L.what_body.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
             {L.what_stats.map((s, i) => (
               <div
                 key={i}
-                className="rounded-3xl bg-background p-8 text-center shadow-sm border border-[color:var(--forest)]/10"
+                className="rounded-2xl bg-background p-5 text-center shadow-sm border border-[color:var(--forest)]/10"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-4">
-                  <TrendingUp size={26} />
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-3">
+                  <TrendingUp size={18} />
                 </div>
-                <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--forest)] mb-1">
-                  {s.value}
+                <div className="text-base font-semibold text-[color:var(--forest)] mb-1">
+                  {s.source}
                 </div>
-                <div className="text-xs tracking-wide text-foreground/65 uppercase">{s.label}</div>
+                <div className="text-xs tracking-wide text-foreground/65">{s.note}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* 4. Who can help - 2x2 grid */}
       <section className="max-w-5xl mx-auto px-6 py-20">
