@@ -8,7 +8,6 @@ import {
   Heart,
   Newspaper,
   CheckCircle2,
-  Github,
   Loader2,
 } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
