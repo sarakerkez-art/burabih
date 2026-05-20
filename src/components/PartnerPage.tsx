@@ -386,27 +386,12 @@ export function PartnerPage({ lang }: Props) {
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
             {L.what_title}
           </h2>
-          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed mb-12">
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
             {L.what_body.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
           </div>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {L.what_stats.map((s, i) => (
-              <div
-                key={i}
-                className="rounded-2xl bg-background p-5 text-center shadow-sm border border-[color:var(--forest)]/10"
-              >
-                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-3">
-                  <TrendingUp size={18} />
-                </div>
-                <div className="text-base font-semibold text-[color:var(--forest)] mb-1">
-                  {s.source}
-                </div>
-                <div className="text-xs tracking-wide text-foreground/65">{s.note}</div>
-              </div>
-            ))}
-          </div>
+
         </div>
       </section>
 
