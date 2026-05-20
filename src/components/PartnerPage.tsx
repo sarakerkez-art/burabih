@@ -35,13 +35,15 @@ type Copy = {
   // Why now
   why_eyebrow: string;
   why_title: string;
-  why_body: string;
-  why_stats: { value: string; label: string }[];
+  why_body: string[];
+  why_sources: string;
+  why_stats?: { value: string; label: string }[];
 
   // What is Bura
   what_eyebrow: string;
   what_title: string;
-  what_stats: { value: string; label: string }[];
+  what_body: string[];
+  what_stats: { source: string; note: string }[];
 
   // Who can help
   who_eyebrow: string;
@@ -79,25 +81,28 @@ const copy: Record<Lang, Copy> = {
     nav_partner: "Partneri",
 
     hero_eyebrow: "PARTNERI",
-    hero_title: "Postanite partner Bure.",
-    hero_sub: "Zajedno gradimo otvorenu platformu za čist zrak na Zapadnom Balkanu.",
+    hero_title: "Bura ne može sama.",
+    hero_sub: "Podaci postoje. Tehnologija postoji. Ono što nedostaje su ljudi koji vjeruju da BiH zaslužuje bolje.",
     hero_cta: "Javite se",
 
     why_eyebrow: "ZAŠTO SADA",
-    why_title: "Vrijeme je za djelovanje.",
-    why_body: "Ovdje će ići uvod u kontekst zašto je trenutak za partnerstvo važan. Zamijenite ovaj tekst svojim sadržajem.",
-    why_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+    why_title: "Zrak u BiH ubija 3.300 ljudi godišnje. A većina porodica to ne zna.",
+    why_body: [
+      "Sarajevo je redovno među najzagađenijim gradovima na svijetu tokom zime. Svako peto dijete u BiH pati od respiratornih problema. Podaci postoje, ali nikad ne stignu do onih kojima su najpotrebniji.",
+      "Bura to mijenja. Ali ne može sama.",
     ],
+    why_sources: "Izvori: UNICEF BiH · EEA 2025 · IQAir 2024",
 
     what_eyebrow: "ŠTA JE BURA",
-    what_title: "Jutarnji saputnik za čist zrak.",
+    what_title: "Nismo još jedan dashboard.",
+    what_body: [
+      "Bura je personalizirani ekološki asistent za porodice u BiH. Svako jutro, na osnovu živih podataka o kvalitetu zraka, Bura kaže roditeljima šta njihova djeca dišu i šta mogu učiniti danas.",
+      "Ne brojeve. Konkretne savjete. Na bosanskom. Besplatno. Zauvijek.",
+    ],
     what_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+      { source: "burabih.org", note: "živi prototip" },
+      { source: "Claude AI", note: "personalizirani savjeti" },
+      { source: "aqicn.org", note: "živi podaci za BiH" },
     ],
 
     who_eyebrow: "KO MOŽE POMOĆI",
@@ -140,25 +145,28 @@ const copy: Record<Lang, Copy> = {
     nav_partner: "Partners",
 
     hero_eyebrow: "PARTNERS",
-    hero_title: "Become a Bura partner.",
-    hero_sub: "Together we are building an open platform for clean air across the Western Balkans.",
+    hero_title: "Bura cannot do this alone.",
+    hero_sub: "The data exists. The technology exists. What's missing are the people who believe BiH deserves better.",
     hero_cta: "Get in touch",
 
     why_eyebrow: "WHY NOW",
-    why_title: "The time to act is now.",
-    why_body: "This is the intro about why now is the right moment for partnership. Replace this with your content.",
-    why_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+    why_title: "Air pollution kills 3,300 people in BiH every year. Most families don't know it.",
+    why_body: [
+      "Sarajevo regularly ranks among the world's most polluted cities in winter. 1 in 5 children in BiH suffers from respiratory problems. The data exists, but never reaches the families who need it most.",
+      "Bura changes that. But not alone.",
     ],
+    why_sources: "Sources: UNICEF BiH · EEA 2025 · IQAir 2024",
 
     what_eyebrow: "WHAT IS BURA",
-    what_title: "A morning companion for clean air.",
+    what_title: "We are not another dashboard.",
+    what_body: [
+      "Bura is a personalised environmental assistant for families in BiH. Every morning, based on live air quality data, Bura tells parents what their children are breathing and what they can do about it today.",
+      "Not numbers. Concrete actions. In Bosnian. Free. Forever.",
+    ],
     what_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+      { source: "burabih.org", note: "live prototype" },
+      { source: "Claude AI", note: "personalised advice" },
+      { source: "aqicn.org", note: "live BiH data" },
     ],
 
     who_eyebrow: "WHO CAN HELP",
@@ -311,58 +319,56 @@ export function PartnerPage({ lang }: Props) {
       </section>
 
       {/* 2. Why now */}
-      <section className="max-w-5xl mx-auto px-6 py-20">
+      <section className="max-w-3xl mx-auto px-6 py-20">
         <p className="text-xs tracking-[0.2em] text-[color:var(--forest)]/70 font-medium mb-3 text-center">
           {L.why_eyebrow}
         </p>
-        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10">
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
           {L.why_title}
         </h2>
-        <div className="grid sm:grid-cols-3 gap-6 mb-10">
-          {L.why_stats.map((s, i) => (
-            <div
-              key={i}
-              className="rounded-2xl bg-[color:var(--warm)] p-6 text-center border border-[color:var(--forest)]/10"
-            >
-              <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--forest)] mb-1">
-                {s.value}
-              </div>
-              <div className="text-xs tracking-wide text-foreground/65 uppercase">{s.label}</div>
-            </div>
+        <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed">
+          {L.why_body.map((p, i) => (
+            <p key={i}>{p}</p>
           ))}
         </div>
-        <p className="max-w-2xl mx-auto text-center text-base sm:text-lg text-foreground/75 leading-relaxed">
-          {L.why_body}
+        <p className="mt-8 text-xs tracking-wide text-foreground/55 text-center">
+          {L.why_sources}
         </p>
       </section>
 
-      {/* 3. What is Bura - 3 stat badges */}
+      {/* 3. What is Bura */}
       <section className="bg-[color:var(--sage)]/40">
-        <div className="max-w-5xl mx-auto px-6 py-20">
+        <div className="max-w-3xl mx-auto px-6 py-20">
           <p className="text-xs tracking-[0.2em] text-[color:var(--forest)]/70 font-medium mb-3 text-center">
             {L.what_eyebrow}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-semibold tracking-tight text-center mb-10 leading-tight">
             {L.what_title}
           </h2>
-          <div className="grid sm:grid-cols-3 gap-6">
+          <div className="space-y-5 text-base sm:text-lg text-foreground/80 leading-relaxed mb-12">
+            {L.what_body.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+          <div className="grid sm:grid-cols-3 gap-4">
             {L.what_stats.map((s, i) => (
               <div
                 key={i}
-                className="rounded-3xl bg-background p-8 text-center shadow-sm border border-[color:var(--forest)]/10"
+                className="rounded-2xl bg-background p-5 text-center shadow-sm border border-[color:var(--forest)]/10"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-4">
-                  <TrendingUp size={26} />
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-3">
+                  <TrendingUp size={18} />
                 </div>
-                <div className="text-3xl sm:text-4xl font-semibold text-[color:var(--forest)] mb-1">
-                  {s.value}
+                <div className="text-base font-semibold text-[color:var(--forest)] mb-1">
+                  {s.source}
                 </div>
-                <div className="text-xs tracking-wide text-foreground/65 uppercase">{s.label}</div>
+                <div className="text-xs tracking-wide text-foreground/65">{s.note}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
 
       {/* 4. Who can help - 2x2 grid */}
       <section className="max-w-5xl mx-auto px-6 py-20">
