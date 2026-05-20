@@ -109,6 +109,9 @@ function SkolePage() {
       {/* Hero */}
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
+          <p className="text-xs tracking-[0.2em] text-white/70 font-medium mb-4">
+            {lang === "bs" ? "ŠKOLE" : "SCHOOLS"}
+          </p>
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">
             {tr.schools_hero_title}
           </h1>
