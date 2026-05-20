@@ -115,7 +115,7 @@ const bs = {
   sub_email: "Vaš email",
   sub_cta: "Primajte jutarnje poruke",
   sub_note: "Besplatno. Vaši podaci su sigurni. Možete se odjaviti u bilo kom trenutku.",
-  sub_done: "Hvala! Buri te čeka. Javit ćemo se uskoro. 🌬️",
+  sub_done: "Hvala! Ovo je još beta verzija — javljamo vam se lično u narednim danima.",
 
   hiw_title: "Otvoreni podaci. Otvoreni kod. Besplatno zauvijek.",
   hiw_a: "Sateliti gledaju odozgo",
@@ -273,7 +273,7 @@ const en: typeof bs = {
   sub_email: "Your email",
   sub_cta: "Get morning messages",
   sub_note: "Free. Your data is safe. Unsubscribe anytime.",
-  sub_done: "Thanks! Buri is waiting for you. We'll be in touch soon. 🌬️",
+  sub_done: "Thanks! This is still a beta — we'll personally reach out in the coming days.",
 
   hiw_title: "Open data. Open code. Free forever.",
   hiw_a: "Satellites watch from above",
