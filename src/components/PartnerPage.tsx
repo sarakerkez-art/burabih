@@ -260,7 +260,7 @@ const schema = z.object({
   name: z.string().trim().min(1).max(120),
   email: z.string().trim().email().max(255),
   type: z.string().min(1).max(60),
-  message: z.string().trim().min(1).max(2000),
+  message: z.string().trim().max(2000).optional().default(""),
 });
 
 export function PartnerPage({ lang }: Props) {
