@@ -39,15 +39,9 @@ function VizijaPage() {
   const [lang, setLang] = useState<Lang>("bs");
 
   useEffect(() => {
-    try {
-      const l = localStorage.getItem(LKEY) as Lang | null;
-      if (l === "bs" || l === "en") setLang(l);
-    } catch { /* ignore */ }
+    try { localStorage.removeItem(LKEY); } catch { /* ignore */ }
+    setLang("bs");
   }, []);
-
-  useEffect(() => {
-    try { localStorage.setItem(LKEY, lang); } catch { /* ignore */ }
-  }, [lang]);
 
   const tr = t(lang);
 
