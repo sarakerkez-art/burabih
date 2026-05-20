@@ -520,7 +520,14 @@ function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   if (done) {
-    return <p className="mt-8 text-amber-brand whitespace-pre-line">{tr.sub_done}</p>;
+    return (
+      <div className="mt-8 flex items-start gap-3 max-w-md mx-auto bg-white/10 border border-amber-brand/40 rounded-2xl px-5 py-4 text-left">
+        <CheckCircle2 size={22} className="text-amber-brand shrink-0 mt-0.5" />
+        <p className="text-amber-brand text-sm leading-relaxed whitespace-pre-line">
+          {tr.sub_done}
+        </p>
+      </div>
+    );
   }
   return (
     <form
@@ -530,8 +537,19 @@ function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
         setLoading(true);
         setError(null);
         try {
-          const { joinWaitlist } = await import("@/lib/waitlist.functions");
-          await joinWaitlist({ data: { email, city } });
+          const res = await fetch("https://formsubmit.co/ajax/contact@burabih.org", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            body: JSON.stringify({
+              email,
+              city: city || "(nije navedeno)",
+              timestamp: new Date().toISOString(),
+              _subject: "New Bura signup",
+              _template: "table",
+              _captcha: "false",
+            }),
+          });
+          if (!res.ok) throw new Error("Network error");
           setDone(true);
         } catch (err) {
           console.error(err);
