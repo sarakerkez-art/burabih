@@ -46,7 +46,13 @@ type Copy = {
   // Who can help
   who_eyebrow: string;
   who_title: string;
-  who_cards: { Icon: React.ComponentType<{ size?: number }>; title: string; body: string }[];
+  who_cards: {
+    Icon: React.ComponentType<{ size?: number }>;
+    title: string;
+    body: string;
+    cta: string;
+    typeValue: string;
+  }[];
 
   // Contact form
   form_eyebrow: string;
