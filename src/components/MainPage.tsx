@@ -186,6 +186,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           items={[
             { label: lang === "bs" ? "Početna" : "Home", onClick: () => onHome?.() },
             { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Partneri" : "Partners", to: "/partner" },
             { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
             { label: `${profile.city} · ${tr.edit_profile}`, onClick: onEditProfile },
           ]}
