@@ -436,13 +436,25 @@ export function PartnerPage({ lang }: Props) {
             return (
               <div
                 key={i}
-                className="rounded-2xl bg-card p-7 border border-[color:var(--forest)]/10 hover:shadow-md transition"
+                className="rounded-2xl bg-card p-7 border border-[color:var(--forest)]/10 hover:shadow-md transition flex flex-col"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[color:var(--sage)] text-[color:var(--forest)] mb-4">
                   <Icon size={22} />
                 </div>
-                <h3 className="text-xl font-semibold tracking-tight mb-2">{c.title}</h3>
-                <p className="text-[15px] text-foreground/75 leading-relaxed">{c.body}</p>
+                <h3 className="text-xl font-semibold tracking-tight mb-2 text-[color:var(--forest)]">{c.title}</h3>
+                <p className="text-[15px] text-foreground/75 leading-relaxed mb-6">{c.body}</p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setType(c.typeValue);
+                    if (typeof document !== "undefined") {
+                      document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" });
+                    }
+                  }}
+                  className="mt-auto self-start inline-flex items-center gap-2 rounded-full bg-amber-brand text-[color:var(--forest)] px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition"
+                >
+                  {c.cta}
+                </button>
               </div>
             );
           })}
