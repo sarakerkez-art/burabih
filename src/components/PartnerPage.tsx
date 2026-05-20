@@ -523,18 +523,8 @@ export function PartnerPage({ lang }: Props) {
         </div>
       </section>
 
-      {/* 6. Footer quote */}
-      <section className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <Users size={28} className="mx-auto mb-5 text-[color:var(--amber-brand)]" />
-        <p className="text-xl sm:text-2xl italic text-[color:var(--forest)] leading-relaxed">
-          {L.quote}
-        </p>
-        {L.quote_attrib && (
-          <p className="mt-4 text-sm tracking-wide text-foreground/60 uppercase">{L.quote_attrib}</p>
-        )}
-      </section>
-
       {/* Site footer */}
+
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
         <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">
           <div>
