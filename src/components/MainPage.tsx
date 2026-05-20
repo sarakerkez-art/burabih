@@ -28,6 +28,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
   const [aiText, setAiText] = useState<string | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
+  const [showAiInfo, setShowAiInfo] = useState(false);
   const [demoWinter, setDemoWinter] = useState(false);
   const getAdvice = useServerFn(fetchAdvice);
 
