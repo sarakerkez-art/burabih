@@ -35,13 +35,15 @@ type Copy = {
   // Why now
   why_eyebrow: string;
   why_title: string;
-  why_body: string;
-  why_stats: { value: string; label: string }[];
+  why_body: string[];
+  why_sources: string;
+  why_stats?: { value: string; label: string }[];
 
   // What is Bura
   what_eyebrow: string;
   what_title: string;
-  what_stats: { value: string; label: string }[];
+  what_body: string[];
+  what_stats: { source: string; note: string }[];
 
   // Who can help
   who_eyebrow: string;
