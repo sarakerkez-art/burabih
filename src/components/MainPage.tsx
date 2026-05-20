@@ -214,7 +214,21 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       {/* Section B, AI Actions */}
       <section className="px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
+          <div className="flex items-center gap-2">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.actions_title}</h2>
+            <button
+              type="button"
+              aria-label={tr.actions_info}
+              title={tr.actions_info}
+              onClick={() => setShowAiInfo((v) => !v)}
+              className="text-muted-foreground hover:text-foreground transition"
+            >
+              <Info size={16} />
+            </button>
+          </div>
+          {showAiInfo && (
+            <p className="mt-2 text-xs italic text-muted-foreground leading-relaxed">{tr.actions_info}</p>
+          )}
           <p className="text-sm text-muted-foreground mt-2">
             {tr.actions_sub(profile.city, famLabel, heatLabel)}
           </p>
