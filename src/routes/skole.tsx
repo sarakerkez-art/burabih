@@ -214,6 +214,9 @@ function SkolePage() {
             </a>
           </div>
         </div>
+        <p className="max-w-3xl mx-auto mt-8 text-left sm:text-center text-xs text-white/75 leading-relaxed">
+          {tr.foot_beta}
+        </p>
       </footer>
     </div>
   );
