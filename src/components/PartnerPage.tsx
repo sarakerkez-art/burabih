@@ -81,25 +81,28 @@ const copy: Record<Lang, Copy> = {
     nav_partner: "Partneri",
 
     hero_eyebrow: "PARTNERI",
-    hero_title: "Postanite partner Bure.",
-    hero_sub: "Zajedno gradimo otvorenu platformu za čist zrak na Zapadnom Balkanu.",
+    hero_title: "Bura ne može sama.",
+    hero_sub: "Podaci postoje. Tehnologija postoji. Ono što nedostaje su ljudi koji vjeruju da BiH zaslužuje bolje.",
     hero_cta: "Javite se",
 
     why_eyebrow: "ZAŠTO SADA",
-    why_title: "Vrijeme je za djelovanje.",
-    why_body: "Ovdje će ići uvod u kontekst zašto je trenutak za partnerstvo važan. Zamijenite ovaj tekst svojim sadržajem.",
-    why_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+    why_title: "Zrak u BiH ubija 3.300 ljudi godišnje. A većina porodica to ne zna.",
+    why_body: [
+      "Sarajevo je redovno među najzagađenijim gradovima na svijetu tokom zime. Svako peto dijete u BiH pati od respiratornih problema. Podaci postoje, ali nikad ne stignu do onih kojima su najpotrebniji.",
+      "Bura to mijenja. Ali ne može sama.",
     ],
+    why_sources: "Izvori: UNICEF BiH · EEA 2025 · IQAir 2024",
 
     what_eyebrow: "ŠTA JE BURA",
-    what_title: "Jutarnji saputnik za čist zrak.",
+    what_title: "Nismo još jedan dashboard.",
+    what_body: [
+      "Bura je personalizirani ekološki asistent za porodice u BiH. Svako jutro, na osnovu živih podataka o kvalitetu zraka, Bura kaže roditeljima šta njihova djeca dišu i šta mogu učiniti danas.",
+      "Ne brojeve. Konkretne savjete. Na bosanskom. Besplatno. Zauvijek.",
+    ],
     what_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+      { source: "burabih.org", note: "živi prototip" },
+      { source: "Claude AI", note: "personalizirani savjeti" },
+      { source: "aqicn.org", note: "živi podaci za BiH" },
     ],
 
     who_eyebrow: "KO MOŽE POMOĆI",
@@ -142,25 +145,28 @@ const copy: Record<Lang, Copy> = {
     nav_partner: "Partners",
 
     hero_eyebrow: "PARTNERS",
-    hero_title: "Become a Bura partner.",
-    hero_sub: "Together we are building an open platform for clean air across the Western Balkans.",
+    hero_title: "Bura cannot do this alone.",
+    hero_sub: "The data exists. The technology exists. What's missing are the people who believe BiH deserves better.",
     hero_cta: "Get in touch",
 
     why_eyebrow: "WHY NOW",
-    why_title: "The time to act is now.",
-    why_body: "This is the intro about why now is the right moment for partnership. Replace this with your content.",
-    why_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+    why_title: "Air pollution kills 3,300 people in BiH every year. Most families don't know it.",
+    why_body: [
+      "Sarajevo regularly ranks among the world's most polluted cities in winter. 1 in 5 children in BiH suffers from respiratory problems. The data exists, but never reaches the families who need it most.",
+      "Bura changes that. But not alone.",
     ],
+    why_sources: "Sources: UNICEF BiH · EEA 2025 · IQAir 2024",
 
     what_eyebrow: "WHAT IS BURA",
-    what_title: "A morning companion for clean air.",
+    what_title: "We are not another dashboard.",
+    what_body: [
+      "Bura is a personalised environmental assistant for families in BiH. Every morning, based on live air quality data, Bura tells parents what their children are breathing and what they can do about it today.",
+      "Not numbers. Concrete actions. In Bosnian. Free. Forever.",
+    ],
     what_stats: [
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
-      { value: "0", label: "placeholder" },
+      { source: "burabih.org", note: "live prototype" },
+      { source: "Claude AI", note: "personalised advice" },
+      { source: "aqicn.org", note: "live BiH data" },
     ],
 
     who_eyebrow: "WHO CAN HELP",
