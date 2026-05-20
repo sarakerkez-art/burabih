@@ -183,13 +183,8 @@ const copy: Record<Lang, Copy> = {
     what_title: "We are not another dashboard.",
     what_body: [
       "Bura is a personalised environmental assistant for families in BiH. Every morning, based on live air quality data, Bura tells parents what their children are breathing and what they can do about it today.",
-      "Not numbers. Concrete actions. In Bosnian. Free. Forever.",
     ],
-    what_stats: [
-      { source: "burabih.org", note: "live prototype" },
-      { source: "Claude AI", note: "personalised advice" },
-      { source: "aqicn.org", note: "live BiH data" },
-    ],
+    what_stats: [],
 
     who_eyebrow: "WHO CAN HELP",
     who_title: "We are looking for partners across sectors.",
