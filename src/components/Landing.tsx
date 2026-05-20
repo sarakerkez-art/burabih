@@ -86,6 +86,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           >
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
+          <Link
+            to="/partner"
+            className="text-foreground/80 hover:text-foreground transition font-medium"
+          >
+            {lang === "bs" ? "Partneri" : "Partners"}
+          </Link>
           <button
             onClick={onOpen}
             className="text-foreground/80 hover:text-amber-brand transition font-medium"
@@ -114,6 +120,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           items={[
             { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
             { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Partneri" : "Partners", to: "/partner" },
             { label: lang === "bs" ? "Zrak u mom gradu" : "Air in my city", onClick: onOpen },
           ]}
         />

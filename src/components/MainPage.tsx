@@ -139,6 +139,12 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           >
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
+          <Link
+            to="/partner"
+            className="text-muted-foreground hover:text-foreground transition font-medium text-xs sm:text-sm"
+          >
+            {lang === "bs" ? "Partneri" : "Partners"}
+          </Link>
           <span className="text-muted-foreground">{profile.city}</span>
           <button
             onClick={onEditProfile}
@@ -180,6 +186,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           items={[
             { label: lang === "bs" ? "Početna" : "Home", onClick: () => onHome?.() },
             { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
+            { label: lang === "bs" ? "Partneri" : "Partners", to: "/partner" },
             { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
             { label: `${profile.city} · ${tr.edit_profile}`, onClick: onEditProfile },
           ]}
