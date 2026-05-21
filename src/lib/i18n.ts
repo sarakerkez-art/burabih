@@ -227,8 +227,16 @@ const en: typeof bs = {
   alert_banner: (city, pm, x) => `${city} today: PM2.5 ${pm}, ${x}× above the WHO limit`,
   greet_morning: "Good morning.",
   greet_kids_coal: (city, x) =>
-    `Today in ${city}, your children are breathing air ${x}× worse than the WHO recommendation. Here's what you can do today.`,
-  greet_default: (city, pm, x) => `Today in ${city}, PM2.5 is ${pm}, which is ${x}× above the WHO limit.`,
+    `Today in ${city}, children are breathing air ${x}× above the WHO recommendation.`,
+  greet_default: (city, pm, x) => `Today in ${city}: PM2.5 ${pm}, ${x}× above the WHO limit.`,
+  status_label: "TODAY",
+  status_good: "GOOD AIR",
+  status_moderate: "MODERATE AIR",
+  status_bad: "UNHEALTHY AIR",
+  status_hazard: "HAZARDOUS AIR",
+  status_unknown: "CHECKING AIR",
+  primary_tag: "PRIMARY RECOMMENDATION",
+  secondary_tag: "ADDITIONAL TIPS",
   buri_tag: "Buri watches your air. Every day.",
 
   actions_title: "Your steps for today",
