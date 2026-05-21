@@ -102,6 +102,20 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
   const pmStr = pm != null ? pm.toFixed(0) : "-";
   const showAlert = (pm ?? 0) > 25;
 
+  const statusLabel = useMemo(() => {
+    if (pm == null) return tr.status_unknown;
+    if (pm < 12) return tr.status_good;
+    if (pm < 35) return tr.status_moderate;
+    if (pm < 55) return tr.status_bad;
+    return tr.status_hazard;
+  }, [pm, tr]);
+  const statusTone = pm == null
+    ? "text-white/80"
+    : pm < 12 ? "text-[#9ee6a8]"
+    : pm < 35 ? "text-amber-brand"
+    : pm < 55 ? "text-[#ffb37a]"
+    : "text-[#ff8a7a]";
+
   const famLabel =
     profile.children === "young" ? tr.fam_young :
     profile.children === "older" ? tr.fam_older : tr.fam_none;
