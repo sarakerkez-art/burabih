@@ -231,11 +231,17 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
           <Buri pm25={pm} lang={lang} />
-          <p className="mt-8 text-xl sm:text-2xl font-semibold leading-snug">
-            {tr.greet_morning}{" "}
-            <span className="font-normal text-white/90">{greet}</span>
+          <p className="mt-8 text-xs tracking-[0.25em] font-semibold text-white/60">
+            {tr.status_label}
           </p>
-          <p className="mt-6 text-sm text-amber-brand">{tr.buri_tag}</p>
+          <h1 className={`mt-2 text-4xl sm:text-6xl font-bold tracking-tight ${statusTone}`}>
+            {statusLabel}
+          </h1>
+          <p className="mt-6 text-base sm:text-lg text-white/85 leading-snug">
+            <span className="font-medium">{tr.greet_morning}</span>{" "}
+            <span className="text-white/75">{greet}</span>
+          </p>
+          <p className="mt-5 text-xs text-white/55">{tr.buri_tag}</p>
         </div>
       </section>
 
