@@ -53,9 +53,17 @@ const bs = {
 
   greet_morning: "Dobro jutro.",
   greet_kids_coal: (city: string, x: string) =>
-    `Danas u ${cityLocative(city)} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
+    `Danas u ${cityLocative(city)} djeca dišu zrak ${x}× iznad WHO preporuke.`,
   greet_default: (city: string, pm: string, x: string) =>
-    `Danas u ${cityLocative(city)} PM2.5 je ${pm}, što je ${x}× iznad WHO granice.`,
+    `Danas u ${cityLocative(city)}: PM2.5 ${pm}, ${x}× iznad WHO granice.`,
+  status_label: "DANAS",
+  status_good: "DOBAR ZRAK",
+  status_moderate: "UMJEREN ZRAK",
+  status_bad: "LOŠ ZRAK",
+  status_hazard: "OPASAN ZRAK",
+  status_unknown: "PROVJERA ZRAKA",
+  primary_tag: "PRIMARNA PREPORUKA",
+  secondary_tag: "DODATNI SAVJETI",
   buri_tag: "Buri prati vaš zrak. Svaki dan.",
 
   actions_title: "Vaši koraci za danas",
@@ -219,8 +227,16 @@ const en: typeof bs = {
   alert_banner: (city, pm, x) => `${city} today: PM2.5 ${pm}, ${x}× above the WHO limit`,
   greet_morning: "Good morning.",
   greet_kids_coal: (city, x) =>
-    `Today in ${city}, your children are breathing air ${x}× worse than the WHO recommendation. Here's what you can do today.`,
-  greet_default: (city, pm, x) => `Today in ${city}, PM2.5 is ${pm}, which is ${x}× above the WHO limit.`,
+    `Today in ${city}, children are breathing air ${x}× above the WHO recommendation.`,
+  greet_default: (city, pm, x) => `Today in ${city}: PM2.5 ${pm}, ${x}× above the WHO limit.`,
+  status_label: "TODAY",
+  status_good: "GOOD AIR",
+  status_moderate: "MODERATE AIR",
+  status_bad: "UNHEALTHY AIR",
+  status_hazard: "HAZARDOUS AIR",
+  status_unknown: "CHECKING AIR",
+  primary_tag: "PRIMARY RECOMMENDATION",
+  secondary_tag: "ADDITIONAL TIPS",
   buri_tag: "Buri watches your air. Every day.",
 
   actions_title: "Your steps for today",

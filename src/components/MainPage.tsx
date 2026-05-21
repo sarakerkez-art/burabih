@@ -102,6 +102,20 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
   const pmStr = pm != null ? pm.toFixed(0) : "-";
   const showAlert = (pm ?? 0) > 25;
 
+  const statusLabel = useMemo(() => {
+    if (pm == null) return tr.status_unknown;
+    if (pm < 12) return tr.status_good;
+    if (pm < 35) return tr.status_moderate;
+    if (pm < 55) return tr.status_bad;
+    return tr.status_hazard;
+  }, [pm, tr]);
+  const statusTone = pm == null
+    ? "text-white/80"
+    : pm < 12 ? "text-[#9ee6a8]"
+    : pm < 35 ? "text-amber-brand"
+    : pm < 55 ? "text-[#ffb37a]"
+    : "text-[#ff8a7a]";
+
   const famLabel =
     profile.children === "young" ? tr.fam_young :
     profile.children === "older" ? tr.fam_older : tr.fam_none;
@@ -217,11 +231,17 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
           <Buri pm25={pm} lang={lang} />
-          <p className="mt-8 text-xl sm:text-2xl font-semibold leading-snug">
-            {tr.greet_morning}{" "}
-            <span className="font-normal text-white/90">{greet}</span>
+          <p className="mt-8 text-xs tracking-[0.25em] font-semibold text-white/60">
+            {tr.status_label}
           </p>
-          <p className="mt-6 text-sm text-amber-brand">{tr.buri_tag}</p>
+          <h1 className={`mt-2 text-4xl sm:text-6xl font-bold tracking-tight ${statusTone}`}>
+            {statusLabel}
+          </h1>
+          <p className="mt-6 text-base sm:text-lg text-white/85 leading-snug">
+            <span className="font-medium">{tr.greet_morning}</span>{" "}
+            <span className="text-white/75">{greet}</span>
+          </p>
+          <p className="mt-5 text-xs text-white/55">{tr.buri_tag}</p>
         </div>
       </section>
 
@@ -257,31 +277,64 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           )}
 
           {!aiLoading && aiItems.length > 0 && (
-            <ul className="mt-10 flex flex-col gap-8">
-              {aiItems.map((text, i) => (
-                <li key={i} className="flex gap-4">
-                  <IconBox><Wind size={22} /></IconBox>
-                  <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-10 flex flex-col gap-6">
+              {/* Primary recommendation */}
+              <div className="rounded-2xl bg-[color:var(--forest)] text-white p-6 sm:p-7 shadow-sm">
+                <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-amber-brand">
+                  {tr.primary_tag}
+                </div>
+                <p className="mt-3 text-xl sm:text-2xl font-semibold leading-snug">
+                  {aiItems[0]}
+                </p>
+              </div>
+              {/* Secondary tips */}
+              {aiItems.length > 1 && (
+                <div>
+                  <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">
+                    {tr.secondary_tag}
+                  </div>
+                  <ul className="mt-3 flex flex-col gap-3">
+                    {aiItems.slice(1).map((text, i) => (
+                      <li key={i} className="flex gap-3 items-start">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-brand shrink-0" />
+                        <p className="flex-1 text-sm text-foreground/75 leading-relaxed">{text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           )}
 
         {!aiLoading && aiItems.length === 0 && (
-          <ul className="mt-10 flex flex-col gap-8">
-            {fallbackActions.map((a, i) => (
-              <li key={i} className="flex gap-4">
-                <IconBox>{a.icon}</IconBox>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
-                    <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{a.tag}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
+          <div className="mt-10 flex flex-col gap-6">
+            <div className="rounded-2xl bg-[color:var(--forest)] text-white p-6 sm:p-7 shadow-sm">
+              <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-amber-brand">
+                {fallbackActions[0].tag}
+              </div>
+              <p className="mt-3 text-xl sm:text-2xl font-semibold leading-snug">
+                {fallbackActions[0].title}
+              </p>
+              <p className="mt-3 text-sm text-white/80 leading-relaxed">{fallbackActions[0].text}</p>
+            </div>
+            {fallbackActions.length > 1 && (
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">
+                  {tr.secondary_tag}
                 </div>
-              </li>
-            ))}
-          </ul>
+                <ul className="mt-3 flex flex-col gap-3">
+                  {fallbackActions.slice(1).map((a, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-brand shrink-0" />
+                      <p className="flex-1 text-sm text-foreground/75 leading-relaxed">
+                        <span className="font-medium text-foreground">{a.title}.</span> {a.text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         )}
 
           {aiError && !aiLoading && (
@@ -370,8 +423,8 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-2xl sm:text-3xl font-bold tracking-tight">{value}</div>
-      <div className="text-[11px] uppercase tracking-wide text-muted-foreground mt-1">{label}</div>
+      <div className="text-lg sm:text-xl font-semibold tracking-tight text-foreground/80 tabular-nums">{value}</div>
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
@@ -617,19 +670,23 @@ function buildActions(_p: Profile, lang: Lang): Action[] {
   return [
     {
       icon: <Wind size={22} />,
-      title: isBs ? "Prozračite u 14h, ne ujutro" : "Air out at 2pm, not in the morning",
-      tag: isBs ? "NAJČISTIJI ZRAK DANAS" : "CLEANEST AIR TODAY",
+      title: isBs ? "Najbolje vrijeme za vani: 10:00–14:00" : "Best time outdoors: 10:00–14:00",
+      tag: isBs ? "PRIMARNA PREPORUKA" : "PRIMARY RECOMMENDATION",
       text: isBs
-        ? "Vanjski zrak je čišći oko podneva. Otvorite prozore potpuno na 5 minuta između 13h i 15h, pa zatvorite prije večernjeg porasta zagađenja."
-        : "Outdoor air is cleanest around midday. Open the windows fully for 5 minutes between 1pm and 3pm, then close them before the evening pollution rise.",
+        ? "Ako izlazite, birajte podne i mirniju ulicu."
+        : "If you go out, choose midday and a quieter street.",
+    },
+    {
+      icon: <Wind size={22} />,
+      title: isBs ? "Provjetravanje" : "Ventilation",
+      tag: "",
+      text: isBs ? "Ujutro, kratko (5 min)." : "Morning, brief (5 min).",
     },
     {
       icon: <Award size={22} />,
-      title: isBs ? "Podijelite ovo s komšijom" : "Share this with a neighbour",
-      tag: isBs ? "MALI KORAK" : "SMALL STEP",
-      text: isBs
-        ? "Što više ljudi razumije obrasce, to je manje noćnog dima u vašoj zgradi."
-        : "The more people understand the patterns, the less smoke at night in your building.",
+      title: isBs ? "Večer" : "Evening",
+      tag: "",
+      text: isBs ? "Bez ograničenja." : "No restrictions.",
     },
   ];
 }
