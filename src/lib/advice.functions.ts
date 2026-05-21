@@ -75,7 +75,7 @@ No dashes (—). No intro. Return only a numbered list 1. 2. 3.`
 Napiši tačno 3 kratka savjeta na bosanskom za ovu porodicu danas.
 Stavka 1 MORA biti najvažnija akcija kao jasan vremenski okvir ili uvjet, npr. "Najbolje vrijeme za vani: 10:00–14:00" ili "Ako izlazite, odaberite podne i mirniju ulicu". Maksimalno 14 riječi.
 Stavke 2 i 3 su kratki prateći savjeti, max 12 riječi svaki, npr. "Provjetravanje: ujutro", "Večer: bez ograničenja".
-Koristi uvjetne, korisne formulacije ("Ako izlazite → ...", "Najbolje vrijeme → ..."). Nikada ne koristi naredbe poput "ostanite unutra" ili "ne". Bez jezika straha. Bez fraza tipa "čist zrak će im dobro doći za razvoj". Bez medicinskih tvrdnji.
+Koristi uvjetne, korisne formulacije ("Ako izlazite → ...", "Najbolje vrijeme → ..."). Nikada ne koristi naredbe poput "ostanite unutra" ili "ne". Bez jezika straha. Bez fraza tipa "čist zrak će im dobro doći za razvoj". Bez medicinskih tvrdnji. ZABRANJENO: ne dodaji obrazloženja poput "kada je svjetlije i toplije", "jer je tada...", "zato što...". Samo akcija i vrijeme, bez objašnjenja zašto.
 ${toneRule}
 VAŽNO: Piši ISKLJUČIVO latinicom (bosanska latinica: č, ć, š, ž, đ). NIKADA ne koristi ćirilicu. Bez crtica (—). Bez uvoda. Vrati samo numerisanu listu 1. 2. 3.`;
 
