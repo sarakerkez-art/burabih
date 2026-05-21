@@ -670,19 +670,23 @@ function buildActions(_p: Profile, lang: Lang): Action[] {
   return [
     {
       icon: <Wind size={22} />,
-      title: isBs ? "Prozračite u 14h, ne ujutro" : "Air out at 2pm, not in the morning",
-      tag: isBs ? "NAJČISTIJI ZRAK DANAS" : "CLEANEST AIR TODAY",
+      title: isBs ? "Najbolje vrijeme za vani: 10:00–14:00" : "Best time outdoors: 10:00–14:00",
+      tag: isBs ? "PRIMARNA PREPORUKA" : "PRIMARY RECOMMENDATION",
       text: isBs
-        ? "Vanjski zrak je čišći oko podneva. Otvorite prozore potpuno na 5 minuta između 13h i 15h, pa zatvorite prije večernjeg porasta zagađenja."
-        : "Outdoor air is cleanest around midday. Open the windows fully for 5 minutes between 1pm and 3pm, then close them before the evening pollution rise.",
+        ? "Ako izlazite, birajte podne i mirniju ulicu."
+        : "If you go out, choose midday and a quieter street.",
+    },
+    {
+      icon: <Wind size={22} />,
+      title: isBs ? "Provjetravanje" : "Ventilation",
+      tag: "",
+      text: isBs ? "Ujutro, kratko (5 min)." : "Morning, brief (5 min).",
     },
     {
       icon: <Award size={22} />,
-      title: isBs ? "Podijelite ovo s komšijom" : "Share this with a neighbour",
-      tag: isBs ? "MALI KORAK" : "SMALL STEP",
-      text: isBs
-        ? "Što više ljudi razumije obrasce, to je manje noćnog dima u vašoj zgradi."
-        : "The more people understand the patterns, the less smoke at night in your building.",
+      title: isBs ? "Večer" : "Evening",
+      tag: "",
+      text: isBs ? "Bez ograničenja." : "No restrictions.",
     },
   ];
 }
