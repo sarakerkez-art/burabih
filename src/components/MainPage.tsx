@@ -423,8 +423,8 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
 function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-2xl sm:text-3xl font-bold tracking-tight">{value}</div>
-      <div className="text-[11px] uppercase tracking-wide text-muted-foreground mt-1">{label}</div>
+      <div className="text-lg sm:text-xl font-semibold tracking-tight text-foreground/80 tabular-nums">{value}</div>
+      <div className="text-[10px] uppercase tracking-wide text-muted-foreground mt-1">{label}</div>
     </div>
   );
 }
