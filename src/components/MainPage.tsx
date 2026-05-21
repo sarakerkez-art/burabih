@@ -277,31 +277,64 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           )}
 
           {!aiLoading && aiItems.length > 0 && (
-            <ul className="mt-10 flex flex-col gap-8">
-              {aiItems.map((text, i) => (
-                <li key={i} className="flex gap-4">
-                  <IconBox><Wind size={22} /></IconBox>
-                  <p className="flex-1 text-sm sm:text-base text-foreground/85 leading-relaxed pt-2">{text}</p>
-                </li>
-              ))}
-            </ul>
+            <div className="mt-10 flex flex-col gap-6">
+              {/* Primary recommendation */}
+              <div className="rounded-2xl bg-[color:var(--forest)] text-white p-6 sm:p-7 shadow-sm">
+                <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-amber-brand">
+                  {tr.primary_tag}
+                </div>
+                <p className="mt-3 text-xl sm:text-2xl font-semibold leading-snug">
+                  {aiItems[0]}
+                </p>
+              </div>
+              {/* Secondary tips */}
+              {aiItems.length > 1 && (
+                <div>
+                  <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">
+                    {tr.secondary_tag}
+                  </div>
+                  <ul className="mt-3 flex flex-col gap-3">
+                    {aiItems.slice(1).map((text, i) => (
+                      <li key={i} className="flex gap-3 items-start">
+                        <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-brand shrink-0" />
+                        <p className="flex-1 text-sm text-foreground/75 leading-relaxed">{text}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
           )}
 
         {!aiLoading && aiItems.length === 0 && (
-          <ul className="mt-10 flex flex-col gap-8">
-            {fallbackActions.map((a, i) => (
-              <li key={i} className="flex gap-4">
-                <IconBox>{a.icon}</IconBox>
-                <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-                    <h3 className="font-semibold text-base sm:text-lg leading-snug">{a.title}</h3>
-                    <span className="text-[11px] uppercase tracking-wide text-amber-brand font-semibold">{a.tag}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{a.text}</p>
+          <div className="mt-10 flex flex-col gap-6">
+            <div className="rounded-2xl bg-[color:var(--forest)] text-white p-6 sm:p-7 shadow-sm">
+              <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-amber-brand">
+                {fallbackActions[0].tag}
+              </div>
+              <p className="mt-3 text-xl sm:text-2xl font-semibold leading-snug">
+                {fallbackActions[0].title}
+              </p>
+              <p className="mt-3 text-sm text-white/80 leading-relaxed">{fallbackActions[0].text}</p>
+            </div>
+            {fallbackActions.length > 1 && (
+              <div>
+                <div className="text-[11px] uppercase tracking-[0.18em] font-semibold text-muted-foreground">
+                  {tr.secondary_tag}
                 </div>
-              </li>
-            ))}
-          </ul>
+                <ul className="mt-3 flex flex-col gap-3">
+                  {fallbackActions.slice(1).map((a, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-amber-brand shrink-0" />
+                      <p className="flex-1 text-sm text-foreground/75 leading-relaxed">
+                        <span className="font-medium text-foreground">{a.title}.</span> {a.text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         )}
 
           {aiError && !aiLoading && (
