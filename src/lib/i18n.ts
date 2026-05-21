@@ -53,9 +53,17 @@ const bs = {
 
   greet_morning: "Dobro jutro.",
   greet_kids_coal: (city: string, x: string) =>
-    `Danas u ${cityLocative(city)} vaša djeca dišu zrak koji je ${x}× gori od WHO preporuke. Evo šta možete učiniti danas.`,
+    `Danas u ${cityLocative(city)} djeca dišu zrak ${x}× iznad WHO preporuke.`,
   greet_default: (city: string, pm: string, x: string) =>
-    `Danas u ${cityLocative(city)} PM2.5 je ${pm}, što je ${x}× iznad WHO granice.`,
+    `Danas u ${cityLocative(city)}: PM2.5 ${pm}, ${x}× iznad WHO granice.`,
+  status_label: "DANAS",
+  status_good: "DOBAR ZRAK",
+  status_moderate: "UMJEREN ZRAK",
+  status_bad: "LOŠ ZRAK",
+  status_hazard: "OPASAN ZRAK",
+  status_unknown: "PROVJERA ZRAKA",
+  primary_tag: "PRIMARNA PREPORUKA",
+  secondary_tag: "DODATNI SAVJETI",
   buri_tag: "Buri prati vaš zrak. Svaki dan.",
 
   actions_title: "Vaši koraci za danas",
