@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { Onboarding } from "@/components/Onboarding";
 import { MainPage } from "@/components/MainPage";
 import { Landing } from "@/components/Landing";
-import type { Lang, Profile } from "@/lib/i18n";
+import type { Profile } from "@/lib/i18n";
+import { useLang } from "@/lib/useLang";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,22 +26,19 @@ export const Route = createFileRoute("/")({
 });
 
 const KEY = "bura.profile.v1";
-const LKEY = "bura.lang.v1";
 const SKEY = "bura.started.v1";
 
 function Home() {
   const [profile, setProfile] = useState<Profile | null>(null);
-  const [lang, setLang] = useState<Lang>("bs");
+  const [lang, setLang] = useLang();
   const [started, setStarted] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    // Always start on the landing page in Bosnian when the link is opened.
+    // Always start on the landing page when the link is opened.
     try {
       sessionStorage.removeItem(SKEY);
-      localStorage.removeItem(LKEY);
     } catch { /* ignore */ }
-    setLang("bs");
     setHydrated(true);
   }, []);
 
