@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
 import { Wind, Droplets, Trees, Check } from "lucide-react";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
-import { type Lang, t } from "@/lib/i18n";
+import { t } from "@/lib/i18n";
+import { useLang } from "@/lib/useLang";
 
 export const Route = createFileRoute("/vizija")({
   head: () => ({
@@ -24,8 +24,6 @@ export const Route = createFileRoute("/vizija")({
   component: VizijaPage,
 });
 
-const LKEY = "bura.lang.v1";
-
 type Phase = {
   num: string;
   title: string;
@@ -36,12 +34,7 @@ type Phase = {
 };
 
 function VizijaPage() {
-  const [lang, setLang] = useState<Lang>("bs");
-
-  useEffect(() => {
-    try { localStorage.removeItem(LKEY); } catch { /* ignore */ }
-    setLang("bs");
-  }, []);
+  const [lang, setLang] = useLang();
 
   const tr = t(lang);
 
