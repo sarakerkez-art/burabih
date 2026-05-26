@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Wind, BookOpen, Users, Map as MapIcon } from "lucide-react";
 import { z } from "zod";
 import { WindMark } from "@/components/WindMark";
 import { MobileNav } from "@/components/MobileNav";
 import { BiHMap, type SchoolPin } from "@/components/BiHMap";
-import { type Lang, t } from "@/lib/i18n";
+import { t } from "@/lib/i18n";
+import { useLang } from "@/lib/useLang";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/skole")({
@@ -27,15 +28,8 @@ export const Route = createFileRoute("/skole")({
   component: SkolePage,
 });
 
-const LKEY = "bura.lang.v1";
-
 function SkolePage() {
-  const [lang, setLang] = useState<Lang>("bs");
-
-  useEffect(() => {
-    try { localStorage.removeItem(LKEY); } catch { /* ignore */ }
-    setLang("bs");
-  }, []);
+  const [lang, setLang] = useLang();
 
   const tr = t(lang);
 
