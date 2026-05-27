@@ -74,6 +74,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           <WindMark size={20} color="var(--forest)" />
         </button>
         <nav className="hidden sm:flex items-center gap-3 sm:gap-6 text-xs sm:text-sm">
+          <button
+            onClick={onOpen}
+            className="text-foreground/80 hover:text-amber-brand transition font-medium"
+          >
+            {lang === "bs" ? "Zrak u mom gradu" : "Air in my city"}
+          </button>
           <Link
             to="/skole"
             className="text-foreground/80 hover:text-foreground transition font-medium"
@@ -86,18 +92,6 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           >
             {lang === "bs" ? "Naša vizija" : "Our vision"}
           </Link>
-          <Link
-            to="/partner"
-            className="text-foreground/80 hover:text-foreground transition font-medium"
-          >
-            {lang === "bs" ? "Partneri" : "Partners"}
-          </Link>
-          <button
-            onClick={onOpen}
-            className="text-foreground/80 hover:text-amber-brand transition font-medium"
-          >
-            {lang === "bs" ? "Zrak u mom gradu" : "Air in my city"}
-          </button>
         </nav>
         <div className="hidden sm:flex items-center gap-2 text-xs tracking-wide">
           <button
@@ -118,12 +112,12 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           lang={lang}
           setLang={setLang}
           items={[
+            { label: lang === "bs" ? "Zrak u mom gradu" : "Air in my city", onClick: onOpen },
             { label: lang === "bs" ? "Škole" : "Schools", to: "/skole" },
             { label: lang === "bs" ? "Naša vizija" : "Our vision", to: "/vizija" },
-            { label: lang === "bs" ? "Partneri" : "Partners", to: "/partner" },
-            { label: lang === "bs" ? "Zrak u mom gradu" : "Air in my city", onClick: onOpen },
           ]}
         />
+
       </header>
 
       {/* Hero */}
