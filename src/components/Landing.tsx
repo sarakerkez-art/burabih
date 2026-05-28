@@ -281,6 +281,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
           {L.cta_open} →
         </button>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-6 py-14">
