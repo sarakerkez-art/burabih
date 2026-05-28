@@ -120,6 +120,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
 
       </header>
 
+      <main>
       {/* Hero */}
       <section className="px-6 max-w-6xl mx-auto pt-8 pb-20 sm:pt-16 sm:pb-28">
         <div className="grid sm:grid-cols-[1.3fr_1fr] gap-10 items-center">
