@@ -523,6 +523,7 @@ export function PartnerPage({ lang }: Props) {
           )}
         </div>
       </section>
+      </main>
 
       {/* Site footer */}
 
