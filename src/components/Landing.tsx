@@ -361,12 +361,13 @@ function ReportForm({ tr }: { tr: ReturnType<typeof t> }) {
   return (
     <form className="mt-10 flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
       <div>
-        <label className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
+        <label htmlFor="report-location" className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
           {tr.rep_loc}
         </label>
         <div className="mt-1 flex items-center gap-2 bg-card border border-input rounded-lg px-4 py-3">
-          <MapPin size={16} className="text-muted-foreground" />
+          <MapPin size={16} className="text-muted-foreground" aria-hidden="true" />
           <input
+            id="report-location"
             type="text"
             placeholder="Sarajevo, Marijin Dvor…"
             className="flex-1 bg-transparent text-sm focus:outline-none"
@@ -374,10 +375,11 @@ function ReportForm({ tr }: { tr: ReturnType<typeof t> }) {
         </div>
       </div>
       <div>
-        <label className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
+        <label htmlFor="report-description" className="text-[11px] uppercase tracking-wide text-muted-foreground font-semibold">
           {tr.rep_desc}
         </label>
         <textarea
+          id="report-description"
           rows={3}
           placeholder="…"
           className="mt-1 w-full bg-card border border-input rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-foreground"
