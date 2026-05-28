@@ -9,16 +9,17 @@ import { useLang } from "@/lib/useLang";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Bura: Znaj šta dišeš" },
+      { title: "Bura · Kvalitet zraka u BiH — znaj šta dišeš" },
       {
         name: "description",
         content:
-          "Bura je lični ekološki asistent za roditelje u BiH. Svako jutro vam kaže šta vaša djeca dišu, i šta možete učiniti.",
+          "Kvalitet zraka u Sarajevu, Zenici, Tuzli, Mostaru i Banja Luci uživo. PM2.5, AQI i personalizovani jutarnji savjeti za porodice u BiH.",
       },
-      { property: "og:title", content: "Bura: Znaj šta dišeš" },
+      { property: "og:title", content: "Bura · Kvalitet zraka u BiH" },
       {
         property: "og:description",
-        content: "Personalizovani jutarnji savjeti za roditelje u Sarajevu, Zenici i Tuzli.",
+        content:
+          "Kvalitet zraka uživo za gradove u BiH. Personalizovani jutarnji savjeti za roditelje.",
       },
     ],
   }),
