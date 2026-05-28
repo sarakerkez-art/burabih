@@ -342,6 +342,7 @@ export function PartnerPage({ lang }: Props) {
         />
       </header>
 
+      <main>
       {/* 1. Hero - full width teal */}
       <section className="w-full bg-[color:var(--forest)] text-white">
         <div className="max-w-5xl mx-auto px-6 py-20 sm:py-28 text-center">
@@ -522,6 +523,7 @@ export function PartnerPage({ lang }: Props) {
           )}
         </div>
       </section>
+      </main>
 
       {/* Site footer */}
 

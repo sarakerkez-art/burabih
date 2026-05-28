@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizijaRouteImport } from './routes/vizija'
 import { Route as SkoleRouteImport } from './routes/skole'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnPartnerRouteImport } from './routes/en.partner'
@@ -24,6 +25,11 @@ const VizijaRoute = VizijaRouteImport.update({
 const SkoleRoute = SkoleRouteImport.update({
   id: '/skole',
   path: '/skole',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PartnerRoute = PartnerRouteImport.update({
@@ -51,6 +57,7 @@ const LovableEmailQueueProcessRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/partner': typeof PartnerRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/partner': typeof PartnerRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/partner': typeof PartnerRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/partner'
+    | '/sitemap.xml'
     | '/skole'
     | '/vizija'
     | '/en/partner'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/partner'
+    | '/sitemap.xml'
     | '/skole'
     | '/vizija'
     | '/en/partner'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/partner'
+    | '/sitemap.xml'
     | '/skole'
     | '/vizija'
     | '/en/partner'
@@ -103,6 +115,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   PartnerRoute: typeof PartnerRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SkoleRoute: typeof SkoleRoute
   VizijaRoute: typeof VizijaRoute
   EnPartnerRoute: typeof EnPartnerRoute
@@ -123,6 +136,13 @@ declare module '@tanstack/react-router' {
       path: '/skole'
       fullPath: '/skole'
       preLoaderRoute: typeof SkoleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/partner': {
@@ -159,6 +179,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   PartnerRoute: PartnerRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SkoleRoute: SkoleRoute,
   VizijaRoute: VizijaRoute,
   EnPartnerRoute: EnPartnerRoute,

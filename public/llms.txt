@@ -1,0 +1,13 @@
+# Bura
+
+> Bura je lični ekološki asistent za roditelje u Bosni i Hercegovini. Svako jutro pokazuje kakav je zrak u vašem gradu i šta možete učiniti za svoju djecu.
+
+Bura kombinuje podatke o kvalitetu zraka u realnom vremenu sa personaliziranim, smirenim savjetima. Cilj je pomoći porodicama da donose svakodnevne odluke o boravku napolju, provjetravanju i grijanju.
+
+## Pages
+
+- [Početna / Zrak u mom gradu](/): Dnevni status kvaliteta zraka i savjeti za porodice.
+- [Naša vizija](/vizija): Zašto postoji Bura i kuda idemo.
+- [Škole](/skole): Program za škole i mjerenje zraka u učionicama.
+- [Partneri (BHS)](/partner): Kako kompanije, mediji i institucije mogu podržati Buru.
+- [Partners (EN)](/en/partner): Partnership information in English.

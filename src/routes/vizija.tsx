@@ -158,6 +158,7 @@ function VizijaPage() {
         />
       </header>
 
+      <main>
       <section className="max-w-3xl mx-auto px-6 pt-10 pb-12 text-center">
         <p className="text-xs tracking-[0.2em] text-[color:var(--forest)]/70 font-medium mb-4">{L.eyebrow}</p>
         <h1 className="text-4xl sm:text-5xl font-semibold tracking-tight mb-5">{L.title}</h1>
@@ -234,6 +235,8 @@ function VizijaPage() {
           {L.tagline}
         </p>
       </section>
+      </main>
+
 
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
         <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">

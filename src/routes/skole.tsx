@@ -100,6 +100,7 @@ function SkolePage() {
         />
       </header>
 
+      <main>
       {/* Hero */}
       <section className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-16 sm:py-24">
         <div className="max-w-2xl mx-auto text-center">
@@ -186,6 +187,7 @@ function SkolePage() {
           <SchoolForm lang={lang} />
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">

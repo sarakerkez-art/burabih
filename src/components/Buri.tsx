@@ -125,6 +125,10 @@ export function Buri({ pm25, lang = "bs", bubbleText, captionText }: Props) {
         <div
           ref={wrapRef}
           onClick={showBubble}
+          role="button"
+          tabIndex={0}
+          aria-label="Buri"
+          onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); showBubble(); } }}
           className={`buri-wake absolute inset-0 flex items-center justify-center cursor-pointer ${bodyAnim}`}
           style={{ transition: "filter 1s ease-in-out" }}
         >
