@@ -235,6 +235,8 @@ function VizijaPage() {
           {L.tagline}
         </p>
       </section>
+      </section>
+      </main>
 
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
         <div className="max-w-5xl mx-auto grid sm:grid-cols-3 gap-10 text-sm items-center text-left">
