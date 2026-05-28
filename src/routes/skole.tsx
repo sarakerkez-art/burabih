@@ -187,6 +187,7 @@ function SkolePage() {
           <SchoolForm lang={lang} />
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14 border-t border-white/10">
