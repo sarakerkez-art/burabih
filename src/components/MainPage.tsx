@@ -394,6 +394,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
           <p className="mt-4 text-xs italic text-white/70">{tr.sub_note}</p>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-[color:var(--forest)] text-white px-5 sm:px-8 py-14">
