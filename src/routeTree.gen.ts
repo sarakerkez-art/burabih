@@ -14,6 +14,7 @@ import { Route as SkoleRouteImport } from './routes/skole'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PartnerRouteImport } from './routes/partner'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ZrakGradRouteImport } from './routes/zrak.$grad'
 import { Route as EnPartnerRouteImport } from './routes/en.partner'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
@@ -42,6 +43,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZrakGradRoute = ZrakGradRouteImport.update({
+  id: '/zrak/$grad',
+  path: '/zrak/$grad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnPartnerRoute = EnPartnerRouteImport.update({
   id: '/en/partner',
   path: '/en/partner',
@@ -61,6 +67,7 @@ export interface FileRoutesByFullPath {
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
+  '/zrak/$grad': typeof ZrakGradRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesByTo {
@@ -70,6 +77,7 @@ export interface FileRoutesByTo {
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
+  '/zrak/$grad': typeof ZrakGradRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRoutesById {
@@ -80,6 +88,7 @@ export interface FileRoutesById {
   '/skole': typeof SkoleRoute
   '/vizija': typeof VizijaRoute
   '/en/partner': typeof EnPartnerRoute
+  '/zrak/$grad': typeof ZrakGradRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
 }
 export interface FileRouteTypes {
@@ -91,6 +100,7 @@ export interface FileRouteTypes {
     | '/skole'
     | '/vizija'
     | '/en/partner'
+    | '/zrak/$grad'
     | '/lovable/email/queue/process'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -100,6 +110,7 @@ export interface FileRouteTypes {
     | '/skole'
     | '/vizija'
     | '/en/partner'
+    | '/zrak/$grad'
     | '/lovable/email/queue/process'
   id:
     | '__root__'
@@ -109,6 +120,7 @@ export interface FileRouteTypes {
     | '/skole'
     | '/vizija'
     | '/en/partner'
+    | '/zrak/$grad'
     | '/lovable/email/queue/process'
   fileRoutesById: FileRoutesById
 }
@@ -119,6 +131,7 @@ export interface RootRouteChildren {
   SkoleRoute: typeof SkoleRoute
   VizijaRoute: typeof VizijaRoute
   EnPartnerRoute: typeof EnPartnerRoute
+  ZrakGradRoute: typeof ZrakGradRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
 }
 
@@ -159,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zrak/$grad': {
+      id: '/zrak/$grad'
+      path: '/zrak/$grad'
+      fullPath: '/zrak/$grad'
+      preLoaderRoute: typeof ZrakGradRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/en/partner': {
       id: '/en/partner'
       path: '/en/partner'
@@ -183,18 +203,9 @@ const rootRouteChildren: RootRouteChildren = {
   SkoleRoute: SkoleRoute,
   VizijaRoute: VizijaRoute,
   EnPartnerRoute: EnPartnerRoute,
+  ZrakGradRoute: ZrakGradRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

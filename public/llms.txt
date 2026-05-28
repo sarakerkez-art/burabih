@@ -7,6 +7,11 @@ Bura kombinuje podatke o kvalitetu zraka u realnom vremenu sa personaliziranim, 
 ## Pages
 
 - [Početna / Zrak u mom gradu](/): Dnevni status kvaliteta zraka i savjeti za porodice.
+- [Kvalitet zraka Sarajevo](/zrak/sarajevo): PM2.5 uživo i savjeti za Sarajevo.
+- [Kvalitet zraka Zenica](/zrak/zenica): PM2.5 uživo i savjeti za Zenicu.
+- [Kvalitet zraka Tuzla](/zrak/tuzla): PM2.5 uživo i savjeti za Tuzlu.
+- [Kvalitet zraka Mostar](/zrak/mostar): PM2.5 uživo i savjeti za Mostar.
+- [Kvalitet zraka Banja Luka](/zrak/banja-luka): PM2.5 uživo i savjeti za Banja Luku.
 - [Naša vizija](/vizija): Zašto postoji Bura i kuda idemo.
 - [Škole](/skole): Program za škole i mjerenje zraka u učionicama.
 - [Partneri (BHS)](/partner): Kako kompanije, mediji i institucije mogu podržati Buru.
