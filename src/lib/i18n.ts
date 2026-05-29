@@ -94,8 +94,10 @@ const bs = {
 
   ebm_title: "Svaki dah je važan.",
   ebm_sub: "Posebno za najmanja pluća.",
-  ebm_p: (city: string, x: string) =>
-    `Upravo sada u ${cityLocative(city)}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, svako peto dijete u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
+  ebm_p: (city: string, x: string, pm: number | null): string =>
+    pm != null && pm < 15
+      ? `Upravo sada u ${cityLocative(city)}, zrak je čist (${x}× WHO granice). Iskoristite ovaj dan — djeca neka budu vani što duže. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, pa su čisti dani posebno dragocjeni. Prema UNICEF-u, svako peto dijete u BiH pati od respiratornih problema, zato računamo svaki dan dobrog zraka.`
+      : `Upravo sada u ${cityLocative(city)}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, svako peto dijete u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
   ebm_source: "Izvor: UNICEF BiH, WHO",
 
   work_title: "Šta već funkcioniše",
