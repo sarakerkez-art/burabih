@@ -94,8 +94,10 @@ const bs = {
 
   ebm_title: "Svaki dah je važan.",
   ebm_sub: "Posebno za najmanja pluća.",
-  ebm_p: (city: string, x: string) =>
-    `Upravo sada u ${cityLocative(city)}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, svako peto dijete u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
+  ebm_p: (city: string, x: string, pm: number | null): string =>
+    pm != null && pm < 15
+      ? `Upravo sada u ${cityLocative(city)}, zrak je čist (${x}× WHO granice). Iskoristite ovaj dan — djeca neka budu vani što duže. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, pa su čisti dani posebno dragocjeni. Prema UNICEF-u, svako peto dijete u BiH pati od respiratornih problema, zato računamo svaki dan dobrog zraka.`
+      : `Upravo sada u ${cityLocative(city)}, zrak sadrži ${x}× više štetnih čestica nego što WHO smatra sigurnim. Djeca udišu 50% više zraka po kilogramu tijela nego odrasli, što zagađen zrak čini dvostruko opasnijim za njih. Prema UNICEF-u, svako peto dijete u BiH već pati od respiratornih problema. Preko 100.000 djece živi u najzagađenijim gradovima BiH.`,
   ebm_source: "Izvor: UNICEF BiH, WHO",
 
   work_title: "Šta već funkcioniše",
@@ -271,8 +273,10 @@ const en: typeof bs = {
 
   ebm_title: "Every breath matters.",
   ebm_sub: "Especially for the smallest lungs.",
-  ebm_p: (city, x) =>
-    `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults, making polluted air twice as dangerous for them. According to UNICEF, one in five children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
+  ebm_p: (city: string, x: string, pm: number | null): string =>
+    pm != null && pm < 15
+      ? `Right now in ${city}, the air is clean (${x}× WHO limit). Make the most of today — let kids spend extra time outside. Children breathe 50% more air per kg of body weight than adults, so clean days are especially valuable. According to UNICEF, one in five children in BiH suffers from respiratory issues, which is why every clean day counts.`
+      : `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults, making polluted air twice as dangerous for them. According to UNICEF, one in five children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
   ebm_source: "Source: UNICEF BiH, WHO",
 
   work_title: "What's already working",
