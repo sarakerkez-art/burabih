@@ -79,7 +79,7 @@ const bs = {
   live_source: (m: string) => `aqicn.org · Federalni Hidrometeorološki Zavod · ažurirano prije ${m} min`,
   live_stale: "Podaci se osvježavaju... Prikazujemo posljednje poznate vrijednosti.",
 
-  why_title: (pm: number | null) =>
+  why_title: (pm: number | null): string =>
     pm == null ? "Zašto je danas ovako?"
     : pm < 15 ? "Zašto je zrak danas dobar?"
     : pm < 35 ? "Zašto je zrak danas umjeren?"
