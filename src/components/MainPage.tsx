@@ -379,7 +379,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.ebm_title}</h2>
           <p className="text-base text-muted-foreground mt-2">{tr.ebm_sub}</p>
-          <p className="mt-6 text-base leading-relaxed text-foreground/85">{tr.ebm_p(profile.city, x)}</p>
+          <p className="mt-6 text-base leading-relaxed text-foreground/85">{tr.ebm_p(profile.city, x, pm)}</p>
           <p className="mt-4 text-xs italic text-muted-foreground">{tr.ebm_source}</p>
         </div>
       </section>
