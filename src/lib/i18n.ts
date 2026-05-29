@@ -79,9 +79,17 @@ const bs = {
   live_source: (m: string) => `aqicn.org · Federalni Hidrometeorološki Zavod · ažurirano prije ${m} min`,
   live_stale: "Podaci se osvježavaju... Prikazujemo posljednje poznate vrijednosti.",
 
-  why_title: "Zašto je danas ovako?",
-  why_text: (t: string) =>
-    `Temperatura je pala na ${t}°C noćas. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`,
+  why_title: (pm: number | null): string =>
+    pm == null ? "Zašto je danas ovako?"
+    : pm < 15 ? "Zašto je zrak danas dobar?"
+    : pm < 35 ? "Zašto je zrak danas umjeren?"
+    : "Zašto je zrak danas loš?",
+  why_text: (t: string, pm: number | null) =>
+    pm != null && pm < 15
+      ? `Temperatura je ${t}°C i vjetar raznosi čestice iz kotline. Manje grijanja uglja i drva znači čistiji zrak. Iskoristite dan vani.`
+      : pm != null && pm < 35
+      ? `Temperatura je ${t}°C. Domaćinstva u BiH još uvijek sagorijevaju ugalj i drva, a dio dima ostaje u kotlini. Stanje je umjereno — oprez za osjetljive grupe.`
+      : `Temperatura je pala na ${t}°C noćas. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`,
   why_source: "Izvor: SMHI heating emissions data, BiH",
 
   ebm_title: "Svaki dah je važan.",
@@ -248,9 +256,17 @@ const en: typeof bs = {
   live_source: (m) => `aqicn.org · Federalni Hidrometeorološki Zavod · updated ${m} min ago`,
   live_stale: "Refreshing data... Showing last known values.",
 
-  why_title: "Why is the air bad today?",
-  why_text: (tp) =>
-    `The temperature dropped to ${tp}°C overnight. When it's cold, BiH households burn more coal and wood. Smoke stays trapped in the valley due to a temperature inversion.`,
+  why_title: (pm: number | null) =>
+    pm == null ? "What's going on today?"
+    : pm < 15 ? "Why is the air good today?"
+    : pm < 35 ? "Why is the air moderate today?"
+    : "Why is the air bad today?",
+  why_text: (tp: string, pm: number | null) =>
+    pm != null && pm < 15
+      ? `It's ${tp}°C and wind is clearing the basin. Less coal and wood burning means cleaner air. Enjoy the day outside.`
+      : pm != null && pm < 35
+      ? `It's ${tp}°C. Households in BiH still burn coal and wood, and some smoke lingers in the valley. Moderate — caution for sensitive groups.`
+      : `The temperature dropped to ${tp}°C overnight. When it's cold, BiH households burn more coal and wood. Smoke stays trapped in the valley due to a temperature inversion.`,
   why_source: "Source: SMHI heating emissions data, BiH",
 
   ebm_title: "Every breath matters.",
