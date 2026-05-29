@@ -79,9 +79,17 @@ const bs = {
   live_source: (m: string) => `aqicn.org · Federalni Hidrometeorološki Zavod · ažurirano prije ${m} min`,
   live_stale: "Podaci se osvježavaju... Prikazujemo posljednje poznate vrijednosti.",
 
-  why_title: "Zašto je danas ovako?",
-  why_text: (t: string) =>
-    `Temperatura je pala na ${t}°C noćas. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`,
+  why_title: (pm: number | null) =>
+    pm == null ? "Zašto je danas ovako?"
+    : pm < 15 ? "Zašto je zrak danas dobar?"
+    : pm < 35 ? "Zašto je zrak danas umjeren?"
+    : "Zašto je zrak danas loš?",
+  why_text: (t: string, pm: number | null) =>
+    pm != null && pm < 15
+      ? `Temperatura je ${t}°C i vjetar raznosi čestice iz kotline. Manje grijanja uglja i drva znači čistiji zrak. Iskoristite dan vani.`
+      : pm != null && pm < 35
+      ? `Temperatura je ${t}°C. Domaćinstva u BiH još uvijek sagorijevaju ugalj i drva, a dio dima ostaje u kotlini. Stanje je umjereno — oprez za osjetljive grupe.`
+      : `Temperatura je pala na ${t}°C noćas. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`,
   why_source: "Izvor: SMHI heating emissions data, BiH",
 
   ebm_title: "Svaki dah je važan.",
