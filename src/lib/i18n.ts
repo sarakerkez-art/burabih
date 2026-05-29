@@ -273,8 +273,10 @@ const en: typeof bs = {
 
   ebm_title: "Every breath matters.",
   ebm_sub: "Especially for the smallest lungs.",
-  ebm_p: (city, x) =>
-    `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults, making polluted air twice as dangerous for them. According to UNICEF, one in five children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
+  ebm_p: (city: string, x: string, pm: number | null): string =>
+    pm != null && pm < 15
+      ? `Right now in ${city}, the air is clean (${x}× WHO limit). Make the most of today — let kids spend extra time outside. Children breathe 50% more air per kg of body weight than adults, so clean days are especially valuable. According to UNICEF, one in five children in BiH suffers from respiratory issues, which is why every clean day counts.`
+      : `Right now in ${city}, the air contains ${x}× more harmful particles than the WHO considers safe. Children breathe 50% more air per kg of body weight than adults, making polluted air twice as dangerous for them. According to UNICEF, one in five children in BiH already suffers from respiratory issues. Over 100,000 children live in the most polluted cities in BiH.`,
   ebm_source: "Source: UNICEF BiH, WHO",
 
   work_title: "What's already working",
