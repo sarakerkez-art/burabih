@@ -84,12 +84,23 @@ const bs = {
     : pm < 15 ? "Zašto je zrak danas dobar?"
     : pm < 35 ? "Zašto je zrak danas umjeren?"
     : "Zašto je zrak danas loš?",
-  why_text: (t: string, pm: number | null) =>
-    pm != null && pm < 15
-      ? `Temperatura je ${t}°C i vjetar raznosi čestice iz kotline. Manje grijanja uglja i drva znači čistiji zrak. Iskoristite dan vani.`
-      : pm != null && pm < 35
-      ? `Temperatura je ${t}°C. Domaćinstva u BiH još uvijek sagorijevaju ugalj i drva, a dio dima ostaje u kotlini. Stanje je umjereno — oprez za osjetljive grupe.`
-      : `Temperatura je pala na ${t}°C noćas. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`,
+  why_text: (t: string, pm: number | null) => {
+    const tn = parseFloat(t);
+    const warm = !Number.isNaN(tn) && tn >= 18;
+    if (pm != null && pm < 15) {
+      return warm
+        ? `Temperatura je ${t}°C. Ljeti je manje grijanja, a vjetar raznosi čestice iz kotline — zrak je čist. Iskoristite dan vani.`
+        : `Temperatura je ${t}°C i vjetar raznosi čestice iz kotline. Manje grijanja uglja i drva znači čistiji zrak. Iskoristite dan vani.`;
+    }
+    if (pm != null && pm < 35) {
+      return warm
+        ? `Temperatura je ${t}°C. Pri ovakvim temperaturama glavni izvori su saobraćaj, građevinska prašina i prenos čestica iz regiona (ponekad i dim šumskih požara). Stanje je umjereno — oprez za osjetljive grupe.`
+        : `Temperatura je ${t}°C. Domaćinstva u BiH još uvijek sagorijevaju ugalj i drva, a dio dima ostaje u kotlini. Stanje je umjereno — oprez za osjetljive grupe.`;
+    }
+    return warm
+      ? `Temperatura je ${t}°C. Ljeti zagađenje najčešće dolazi od saobraćaja, industrije i prenosa dima šumskih požara iz regiona — bez vjetra čestice se zadržavaju nad gradom.`
+      : `Temperatura je pala na ${t}°C. Kad je hladno, domaćinstva u BiH sagorijevaju više uglja i drva. Dim ostaje zarobljen u kotlini zbog temperaturne inverzije.`;
+  },
   why_source: "Izvor: SMHI heating emissions data, BiH",
 
   ebm_title: "Svaki dah je važan.",
