@@ -274,12 +274,23 @@ const en: typeof bs = {
     : pm < 15 ? "Why is the air good today?"
     : pm < 35 ? "Why is the air moderate today?"
     : "Why is the air bad today?",
-  why_text: (tp: string, pm: number | null) =>
-    pm != null && pm < 15
-      ? `It's ${tp}°C and wind is clearing the basin. Less coal and wood burning means cleaner air. Enjoy the day outside.`
-      : pm != null && pm < 35
-      ? `It's ${tp}°C. Households in BiH still burn coal and wood, and some smoke lingers in the valley. Moderate — caution for sensitive groups.`
-      : `The temperature dropped to ${tp}°C overnight. When it's cold, BiH households burn more coal and wood. Smoke stays trapped in the valley due to a temperature inversion.`,
+  why_text: (tp: string, pm: number | null) => {
+    const tn = parseFloat(tp);
+    const warm = !Number.isNaN(tn) && tn >= 18;
+    if (pm != null && pm < 15) {
+      return warm
+        ? `It's ${tp}°C. In summer there's little heating and wind clears the basin — the air is clean. Enjoy the day outside.`
+        : `It's ${tp}°C and wind is clearing the basin. Less coal and wood burning means cleaner air. Enjoy the day outside.`;
+    }
+    if (pm != null && pm < 35) {
+      return warm
+        ? `It's ${tp}°C. At these temperatures the main sources are traffic, construction dust, and particle transport from the region (sometimes wildfire smoke). Moderate — caution for sensitive groups.`
+        : `It's ${tp}°C. Households in BiH still burn coal and wood, and some smoke lingers in the valley. Moderate — caution for sensitive groups.`;
+    }
+    return warm
+      ? `It's ${tp}°C. In summer, pollution usually comes from traffic, industry, and wildfire smoke drifting in from the region — without wind, particles linger over the city.`
+      : `The temperature dropped to ${tp}°C. When it's cold, BiH households burn more coal and wood. Smoke stays trapped in the valley due to a temperature inversion.`;
+  },
   why_source: "Source: SMHI heating emissions data, BiH",
 
   ebm_title: "Every breath matters.",
