@@ -24,7 +24,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
   const tr = t(lang);
   const L = lang === "bs"
     ? {
-        cta_open: "Otvori aplikaciju",
+        cta_open: "Provjeri zrak u svom gradu",
         cta_more: "Saznaj više",
         hero_eyebrow: "LIČNI EKOLOŠKI ASISTENT ZA RODITELJE U BiH",
         hero_title: "Znajte šta vaša djeca dišu, svako jutro.",
@@ -41,7 +41,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         final_tag: "Svaki dah je važan. ❤️",
       }
     : {
-        cta_open: "Open the app",
+        cta_open: "Check the air in your city",
         cta_more: "Learn more",
         hero_eyebrow: "A PERSONAL ENVIRONMENTAL ASSISTANT FOR PARENTS IN BiH",
         hero_title: "Know what your children breathe, every morning.",
