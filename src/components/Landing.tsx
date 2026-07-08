@@ -24,7 +24,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
   const tr = t(lang);
   const L = lang === "bs"
     ? {
-        cta_open: "Otvori aplikaciju",
+        cta_open: "Provjeri zrak u svom gradu",
         cta_more: "Saznaj više",
         hero_eyebrow: "LIČNI EKOLOŠKI ASISTENT ZA RODITELJE U BiH",
         hero_title: "Znajte šta vaša djeca dišu, svako jutro.",
