@@ -41,7 +41,7 @@ export function Landing({ lang, setLang, onOpen }: Props) {
         final_tag: "Svaki dah je važan. ❤️",
       }
     : {
-        cta_open: "Open the app",
+        cta_open: "Check the air in your city",
         cta_more: "Learn more",
         hero_eyebrow: "A PERSONAL ENVIRONMENTAL ASSISTANT FOR PARENTS IN BiH",
         hero_title: "Know what your children breathe, every morning.",
