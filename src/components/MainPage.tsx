@@ -368,7 +368,7 @@ export function MainPage({ profile, lang, setLang, onEditProfile, onHome }: Prop
         <div className="max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">{tr.why_title(pm)}</h2>
           <p className="mt-5 text-base leading-relaxed text-foreground/85">
-            {tr.why_text(air?.temp != null ? String(air.temp) : "−2", pm)}
+            {tr.why_text(air?.temp != null ? String(air.temp) : null, pm)}
           </p>
           <p className="mt-4 text-xs text-muted-foreground">{tr.why_source}</p>
         </div>
