@@ -84,7 +84,16 @@ const bs = {
     : pm < 15 ? "Zašto je zrak danas dobar?"
     : pm < 35 ? "Zašto je zrak danas umjeren?"
     : "Zašto je zrak danas loš?",
-  why_text: (t: string, pm: number | null) => {
+  why_text: (t: string | null, pm: number | null) => {
+    if (t == null) {
+      if (pm != null && pm < 15) {
+        return "Vjetar i manje lokalnih emisija danas pomažu da zrak bude čist. Iskoristite dan vani.";
+      }
+      if (pm != null && pm < 35) {
+        return "Stanje je umjereno. Glavni izvori mogu biti saobraćaj, prašina i prenos čestica iz regiona — oprez za osjetljive grupe.";
+      }
+      return "Zagađenje najčešće dolazi od saobraćaja, industrije i lokalnih ložišta; bez vjetra čestice se zadržavaju nad gradom.";
+    }
     const tn = parseFloat(t);
     const warm = !Number.isNaN(tn) && tn >= 18;
     if (pm != null && pm < 15) {
@@ -274,7 +283,16 @@ const en: typeof bs = {
     : pm < 15 ? "Why is the air good today?"
     : pm < 35 ? "Why is the air moderate today?"
     : "Why is the air bad today?",
-  why_text: (tp: string, pm: number | null) => {
+  why_text: (tp: string | null, pm: number | null) => {
+    if (tp == null) {
+      if (pm != null && pm < 15) {
+        return "Wind and lower local emissions are helping keep the air clean today. Enjoy time outside.";
+      }
+      if (pm != null && pm < 35) {
+        return "Conditions are moderate. Main sources can include traffic, dust, and regional particle transport — caution for sensitive groups.";
+      }
+      return "Pollution usually comes from traffic, industry, and local heating; without wind, particles linger over the city.";
+    }
     const tn = parseFloat(tp);
     const warm = !Number.isNaN(tn) && tn >= 18;
     if (pm != null && pm < 15) {
