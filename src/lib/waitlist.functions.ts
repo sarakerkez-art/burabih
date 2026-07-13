@@ -1,6 +1,5 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
-import { supabaseAdmin } from "@/integrations/supabase/client.server";
 
 const Schema = z.object({
   email: z.string().trim().email().max(255),
@@ -12,6 +11,7 @@ export const joinWaitlist = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const email = data.email.toLowerCase();
     const city = data.city ?? null;
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     // Upsert by email; ignore unique conflict so users can re-submit.
     const { error } = await supabaseAdmin

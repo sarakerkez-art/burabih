@@ -13,6 +13,7 @@ import { type Lang, type Profile, t } from "@/lib/i18n";
 import { useServerFn } from "@tanstack/react-start";
 import { Link } from "@tanstack/react-router";
 import { fetchAdvice } from "@/lib/advice.functions";
+import { joinWaitlist } from "@/lib/waitlist.functions";
 
 type Props = { profile: Profile; lang: Lang; setLang: (l: Lang) => void; onEditProfile: () => void; onHome?: () => void };
 
@@ -581,6 +582,7 @@ function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
   const [done, setDone] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const submitWaitlist = useServerFn(joinWaitlist);
   if (done) {
     return (
       <div className="mt-8 flex items-start gap-3 max-w-md mx-auto bg-white/10 border border-amber-brand/40 rounded-2xl px-5 py-4 text-left">
@@ -599,8 +601,7 @@ function SignupForm({ tr, city }: { tr: ReturnType<typeof t>; city: string }) {
         setLoading(true);
         setError(null);
         try {
-          const { joinWaitlist } = await import("@/lib/waitlist.functions");
-          await joinWaitlist({ data: { email, city } });
+          await submitWaitlist({ data: { email, city } });
           setDone(true);
         } catch (err) {
           console.error(err);
